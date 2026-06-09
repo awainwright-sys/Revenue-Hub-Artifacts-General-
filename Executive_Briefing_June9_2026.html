@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Briefing — Revenue Hub GTM | June 9, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #1a1d23;
+    background: #ffffff;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 0 60px 0;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: #1a1d23;
+    color: #ffffff;
+    padding: 52px 56px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 340px; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(255,122,89,0.12) 100%);
+  }
+  .cover-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FF7A59;
+    margin-bottom: 16px;
+  }
+  .cover h1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .cover h2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #9ea6b4;
+    margin-bottom: 32px;
+  }
+  .cover-meta {
+    font-size: 11.5px;
+    color: #9ea6b4;
+    line-height: 2;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+  }
+  .cover-meta strong { color: #ffffff; font-weight: 500; }
+
+  /* ── STAT ROW ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-bottom: 3px solid #FF7A59;
+  }
+  .stat-cell {
+    padding: 24px 20px;
+    border-right: 1px solid #e8eaed;
+    background: #fafbfc;
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-number {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a1d23;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-number.green { color: #00a97f; }
+  .stat-number.orange { color: #FF7A59; }
+  .stat-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #6b7280;
+  }
+  .stat-sub {
+    font-size: 10px;
+    color: #9ea6b4;
+    margin-top: 3px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 44px 56px 18px;
+    border-bottom: 1px solid #e8eaed;
+    margin-bottom: 32px;
+  }
+  .section-badge {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FF7A59;
+    background: rgba(255,122,89,0.08);
+    border: 1px solid rgba(255,122,89,0.25);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1d23;
+    letter-spacing: -0.3px;
+  }
+
+  /* ── BODY CONTENT ── */
+  .body { padding: 0 56px; }
+
+  p { margin-bottom: 14px; color: #374151; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: #f0f4ff;
+    border-left: 4px solid #3b6cf8;
+    padding: 18px 22px;
+    border-radius: 0 6px 6px 0;
+    margin: 24px 0;
+    font-size: 13px;
+    color: #1e3a8a;
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .callout.orange {
+    background: #fff5f0;
+    border-left-color: #FF7A59;
+    color: #7c2d12;
+  }
+  .callout.green {
+    background: #f0fdf4;
+    border-left-color: #00a97f;
+    color: #14532d;
+  }
+
+  /* ── FORCE CARDS ── */
+  .force-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .force-card {
+    border: 1px solid #e8eaed;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+  }
+  .force-card-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #FF7A59;
+    margin-bottom: 8px;
+  }
+  .force-card-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1a1d23;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .force-card p { font-size: 12px; color: #6b7280; margin-bottom: 10px; }
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .status-badge.green { background: #dcfce7; color: #166534; }
+  .status-badge.blue { background: #dbeafe; color: #1e40af; }
+  .status-badge.orange { background: #ffedd5; color: #9a3412; }
+
+  /* ── ROCK CARDS ── */
+  .rock-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 8px 0 24px; }
+  .rock-card {
+    border: 1px solid #e8eaed;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .rock-header {
+    background: #1a1d23;
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .rock-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FF7A59;
+  }
+  .rock-title { font-size: 14px; font-weight: 700; }
+  .rock-body { padding: 20px; }
+  .rock-body p { font-size: 12.5px; margin-bottom: 10px; }
+
+  /* ── TABLES ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 12px;
+  }
+  thead tr { background: #1a1d23; }
+  thead th {
+    text-align: left;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  tbody tr { border-bottom: 1px solid #f0f0f0; }
+  tbody tr:nth-child(even) { background: #fafbfc; }
+  tbody tr:hover { background: #f0f4ff; }
+  td { padding: 10px 14px; vertical-align: top; line-height: 1.5; }
+  td strong { color: #1a1d23; }
+  td .sub { font-size: 10.5px; color: #9ea6b4; display: block; margin-top: 2px; }
+
+  /* ── PROJECT BLOCK ── */
+  .project-block { margin-bottom: 32px; }
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8eaed;
+  }
+  .project-id {
+    background: #1a1d23;
+    color: #FF7A59;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .project-title { font-size: 15px; font-weight: 700; color: #1a1d23; }
+  .project-meta { font-size: 11px; color: #6b7280; margin-top: 3px; }
+  .project-body p { font-size: 12.5px; }
+
+  /* ── TIMELINE ── */
+  .timeline { margin: 16px 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 100px 16px 1fr;
+    gap: 0 16px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .tl-date {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    text-align: right;
+    padding: 14px 0;
+    line-height: 1.3;
+  }
+  .tl-spine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tl-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #FF7A59;
+    background: white;
+    margin-top: 16px;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .tl-dot.done { background: #FF7A59; }
+  .tl-dot.watch { border-color: #3b6cf8; }
+  .tl-line {
+    width: 2px;
+    flex: 1;
+    background: #e8eaed;
+    margin-top: 0;
+  }
+  .tl-item:last-child .tl-line { display: none; }
+  .tl-content {
+    padding: 12px 0 16px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .tl-item:last-child .tl-content { border-bottom: none; }
+  .tl-milestone { font-size: 13px; font-weight: 700; color: #1a1d23; margin-bottom: 4px; }
+  .tl-desc { font-size: 11.5px; color: #6b7280; line-height: 1.5; }
+  .tl-pillar {
+    font-size: 9.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #FF7A59;
+    margin-top: 4px;
+  }
+
+  /* ── TEAM SECTION ── */
+  .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 20px 0; }
+  .team-card {
+    border: 1px solid #e8eaed;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .team-card-header {
+    padding: 16px 18px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .team-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #1a1d23;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: #FF7A59;
+    flex-shrink: 0;
+  }
+  .team-name { font-size: 14px; font-weight: 700; color: #1a1d23; line-height: 1.2; }
+  .team-role { font-size: 11px; color: #6b7280; margin-top: 2px; }
+  .team-tenure { font-size: 10px; color: #FF7A59; font-weight: 600; margin-top: 4px; }
+  .team-card-body { padding: 14px 18px; }
+  .team-strength-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #00a97f;
+    margin-bottom: 6px;
+  }
+  .team-strength-label.watch { color: #9a3412; }
+  .strength-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 7px;
+    font-size: 12px;
+    color: #374151;
+    line-height: 1.45;
+  }
+  .strength-bullet { color: #FF7A59; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .team-divider { border: none; border-top: 1px solid #f0f0f0; margin: 10px 0; }
+
+  /* ── DEVELOPMENT SECTION ── */
+  .dev-item {
+    border: 1px solid #e8eaed;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .dev-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    border-radius: 8px 0 0 8px;
+    background: #f59e0b;
+  }
+  .dev-item.risk::before { background: #f59e0b; }
+  .dev-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .dev-title { font-size: 13.5px; font-weight: 700; color: #1a1d23; }
+  .dev-who { font-size: 11px; color: #6b7280; margin-top: 2px; }
+  .dev-body { font-size: 12px; color: #374151; line-height: 1.55; margin-bottom: 10px; }
+  .dev-plan { font-size: 12px; }
+  .dev-plan-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 4px;
+  }
+  .milestone-tag {
+    display: inline-flex;
+    align-items: center;
+    background: #f0f4ff;
+    color: #1e3a8a;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin: 3px 3px 0 0;
+  }
+
+  /* ── RISK TABLE ── */
+  .risk-indicator { font-size: 16px; line-height: 1; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 32px 56px 0;
+    margin-top: 48px;
+    border-top: 1px solid #e8eaed;
+    font-size: 10.5px;
+    color: #9ea6b4;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── PAGE DIVIDER ── */
+  .page-break {
+    border: none;
+    border-top: 2px solid #e8eaed;
+    margin: 48px 0 0;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 16px 0; }
+  .stat-inline { font-weight: 700; color: #1a1d23; }
+  .highlight { background: rgba(255,122,89,0.1); padding: 1px 4px; border-radius: 3px; color: #c2410c; font-weight: 600; }
+
+  /* ── APPENDIX ── */
+  .appendix-entry {
+    border: 1px solid #e8eaed;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .appendix-header {
+    background: #f7f8fa;
+    padding: 12px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #374151;
+    border-bottom: 1px solid #e8eaed;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════ COVER ══════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-eyebrow">Confidential — Internal Use Only</div>
+  <h1>Executive Briefing</h1>
+  <h2>Revenue Sales Specialist Lead &nbsp;|&nbsp; Revenue Hub GTM</h2>
+  <div class="cover-meta">
+    <strong>Reporting Period</strong> &nbsp; May 10 – June 9, 2026<br>
+    <strong>Data Sources</strong> &nbsp; Google Calendar · Zoom (26 recorded sessions) · Granola Meeting Notes · Google Drive Strategic Documents<br>
+    <strong>Generated</strong> &nbsp; June 9, 2026
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ STAT ROW ══════════════════════════════════════════════ -->
+<div class="stat-row">
+  <div class="stat-cell">
+    <div class="stat-number green">✅</div>
+    <div class="stat-label">June 1</div>
+    <div class="stat-sub">DSR Routing Live</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-number green">✅</div>
+    <div class="stat-label">June 4</div>
+    <div class="stat-sub">Revenue Hub GO</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-number orange">June 16</div>
+    <div class="stat-label">Public Launch</div>
+    <div class="stat-sub">7 days out</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-number">$89M</div>
+    <div class="stat-label">Revenue Hub Target</div>
+    <div class="stat-sub">CPQ $35M + Payments $54M</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-number">5</div>
+    <div class="stat-label">Team Members</div>
+    <div class="stat-sub">Cam · Maryann · Ed · Pak · Madison</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ SECTION 1 ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Section 1</span>
+  <span class="section-title">Executive Summary</span>
+</div>
+<div class="body">
+  <p>The period May 10 – June 9 marks a decisive inflection in the Revenue Hub GTM motion: the shift from build to launch. Three structural bets that have been in construction for twelve months — a unified Revenue Sales Specialist team, a systematic field enablement program, and an AI-native sales motion — are now in simultaneous execution.</p>
+  <p>Three events in a single week define this moment. The Revenue Hub June 16 launch received a formal GO on June 4 with all P0/P1 blockers closed. The Deal Support Request round-robin routing system went live June 1, on schedule. The SST org restructure — moving fully out of SMB into upmarket — was confirmed June 5. These are the delivery of commitments made at the start of 2026 and the activation of infrastructure that makes the Revenue Hub field motion repeatable at scale.</p>
+  <p>The commercial reality entering launch week: CPQ is tracking at <span class="highlight">$19M vs. $35M target</span>; Payments at approximately <span class="highlight">$45M vs. $54M target</span>. The combined $64M against an $89M goal means the post-June 16 motion — enabled SST, live DSR routing, AI-powered prospecting, reinforced partner ecosystem — is not optional acceleration. It is a required one. The launch is the starting gun, not the finish line.</p>
+  <p>Simultaneously, an org integration proposal — absorbing three Commerce Specialists into the RSS org to create a unified seven-person Revenue Hub team — represents the most significant structural bet of the period. The economic rationale ($89M Revenue Hub) and operational logic (Payments conversations invariably become CPQ conversations) are both documented. The decision is now an approval process, not a strategy debate.</p>
+
+  <div class="force-grid">
+    <div class="force-card">
+      <div class="force-card-num">Force 01</div>
+      <div class="force-card-title">Revenue Hub Launch — June 16</div>
+      <p>CPQ + Contracts + Billing + Payments shipping as one connected hub. Reframes the narrative from "CPQ tool" to "revenue operating system."</p>
+      <span class="status-badge green">● GO Declared June 4</span>
+    </div>
+    <div class="force-card">
+      <div class="force-card-num">Force 02</div>
+      <div class="force-card-title">SST Enablement Scale-Up</div>
+      <p>Track 1 (10 specialists) certified by June 16. Track 2 (full SST) by July 25. Unbound activation August 11+. Partners drive 97% higher ASP when attached.</p>
+      <span class="status-badge blue">● On Track — Week 4 of 5</span>
+    </div>
+    <div class="force-card">
+      <div class="force-card-num">Force 03</div>
+      <div class="force-card-title">AI GTM Activation</div>
+      <p>Claude-powered plugin (prospecting, discovery, demo). SST Workspace with 6 signal types. Claude Cowork standardized across all SST — replacing ChatGPT &amp; Gemini.</p>
+      <span class="status-badge orange">● MVP Target June 1–8</span>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- ══════════════════════════════════════════════ SECTION 2 ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Section 2</span>
+  <span class="section-title">2026 Strategic Pillars</span>
+</div>
+<div class="body">
+  <div class="rock-grid">
+
+    <div class="rock-card">
+      <div class="rock-header">
+        <span class="rock-num">Rock 01</span>
+        <span class="rock-title">Build the Revenue Sales Specialist Team</span>
+      </div>
+      <div class="rock-body">
+        <table>
+          <thead><tr><th>Dimension</th><th>Jan 2026</th><th>June 2026</th><th>Trajectory</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Team Size</strong></td><td>1 rep (Cameron)</td><td>4 active + 3 pending integration</td><td>7-person unified org proposed</td></tr>
+            <tr><td><strong>Deal Routing</strong></td><td>Ad hoc "ping in Slack"</td><td>DSR round-robin live June 1</td><td>Logged, attributable, CRM-driven</td></tr>
+            <tr><td><strong>Org Structure</strong></td><td>SMB-embedded overlay</td><td>Upmarket, end-to-end ownership</td><td>GST narrowed to Sales + Marketing Hub</td></tr>
+            <tr><td><strong>Scope</strong></td><td>Commerce Hub CPQ</td><td>Full Revenue Hub (CPQ + Billing + Payments)</td><td>Integration proposal pending approval</td></tr>
+          </tbody>
+        </table>
+        <div class="callout orange"><strong>Integration Proposal (Pending):</strong> Absorbing Jack Coopersmith's Commerce Specialists (Emily, Jerrell, Allison) into the RSS org creates a unified 7-person team. One hub. One team. One story. CPQ $35M + Payments $54M = $89M Revenue Hub. Three asks: (1) four heads absorbed; (2) title realignment; (3) $1,500/account Stripe-inspired activation comp.</div>
+      </div>
+    </div>
+
+    <div class="rock-card">
+      <div class="rock-header">
+        <span class="rock-num">Rock 02</span>
+        <span class="rock-title">Create Field Confidence Through Structured Enablement</span>
+      </div>
+      <div class="rock-body">
+        <table>
+          <thead><tr><th>Track</th><th>Who</th><th>Timeline</th><th>Cert Target</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Track 1 — Pilot</strong></td><td>First 10 specialists</td><td>May 19 – Jun 16</td><td>L2 by June 16</td><td><span class="status-badge blue">Week 4 of 5</span></td></tr>
+            <tr><td><strong>Track 2 — Scale</strong></td><td>Full SST rollout</td><td>Jun 23 – Jul 25</td><td>L2 by Jul 25</td><td><span class="status-badge orange">Pending T1</span></td></tr>
+            <tr><td><strong>L3 Clinic</strong></td><td>RSS + complex IB</td><td>Jul 28 – Aug 8</td><td>L3 eligible</td><td><span class="status-badge orange">Not Started</span></td></tr>
+            <tr><td><strong>Unbound Launch</strong></td><td>Full SST</td><td>Aug 11+</td><td>100% L2 floor</td><td><span class="status-badge orange">Not Started</span></td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:#374151;margin-top:10px;">Madison Ryan achieved near-L2 certification after first live customer demo — a 5-week ramp outcome that validates the Track 1 design. Claude Cowork standardized across all SST, replacing ChatGPT and Gemini.</p>
+      </div>
+    </div>
+
+    <div class="rock-card">
+      <div class="rock-header">
+        <span class="rock-num">Rock 03</span>
+        <span class="rock-title">Build a Strategic Solutions Partners Program</span>
+      </div>
+      <div class="rock-body">
+        <div class="two-col">
+          <table>
+            <thead><tr><th>Metric</th><th>Now</th><th>Target</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Partner Attach Rate</strong></td><td>~50%</td><td>90%</td></tr>
+              <tr><td><strong>ASP w/ Partner</strong></td><td>$1,093</td><td>—</td></tr>
+              <tr><td><strong>ASP w/o Partner</strong></td><td>$554</td><td>—</td></tr>
+              <tr><td><strong>MRR Lift</strong></td><td>125%</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <div>
+            <p style="font-size:12px;margin-bottom:10px;"><strong>"Quote-to-Cash Accelerator"</strong> partner badge program launching. VIP Partner Kick-Off held May 28.</p>
+            <p style="font-size:12px;"><strong>Positioning clarity:</strong><br>DealHub → 200+ license complex deals<br>PandaDoc → complementary (redlining only)<br>Partner-first → all sub-10 license DSR</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- ══════════════════════════════════════════════ SECTION 3 ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Section 3</span>
+  <span class="section-title">Time Allocation by Workstream</span>
+</div>
+<div class="body">
+  <p style="font-size:12px;color:#6b7280;margin-bottom:16px;">Based on 26 recorded Zoom sessions and calendar/Granola meeting analysis for May 10 – June 9, 2026.</p>
+  <table>
+    <thead><tr><th>Workstream</th><th>Est. Volume</th><th>Key Activities This Period</th><th>Core Partners</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Revenue Hub Launch / Go/No-Go</strong></td><td>High</td><td>Weekly Go/No-Go (19–20 stakeholders); June 4 GO declaration; contracts GA; marketing assets; agentic AI story finalized; partner readiness at 90%</td><td>Claffey, Coopersmith, Plaut, Kopit, Bauch</td></tr>
+      <tr><td><strong>CPQ GTM &amp; Customer Deals</strong></td><td>High</td><td>YouGov (Salesforce migration), Original Watermen, Seerist (~1,000 SKUs), BRINC Drones, H&amp;L POS, Gnosis; CPQ GTM Triad; price books private beta</td><td>Claffey, Akinboyewa, Kopit, Garg</td></tr>
+      <tr><td><strong>SST / SSLT Leadership</strong></td><td>High</td><td>Org restructure confirmed June 5; Edward Lopez onboarding June 1; Pak and Madison ramp coaching; SSLT cadence; business health reviews</td><td>Teplinsky, Bauch, Coopersmith, Crawford</td></tr>
+      <tr><td><strong>Revenue Hub Enablement</strong></td><td>High</td><td>8 enablement sessions (recorded); guest speakers: Christian Sibley (Customer Agent), Joe Warren (QBO); RSS Stand-up (June 8, 55 min); Revenue Round Up series</td><td>SSLT, SE leads, Akinboyewa</td></tr>
+      <tr><td><strong>AI GTM Activation</strong></td><td>Moderate</td><td>SST Workspace launch (May 27, 6 signal types); Claude plugin (prospecting/discovery/demo); Revenue Hub intent signals (Chandler Anderson); Claude Cowork standardization</td><td>Anderson, Teplinsky, SSLT</td></tr>
+      <tr><td><strong>Partner / Ecosystem</strong></td><td>Moderate</td><td>VIP Partner Kick-Off (May 28); Chase Heiner bi-weekly; Mole Street CPQ Solution; "Quote-to-Cash Accelerator" badge; DealHub/PandaDoc positioning clarity</td><td>Heiner, Muradyan, Coopersmith</td></tr>
+      <tr><td><strong>Product Alignment</strong></td><td>Moderate</td><td>Sprint Show &amp; Tell (May 22); billing capacity model (pricing committee); EU e-invoicing acceleration; Revenue Agent (Blue Leads) private beta</td><td>Garg, Gunari, Kopit, Plaut</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="page-break">
+
+<!-- ══════════════════════════════════════════════ SECTION 4 ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Section 4</span>
+  <span class="section-title">Active Projects &amp; Strategic Initiatives</span>
+</div>
+<div class="body">
+
+  <div class="project-block">
+    <div class="project-header">
+      <span class="project-id">P1</span>
+      <div>
+        <div class="project-title">Revenue Hub June 16 Launch</div>
+        <div class="project-meta">Target: June 16, 2026 &nbsp;·&nbsp; Scope: CPQ + Contracts + Billing + Payments &nbsp;·&nbsp; Status: GO declared June 4</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p><strong>Shipping June 16:</strong> Connected CPQ → billing → payments; Contract object as source of record (ACV, TCV, ARR, MRR); automated billing schedules with proration; price books with auto-assignment rules; QuickBooks integration improvements; Revenue Agent (collections) entering private beta.</p>
+      <p><strong>GTM positioning:</strong> "Revenue isn't a moment — it's a process. When that process lives under one roof, you grow better." Value framework: Speed (templates), Visibility (quote analyzer), Control (approval workflows).</p>
+      <div class="callout"><strong>The economic anchor:</strong> For every $1 of CPQ license revenue, HubSpot sees $4–$12 in Payments. Partners drive 125% MRR lift on Revenue Hub deals when attached. These numbers are the foundation of the field narrative and the investor case simultaneously.</div>
+    </div>
+  </div>
+
+  <div class="project-block">
+    <div class="project-header">
+      <span class="project-id">P2</span>
+      <div>
+        <div class="project-title">SST Enablement Program — Track 1 → Track 2 → Unbound</div>
+        <div class="project-meta">North Star: 100% SST at L2 before Unbound (August 11+) &nbsp;·&nbsp; Status: Week 4 of 5 in Track 1</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p>Track 1 (10 hand-picked specialists, May 19 – June 16) is the proof-of-concept for the certification program design. Track 2 (full SST, June 23 – July 25) scales what T1 validates. The Unbound launch in August is the market moment that activates the full SST Revenue Hub motion. Eight enablement sessions recorded in this period including guest speakers Christian Sibley (Customer Agent + Revenue) and Joe Warren (QBO Connector).</p>
+      <p><strong>Certification architecture:</strong> L1 (Harbor Tour — 5-min value walkthrough) → L2 (End-to-End Seller — 30-min full demo with live objections) → L3 (Prescriptive Build — 60-min live deal brief). Tenor AI handles post-cert async reinforcement monthly.</p>
+    </div>
+  </div>
+
+  <div class="project-block">
+    <div class="project-header">
+      <span class="project-id">P3</span>
+      <div>
+        <div class="project-title">DSR Round Robin — Deal Support Request Routing</div>
+        <div class="project-meta">Status: LIVE — June 1, 2026 ✅ &nbsp;·&nbsp; Routing: &lt;10 licenses → partner; 10–50 → rotation; 50+ → senior escalation</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p>Converts the informal "ping in Slack" model into a trackable, attributable, CRM-logged workflow across ~2,700 GS reps. Routing is directly tied to specialist certification status — certified reps receive deals, uncertified do not. Initial parameters: no license floor restrictions; reassess 2 weeks post-launch. Ed/Cam/Pak handle the 10–50 license rotation; 50+ escalates.</p>
+    </div>
+  </div>
+
+  <div class="project-block">
+    <div class="project-header">
+      <span class="project-id">P4</span>
+      <div>
+        <div class="project-title">SST AI GTM — Claude Cowork Activation &amp; SST Workspace</div>
+        <div class="project-meta">Onsite: May 19–20 (10 attendees) &nbsp;·&nbsp; SST Workspace launched: May 27 &nbsp;·&nbsp; MVP target: June 1–8</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p>The May 19–20 AI onsite produced a unified Claude-powered sales plugin across three workflows: Prospecting (minor tweaks needed), Discovery (ready), Demo (pre-demo email + bridge testing in progress). Claude Cowork is now the standard AI tool across all SST — replacing ChatGPT and Gemini. The SST Workspace auto-populates the customer book with six signal types: competitor renewals, credit limits, Customer Agent signals, predicted upsell/cross-sell, usage-based triggers, and Revenue Hub intent keywords.</p>
+      <p><strong>10x experiment:</strong> One SST team is incentivized to hit 2x targets over 3 months using the full AI tool stack — the most direct test of whether AI tooling translates to measurable sales productivity.</p>
+    </div>
+  </div>
+
+  <div class="project-block">
+    <div class="project-header">
+      <span class="project-id">P5</span>
+      <div>
+        <div class="project-title">CPQ Pipeline — Active Deals</div>
+        <div class="project-meta">6 named accounts in active evaluation or follow-up</div>
+      </div>
+    </div>
+    <div class="project-body">
+      <table>
+        <thead><tr><th>Account</th><th>Signal / Context</th><th>Next Action</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><strong>YouGov</strong></td><td>Salesforce CPQ expires 2027; full exec stakeholder demo week of June 22<span class="sub">Best-fit migration candidate</span></td><td>Full demo June 22 week</td><td><span class="status-badge blue">Active</span></td></tr>
+          <tr><td><strong>Original Watermen</strong></td><td>Salesforce renewal October; target close August<span class="sub">CPQ demo prep June 5</span></td><td>Demo in progress</td><td><span class="status-badge blue">Active</span></td></tr>
+          <tr><td><strong>Seerist</strong></td><td>~1,000 SKUs; competing vs. PandaDoc; CRO has budget<span class="sub">Advanced evaluation</span></td><td>Follow-up</td><td><span class="status-badge blue">Active</span></td></tr>
+          <tr><td><strong>BRINC Drones</strong></td><td>3-system problem (HubSpot + QuickBooks + Excel); 3–6 yr contracts<span class="sub">Commerce Pro 25 seats evaluating</span></td><td>Proposal</td><td><span class="status-badge blue">Active</span></td></tr>
+          <tr><td><strong>H&amp;L POS</strong></td><td>Manual signing pain; bundle, esign, GST automation needed</td><td>Follow-up scheduled</td><td><span class="status-badge orange">Qualifying</span></td></tr>
+          <tr><td><strong>Embed Card</strong></td><td>Salesforce CPQ migration; complex price book architecture<span class="sub">Design partner opportunity with PM Jeannie</span></td><td>Design partner conversation</td><td><span class="status-badge orange">Evaluating</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr class="page-break">
+
+<!-- ══════════════════════════════════════════════ SECTION 5 — TEAM ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Section 5</span>
+  <span class="section-title">Team — Strengths &amp; Development Investment</span>
+</div>
+<div class="body">
+
+  <p>The Revenue Sales Specialist team is at a formative moment. Five specialists at different ramp stages are being built into a single cohesive unit capable of covering the full Revenue Hub motion — from install base signals to complex enterprise demos. The investments being made in each person now are the foundation of the long-term specialist model HubSpot needs by Unbound and into 2027.</p>
+
+  <div class="callout green">The long-term vision: a self-sufficient, AI-enabled specialist team that covers the full Revenue Hub motion across GS co-sell, SST install base, and partner co-delivery — without requiring escalation to a single individual. Every coaching hour, certification session, and rep development conversation this period is an investment in that future state.</div>
+
+  <h3 style="font-size:14px;font-weight:700;color:#1a1d23;margin:28px 0 16px;padding-bottom:8px;border-bottom:2px solid #FF7A59;">5A — What's Working: Strengths by Team Member</h3>
+
+  <div class="team-grid">
+
+    <!-- Cameron -->
+    <div class="team-card">
+      <div class="team-card-header">
+        <div class="team-avatar">CC</div>
+        <div>
+          <div class="team-name">Cameron Claffey</div>
+          <div class="team-role">Revenue Sales Specialist — Upmarket &amp; Complex Evals</div>
+          <div class="team-tenure">9+ months in seat · Most senior specialist</div>
+        </div>
+      </div>
+      <div class="team-card-body">
+        <div class="team-strength-label">Core Strengths</div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Deal volume &amp; coverage:</strong> Managing 80+ active deals — the largest book on the team. Runs customer meetings independently without requiring oversight.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Institutional knowledge:</strong> Deepest product fluency on the team. Acts as the primary field-learning feedback loop to product on CPQ limitations and customer objections.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Upmarket anchor:</strong> Primary coverage on highest-complexity evaluations (YouGov, Vantaca, Mastergrain). Handles deals that require enterprise-level commercial sophistication.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Cross-functional integration:</strong> Embedded in the CPQ GTM Triad. Collaborates directly with product, PMM, and SE teams — not just a field seller.</span></div>
+      </div>
+    </div>
+
+    <!-- Maryann -->
+    <div class="team-card">
+      <div class="team-card-header">
+        <div class="team-avatar">MA</div>
+        <div>
+          <div class="team-name">Maryann Akinboyewa</div>
+          <div class="team-role">Revenue Sales Specialist — Enablement &amp; Global Reach</div>
+          <div class="team-tenure">Established · Content architect for the team</div>
+        </div>
+      </div>
+      <div class="team-card-body">
+        <div class="team-strength-label">Core Strengths</div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Enablement multiplier:</strong> Co-creator of the 7-minute Discovery tool now in use across the full team and GS enablement sessions. Content she builds scales beyond her direct impact.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Global reach:</strong> Running JAPAC SE sessions and the global "world tour" enablement series. One of the few specialists with demonstrated cross-geo impact.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>GTM Triad contributor:</strong> Active participant in the CPQ GTM Triad, bridging the gap between field selling and product-GTM strategy.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Value pitch author:</strong> Driving the Revenue Hub value pitch framework (Speed, Visibility, Control) that reps and GS sellers are internalizing heading into launch.</span></div>
+      </div>
+    </div>
+
+    <!-- Edward -->
+    <div class="team-card">
+      <div class="team-card-header">
+        <div class="team-avatar">EL</div>
+        <div>
+          <div class="team-name">Edward Lopez</div>
+          <div class="team-role">Revenue Sales Specialist — DSR Rotation</div>
+          <div class="team-tenure">Joined June 1 · 1 week in seat · Presales background (PandaDoc, Deal Hub)</div>
+        </div>
+      </div>
+      <div class="team-card-body">
+        <div class="team-strength-label">Early Signals</div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Competitive intelligence asset:</strong> Direct experience at PandaDoc and Deal Hub — the two most common CPQ competitors — brings field-level insight no training program can replicate. His knowledge of where competitors fall short is immediately deployable in customer conversations.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>DSR-ready positioning:</strong> Slotted immediately into the 10–50 license deal rotation alongside Cameron and Pak. The product knowledge foundation from presales means the ramp to independent deal coverage is compressed relative to a cold-start hire.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Timing advantage:</strong> Joining at Revenue Hub launch means his entire orientation is built around the full connected product, not the pre-integration CPQ-only story.</span></div>
+      </div>
+    </div>
+
+    <!-- Pak -->
+    <div class="team-card">
+      <div class="team-card-header">
+        <div class="team-avatar">PP</div>
+        <div>
+          <div class="team-name">Pushpak (Pak) Patel</div>
+          <div class="team-role">Revenue Sales Specialist — SST Install Base</div>
+          <div class="team-tenure">Hired May 1 · 5 weeks in · SST IB dedicated motion</div>
+        </div>
+      </div>
+      <div class="team-card-body">
+        <div class="team-strength-label">Early Signals</div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Motion fit:</strong> Demonstrated immediate credibility on the capstone email and PoV cycle — the core workflow of the SST install base motion. Strong fit between skill set and role design confirmed early.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Revenue focus:</strong> Working toward a $1,500 MRR goal this month — a meaningful pipeline target for a 5-week-old rep. The goal itself signals he is building active pipeline, not just learning the product.</span></div>
+        <div class="strength-item"><span class="strength-bullet">→</span><span><strong>1:1 cadence established:</strong> Weekly coaching cadence in place from week one (May 18 Zoom 1:1 on record). Active investment from leadership is accelerating the ramp curve.</span></div>
+      </div>
+    </div>
+
+    <!-- Madison — full width -->
+    <div class="team-card" style="grid-column:1/-1;">
+      <div class="team-card-header">
+        <div class="team-avatar">MR</div>
+        <div>
+          <div class="team-name">Madison Ryan</div>
+          <div class="team-role">Revenue Sales Specialist — GS + Partner Motion · Mid-Market Attachment</div>
+          <div class="team-tenure">Hired May 1 · 5 weeks in · Near L2 certification after first live customer demo</div>
+        </div>
+      </div>
+      <div class="team-card-body">
+        <div class="team-strength-label">Core Strengths</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;">
+          <div>
+            <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Exceptional ramp velocity:</strong> Achieving near-L2 certification five weeks into the role is a standout outcome. The L2 bar requires a full 30-minute quote-to-payment demo with live objection handling — territory that typically takes months to reach. This is the team's strongest early ramp signal this period.</span></div>
+            <div class="strength-item"><span class="strength-bullet">→</span><span><strong>First live demo delivered:</strong> June 5 mock demo (Adam / Madison) completed with sufficient quality to approach L2 sign-off. Executing in front of a customer, rather than in a practice environment, at 5 weeks is a meaningful milestone.</span></div>
+          </div>
+          <div>
+            <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Motion versatility:</strong> Designed to cover both the GS co-sell motion and partner liaison work — the broadest motion coverage on the new-hire cohort. This versatility makes her the team's most flexible deployment resource heading into Track 2 enablement.</span></div>
+            <div class="strength-item"><span class="strength-bullet">→</span><span><strong>Mid-market anchor:</strong> Her segment focus (mid-market attachment) aligns with the product's highest win-rate tier (20–200 employee SaaS businesses) — she's being positioned to win in the best fit zone, not the hardest cases.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DEVELOPMENT SECTION -->
+  <h3 style="font-size:14px;font-weight:700;color:#1a1d23;margin:36px 0 8px;padding-bottom:8px;border-bottom:2px solid #f59e0b;">5B — Works in Progress: Development Investments with Plans &amp; Timelines</h3>
+  <p style="font-size:12px;color:#6b7280;margin-bottom:20px;">These are forward-looking development investments, not indictments. Each item below represents an area being actively managed with a defined plan and measurable outcome. The long-term view is that every one of these is resolvable — and the plan is already in motion.</p>
+
+  <div class="dev-item">
+    <div class="dev-header">
+      <div>
+        <div class="dev-title">New Rep Pipeline — Building From Zero in a Product That Just Went GA</div>
+        <div class="dev-who">Applies to: Madison Ryan, Pushpak Patel, Edward Lopez</div>
+      </div>
+      <span class="status-badge orange">In Progress</span>
+    </div>
+    <div class="dev-body">Madison, Pak, and Edward joined into a product that was still in private beta. Building a real pipeline in those conditions — before the product is GA, before full demo environments are provisioned, before DSR routing is live — is genuinely hard. This is a structural constraint, not a performance gap. All three are doing exactly what they should be doing: learning the product, running discovery, and building their first pipeline entries. The revenue contribution from this cohort will be meaningful; it will just be weighted toward Q3 and Q4, not Q2.</div>
+    <div class="dev-plan">
+      <div class="dev-plan-label">The Plan</div>
+      <span class="milestone-tag">June 16: Revenue Hub GA unlocks full demo environments</span>
+      <span class="milestone-tag">July 25: Track 2 L2 certification — all three at floor</span>
+      <span class="milestone-tag">August 1: Full DSR volume active — pipeline acceleration begins</span>
+      <span class="milestone-tag">Sept 30: First full quarter measurement with all infrastructure live</span>
+      <p style="margin-top:10px;font-size:12px;"><strong>Measurement:</strong> DSR volume by rep (weekly); MRR booked per rep (monthly). Pak's $1,500 MRR goal this month is the leading indicator.</p>
+    </div>
+  </div>
+
+  <div class="dev-item">
+    <div class="dev-header">
+      <div>
+        <div class="dev-title">CRM Deal Attribution — Building the Habit of Accurate Activity Logging</div>
+        <div class="dev-who">Applies to: Full team · Process established June 1</div>
+      </div>
+      <span class="status-badge orange">In Progress</span>
+    </div>
+    <div class="dev-body">The DSR system went live June 1. For deal credit to flow correctly, two activity types must be logged consistently: "Connected" outcome and "External Demo" activity type. This is a new process, and as with any new system, adoption takes time to establish as a habit. The good news: the system design is sound, the routing is working, and the attribution logic is in CRM. What remains is behavioral reinforcement — building the logging habit across the team within the first 60 days of DSR being live.</div>
+    <div class="dev-plan">
+      <div class="dev-plan-label">The Plan</div>
+      <span class="milestone-tag">June 16: Attribution audit at 2-week mark post-DSR launch</span>
+      <span class="milestone-tag">June 30: Target — 100% activity logging compliance across team</span>
+      <span class="milestone-tag">July standup: Weekly CRM hygiene review added to RSS Stand-up agenda</span>
+      <p style="margin-top:10px;font-size:12px;"><strong>Measurement:</strong> % of DSR-routed deals with "Connected" outcome logged; % of customer meetings logged as "External Demo" activity type. Tracked weekly in the Revenue Round Up.</p>
+    </div>
+  </div>
+
+  <div class="dev-item">
+    <div class="dev-header">
+      <div>
+        <div class="dev-title">Partner Co-Sell Discipline — Closing the 40-Point Attach Gap</div>
+        <div class="dev-who">Applies to: Full team · Current: ~50% attach · Target: 90%</div>
+      </div>
+      <span class="status-badge orange">In Progress</span>
+    </div>
+    <div class="dev-body">The data makes the case plainly: partner-attached deals close at 97% higher ASP ($1,093 vs $554). The gap between 50% and 90% attach is not a partner availability problem — the VIP Partner Kick-Off happened May 28, the DSR routing explicitly directs sub-10-license deals to partner-first, and the "Quote-to-Cash Accelerator" badge is launching. This is a team habit and deal-level discipline issue. On every DSR submission, the question "is there a partner on this?" needs to become as automatic as the deal amount field. The infrastructure exists. The behavior just needs to catch up.</div>
+    <div class="dev-plan">
+      <div class="dev-plan-label">The Plan</div>
+      <span class="milestone-tag">Immediate: Partner name required field on DSR form</span>
+      <span class="milestone-tag">July: Partner attach rate reviewed in every Revenue Round Up</span>
+      <span class="milestone-tag">August 11+: Unbound Launch — partner co-sell is the primary go-to-market motion</span>
+      <p style="margin-top:10px;font-size:12px;"><strong>Measurement:</strong> Partner attach rate by rep (monthly); ASP by deal with/without partner (quarterly). Target: 70% attach rate by August 1, 90% by Unbound.</p>
+    </div>
+  </div>
+
+  <div class="dev-item">
+    <div class="dev-header">
+      <div>
+        <div class="dev-title">L2 Certification Completion — Finishing the Track 1 Sprint Strong</div>
+        <div class="dev-who">Applies to: Track 1 Cohort including RSS team members · Deadline: June 16</div>
+      </div>
+      <span class="status-badge orange">One Week Out</span>
+    </div>
+    <div class="dev-body">Track 1 reaches its L2 certification milestone on June 16 — the same day as Revenue Hub's public launch. Madison is near-L2 (strongest signal on the team). For Pak and the broader cohort, this week (Track 1 Week 5) is the final preparation sprint. The L2 bar — a 30-minute live quote-to-payment demo with real-time objection handling — is rigorous. One week is enough time if the reps who aren't yet at bar are getting structured practice runs, not just more content sessions.</div>
+    <div class="dev-plan">
+      <div class="dev-plan-label">The Plan</div>
+      <span class="milestone-tag">June 9–15: Mock demo sessions for reps not yet at L2</span>
+      <span class="milestone-tag">June 16: L2 certification checkpoint — first 10 specialists</span>
+      <span class="milestone-tag">June 23: Track 2 kicks off — T1 reps co-present success stories</span>
+      <p style="margin-top:10px;font-size:12px;"><strong>Measurement:</strong> # of reps certified at L2 by June 16; tracked in Revenue Hub SST Enablement Plan Tracker.</p>
+    </div>
+  </div>
+
+</div>
+
+<hr class="page-break">
+
+<!-- ══════════════════════════════════════════════ SECTION 6 ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Section 6</span>
+  <span class="section-title">Cross-Functional Operating Model</span>
+</div>
+<div class="body">
+  <div class="two-col">
+    <div>
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6b7280;margin-bottom:8px;">Product &amp; Engineering</p>
+      <table>
+        <thead><tr><th>Name</th><th>Function</th><th>Key Touchpoints</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sarika Garg</strong></td><td>GM, Revenue Hub</td><td>Product GL/DRI sync; org restructure proposal; SSLT cadences; June launch governance</td></tr>
+          <tr><td><strong>Ethan Kopit</strong></td><td>GPL, CPQ</td><td>CPQ GTM Triad; Revenue Hub enablement; product velocity</td></tr>
+          <tr><td><strong>Arun Gunari</strong></td><td>Dir., Billing &amp; Payments</td><td>Billing alignment; pricing committee; billing capacity model</td></tr>
+          <tr><td><strong>Ari Plaut</strong></td><td>PMM Lead</td><td>RevOS GTM Weekly; clickable demo strategy; launch marketing</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6b7280;margin-bottom:8px;">SST Leadership &amp; Exec Stakeholders</p>
+      <table>
+        <thead><tr><th>Name</th><th>Function</th><th>Relationship</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dave Teplinsky</strong></td><td>SST VP</td><td>Primary reporting; org restructure approver; bi-weekly 1:1</td></tr>
+          <tr><td><strong>Rob Bauch</strong></td><td>Director, SST</td><td>Revenue Hub working sessions; monetization strategy; June readiness stoplight</td></tr>
+          <tr><td><strong>Jack Coopersmith</strong></td><td>GTM / Commercial</td><td>RevOS GTM Weekly; potential unified RSS team manager</td></tr>
+          <tr><td><strong>Chase Heiner</strong></td><td>Ecosystem / Partners</td><td>Bi-weekly Commerce Hub Ecosystem; DealHub/PandaDoc positioning</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- ══════════════════════════════════════════════ SECTION 7 ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Section 7</span>
+  <span class="section-title">Project Timeline &amp; Milestones</span>
+</div>
+<div class="body">
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-date">June 1</div>
+      <div class="tl-spine"><div class="tl-dot done"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">DSR Round Robin Goes Live ✅ &nbsp;&nbsp; Edward Lopez Joins RSS ✅</div>
+        <div class="tl-desc">DSR converts ad hoc specialist access into logged, CRM-driven routing across ~2,700 GS reps. Edward brings PandaDoc/DealHub competitive intelligence to the 10–50 license rotation on day one.</div>
+        <div class="tl-pillar">Rock 1 — Team</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">June 4–5</div>
+      <div class="tl-spine"><div class="tl-dot done"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">Revenue Hub GO Declared ✅ &nbsp;&nbsp; SST Org Restructure Confirmed ✅</div>
+        <div class="tl-desc">All P0/P1 bugs closed. SST moves fully out of SMB into upmarket. SSTs own end-to-end deals for Service Hub, Customer Agent, and Revenue Hub. GSTs narrowed to Sales + Marketing Hub only.</div>
+        <div class="tl-pillar">All Pillars</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">June 9</div>
+      <div class="tl-spine"><div class="tl-dot watch"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">T1 Week 4: Payments Deep Dive · This Week</div>
+        <div class="tl-desc">Connect payment friction to churn risk; demo payment portal; L1 Payments eligible. One week before L2 certification test. Final prep sprint begins.</div>
+        <div class="tl-pillar">Rock 2 — Enablement</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">June 16</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">Revenue Hub Public Launch &nbsp;·&nbsp; Track 1 L2 Certification</div>
+        <div class="tl-desc">Commerce Hub officially rebrands to Revenue Hub. Connected CPQ → Contract → Billing → Payments ships as one product. 10 specialists complete end-to-end demo certification. Market moment activates the full "quote to cash" narrative.</div>
+        <div class="tl-pillar">All Pillars — Convergence Point</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">June 22+</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">YouGov Full Stakeholder Demo</div>
+        <div class="tl-desc">Best-fit Salesforce CPQ migration candidate. Salesforce contract expires 2027. Full executive-level demo is the evaluation milestone. Win here is a leading indicator of Revenue Hub enterprise fit.</div>
+        <div class="tl-pillar">Rock 1 — Pipeline</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">June 23</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">Track 2 Full SST Rollout Kickoff</div>
+        <div class="tl-desc">T1 reps co-present success stories to the broader SST. Scales certification from 10 to the full org. Target: L2 floor for all SST by July 25.</div>
+        <div class="tl-pillar">Rock 2 — Enablement</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">July 25</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">Track 2 Fully Certified at L2 · Full SST Enabled August 1</div>
+        <div class="tl-desc">100% of SST at L2 floor. Full specialist org capable of running independent end-to-end Revenue Hub motion. The specialist capacity constraint lifts.</div>
+        <div class="tl-pillar">Rock 1 + Rock 2</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">August 8</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">L3 Advanced Clinic — Prescriptive Build</div>
+        <div class="tl-desc">60-min live deal brief with custom quote rules, full PoV cycle, multi-stakeholder close. Develops the expert specialist layer for enterprise and complex accounts.</div>
+        <div class="tl-pillar">Rock 2 — Enablement</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">August 11+</div>
+      <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-content">
+        <div class="tl-milestone">Unbound Launch — Revenue Hub Market Moment</div>
+        <div class="tl-desc">HubSpot's major market event activates the full Revenue Hub narrative at scale. Revenue risk + white space visibility + better bets framing goes live across the full org. All three 2026 Rocks converge here.</div>
+        <div class="tl-pillar">All Pillars — All Rocks</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="page-break">
+
+<!-- ══════════════════════════════════════════════ SECTION 8 ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Section 8</span>
+  <span class="section-title">Key Decisions, Risks &amp; Watch Items</span>
+</div>
+<div class="body">
+
+  <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6b7280;margin-bottom:10px;">Key Decisions Made This Period</p>
+  <table>
+    <thead><tr><th>Decision</th><th>Made</th><th>Strategic Impact</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Revenue Hub launch GO declared</strong></td><td>June 4</td><td>All P0/P1 bugs closed; June 16 is confirmed and underway</td></tr>
+      <tr><td><strong>SST restructure: out of SMB, into upmarket</strong></td><td>June 5, Dave 1:1</td><td>Redefines specialist mandate — SST owns end-to-end deals, not overlay support</td></tr>
+      <tr><td><strong>Claude Cowork as standard AI tool — replaces ChatGPT/Gemini</strong></td><td>May 26, SSLT</td><td>Standardizes AI stack across all SST; single accountable platform</td></tr>
+      <tr><td><strong>DSR live — no initial license floor restrictions</strong></td><td>June 1</td><td>Maximizes routing volume; floor restrictions reassessed 2 weeks post-launch</td></tr>
+      <tr><td><strong>Partner attach target: 90%</strong></td><td>May 14</td><td>Converts attach rate to a measurable accountability metric with data-backed justification</td></tr>
+      <tr><td><strong>DealHub: recommend for 200+ license complex deals</strong></td><td>May 29, Chase sync</td><td>Creates clear field guidance; prevents misrouting on non-fit accounts</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#6b7280;margin:24px 0 10px;">Risks &amp; Watch Items</p>
+  <table>
+    <thead><tr><th></th><th>Risk / Watch</th><th>Context</th><th>Recommended Action</th></tr></thead>
+    <tbody>
+      <tr><td><span class="risk-indicator">🔴</span></td><td><strong>CPQ at $19M vs. $35M target</strong></td><td>Significant gap heading into H2. June 16 launch is necessary but not sufficient for acceleration.</td><td>Track post-launch DSR volume weekly as the leading indicator</td></tr>
+      <tr><td><span class="risk-indicator">🔴</span></td><td><strong>Payments at ~$45M vs. $54M target</strong></td><td>Whale activation ($100K+ P-ARR accounts) and partner Payments co-sell are highest-leverage levers.</td><td>Whale activation list (Chandler signals) becomes immediate post-launch priority</td></tr>
+      <tr><td><span class="risk-indicator">🟡</span></td><td><strong>Partner attach at ~50% vs. 90% target</strong></td><td>97% ASP lift with partner attached. Every unattached deal is a lost revenue multiplier.</td><td>"Quote-to-Cash Accelerator" launch treated as urgent; partner name required field on DSR form</td></tr>
+      <tr><td><span class="risk-indicator">🟡</span></td><td><strong>RSS Integration approval timeline undefined</strong></td><td>Proposal submitted but no declared decision date. Creates structural ambiguity for Jack's team.</td><td>Request defined review timeline from Dave Teplinsky</td></tr>
+      <tr><td><span class="risk-indicator">🟡</span></td><td><strong>Bundles gap — known competitive vulnerability</strong></td><td>Salesforce CPQ migration deals frequently require bundling. Current workaround won't hold for sophisticated buyers.</td><td>Escalate bundles to product roadmap priority; document workaround for specialist team</td></tr>
+      <tr><td><span class="risk-indicator">🟢</span></td><td><strong>YouGov — highest-priority named account entering evaluation</strong></td><td>Full stakeholder demo June 22 week. Best-fit migration candidate. Win validates enterprise Revenue Hub fit.</td><td>Track as a strategic reference deal; ensure product gap coverage ahead of the demo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="page-break">
+
+<!-- ══════════════════════════════════════════════ APPENDIX ══════════════════════════════════════════════ -->
+<div class="section-header">
+  <span class="section-badge">Appendix</span>
+  <span class="section-title">Previous Briefing Summary — Running History</span>
+</div>
+<div class="body">
+  <p style="font-size:12px;color:#6b7280;margin-bottom:20px;"><em>This section is updated weekly. Each entry is additive — prior summaries are retained for continuity and trend visibility. This running log enables progress to be tracked and traced across the arc of the year.</em></p>
+
+  <div class="appendix-entry">
+    <div class="appendix-header">Briefing 001 &nbsp;·&nbsp; April 22 – May 22, 2026</div>
+    <table>
+      <thead><tr><th>Theme</th><th>Status at Close of Period</th><th>Carried Forward / Resolved</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Revenue Hub June 16 Launch</strong></td><td>Enablement track kicked off May 15 (3 sessions). Go/No-Go cadence with 19–20 stakeholders active. GO not yet declared.</td><td>GO declared June 4 ✅. All P0/P1 closed. Launch on track.</td></tr>
+        <tr><td><strong>Deal Management Flywheel (DSR)</strong></td><td>June 1 go-live target set. Blocking: Revenue Hub license field permissions bug filed May 21.</td><td>Live June 1 ✅. Bug resolved. Round-robin routing operational.</td></tr>
+        <tr><td><strong>SST AI GTM Strategy</strong></td><td>Cambridge onsite (May 19–20, 11 hours, 10 attendees). Strategy transitioning to Q3 execution.</td><td>Claude-powered sales plugin built. SST Workspace launched May 27. Claude Cowork standardized. Execution active.</td></tr>
+        <tr><td><strong>CPQ GTM &amp; Emerging Plays</strong></td><td>Active pipeline: ViewPoint, Mastergrain, Ideal Siding, xAI, Red Wireless, Wealth.com, Vantaca. Embed Card session May 19.</td><td>New accounts: YouGov, Original Watermen, Seerist, BRINC Drones, H&amp;L POS. Mastergrain, Red Wireless continuing.</td></tr>
+        <tr><td><strong>Team</strong></td><td>Madison Ryan and Pak Patel onboarded May 1. 44 total 1:1s in 30 days. Coordination density risk flagged.</td><td>Edward Lopez joined June 1. Madison near L2. Pak tracking $1,500 MRR goal. Org restructure confirmed — upmarket.</td></tr>
+        <tr><td><strong>Partner Ecosystem</strong></td><td>Partners identified as "clearest path of unlock." Attach rate gap not yet quantified.</td><td>Attach rate: 50% vs. 90% target. ASP impact: $1,093 vs. $554. VIP Kick-Off May 28. Badge program launching.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:11.5px;color:#9ea6b4;margin-top:8px;font-style:italic;">Next briefing: Week of June 16, 2026. Expected themes: Revenue Hub launch activation, Track 1 L2 certification outcomes, post-launch DSR volume, YouGov evaluation status, RSS integration approval update.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  Revenue Hub GTM — Executive Briefing &nbsp;·&nbsp; May 10 – June 9, 2026 &nbsp;·&nbsp; Confidential — Internal Use Only
+</div>
+
+</body>
+</html>
