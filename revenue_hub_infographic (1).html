@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revenue Hub Market Reality Infographic</title>
+  <style>
+    :root {
+      --artifact-bg: #fff7f2;
+      --artifact-surface: #ffffff;
+      --artifact-surface-alt: #fff1ea;
+      --artifact-surface-blue: #eef6ff;
+      --artifact-surface-green: #edf8f1;
+      --artifact-border: #eadfd7;
+      --artifact-border-strong: #d8c5bb;
+      --artifact-text: #213343;
+      --artifact-text-soft: #516f90;
+      --artifact-text-muted: #7c98b6;
+      --artifact-accent: #ff7a59;
+      --artifact-accent-dark: #e66a4a;
+      --artifact-blue: #425b76;
+      --artifact-navy: #213343;
+      --artifact-green: #00bda5;
+      --artifact-yellow: #ffbc4b;
+      --artifact-shadow: 0 18px 48px rgba(33, 51, 67, 0.08);
+      --artifact-shadow-soft: 0 10px 24px rgba(33, 51, 67, 0.05);
+      --artifact-radius-xl: 28px;
+      --artifact-radius-lg: 22px;
+      --artifact-radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--artifact-bg);
+      color: var(--artifact-text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-image:
+        radial-gradient(circle at top right, rgba(255,122,89,0.12), transparent 30%),
+        radial-gradient(circle at 0% 18%, rgba(0,189,165,0.10), transparent 24%),
+        linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0));
+    }
+
+    .shell {
+      width: min(1120px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: var(--artifact-radius-xl);
+      background: linear-gradient(135deg, #fff5ef 0%, #ffffff 56%, #eef6ff 100%);
+      border: 1px solid var(--artifact-border);
+      box-shadow: var(--artifact-shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -120px;
+      top: -120px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,122,89,0.16), rgba(255,122,89,0.02) 60%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--artifact-surface-alt);
+      border: 1px solid #ffd5c8;
+      color: var(--artifact-accent-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      align-items: end;
+      margin-top: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 6vw, 74px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 10.5ch;
+      color: var(--artifact-navy);
+    }
+
+    .hero-copy p {
+      margin: 16px 0 0;
+      max-width: 60ch;
+      font-size: 18px;
+      line-height: 1.58;
+      color: var(--artifact-text-soft);
+    }
+
+    .hero-copy strong {
+      color: var(--artifact-accent-dark);
+    }
+
+    .donut-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .donut-card {
+      padding: 16px 12px 14px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--artifact-border);
+      border-radius: 20px;
+      box-shadow: var(--artifact-shadow-soft);
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .donut-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(33, 51, 67, 0.09);
+    }
+
+    .donut-svg {
+      width: 114px;
+      height: 114px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .track {
+      fill: none;
+      stroke: #f0e3db;
+      stroke-width: 11;
+    }
+
+    .progress {
+      fill: none;
+      stroke: var(--artifact-accent);
+      stroke-linecap: round;
+      stroke-width: 11;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    .donut-label {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      fill: var(--artifact-navy);
+    }
+
+    .donut-note {
+      color: var(--artifact-text-soft);
+      font-size: 13px;
+      line-height: 1.35;
+      max-width: 17ch;
+      margin: 0 auto;
+    }
+
+    .story {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border-radius: var(--artifact-radius-lg);
+      background: var(--artifact-surface);
+      border: 1px solid var(--artifact-border);
+      box-shadow: var(--artifact-shadow-soft);
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise 0.5s ease forwards;
+    }
+
+    .panel[data-tone="warm"] { background: linear-gradient(180deg, #fff7f3 0%, #ffffff 100%); }
+    .panel[data-tone="blue"] { background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%); }
+    .panel[data-tone="green"] { background: linear-gradient(180deg, #f3fcf9 0%, #ffffff 100%); }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--artifact-accent), rgba(255,122,89,0.15));
+    }
+
+    .kicker {
+      margin: 0 0 10px;
+      color: var(--artifact-accent-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .stat {
+      display: flex;
+      align-items: end;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .big-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 124px;
+      padding: 10px 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fff0ea 0%, #fff9f6 100%);
+      border: 1px solid #ffd9cc;
+      color: var(--artifact-accent-dark);
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 0.95;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .stat-caption {
+      max-width: 34ch;
+      color: var(--artifact-text-soft);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      color: var(--artifact-navy);
+    }
+
+    .bullets {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .bullet {
+      display: grid;
+      grid-template-columns: 10px 1fr;
+      gap: 12px;
+      color: var(--artifact-text-soft);
+      line-height: 1.48;
+      font-size: 16px;
+      align-items: start;
+    }
+
+    .bullet-dot {
+      width: 10px;
+      height: 10px;
+      margin-top: 7px;
+      border-radius: 999px;
+      background: var(--artifact-accent);
+      box-shadow: 0 0 0 6px rgba(255,122,89,0.10);
+    }
+
+    .callout { color: var(--artifact-accent-dark); font-weight: 800; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .mini-box,
+    .opportunity-card,
+    .pillar {
+      background: #ffffff;
+      border: 1px solid var(--artifact-border);
+      border-radius: var(--artifact-radius-md);
+      padding: 18px;
+    }
+
+    .mini-label {
+      margin-bottom: 6px;
+      color: var(--artifact-text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .mini-value {
+      margin-bottom: 6px;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--artifact-navy);
+    }
+
+    .mini-copy {
+      color: var(--artifact-text-soft);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 3%;
+      right: 3%;
+      top: 22px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,122,89,0.30), rgba(255,122,89,0.85), rgba(255,122,89,0.30));
+      z-index: 0;
+    }
+
+    .step {
+      position: relative;
+      z-index: 1;
+      padding-top: 36px;
+    }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--artifact-accent);
+      box-shadow: 0 0 0 8px rgba(255,122,89,0.10);
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: var(--artifact-navy);
+    }
+
+    .step span {
+      color: var(--artifact-text-soft);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .opportunity-grid,
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .opportunity-card {
+      background: linear-gradient(180deg, #fff8f5 0%, #ffffff 100%);
+    }
+
+    .opportunity-card .mini-value {
+      color: var(--artifact-accent-dark);
+      margin-bottom: 10px;
+    }
+
+    .pillar strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+      color: var(--artifact-navy);
+    }
+
+    .pillar span {
+      color: var(--artifact-text-soft);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .cta-band {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .cta-chip {
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: var(--artifact-surface-alt);
+      border: 1px solid #ffd5c8;
+      color: var(--artifact-accent-dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .fade-1 { animation-delay: 0.05s; }
+    .fade-2 { animation-delay: 0.1s; }
+    .fade-3 { animation-delay: 0.15s; }
+    .fade-4 { animation-delay: 0.2s; }
+    .fade-5 { animation-delay: 0.25s; }
+    .fade-6 { animation-delay: 0.3s; }
+    .fade-7 { animation-delay: 0.35s; }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .split,
+      .timeline,
+      .opportunity-grid,
+      .pillars,
+      .donut-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell { width: min(100vw - 18px, 100%); padding-top: 14px; }
+      .hero, .panel { padding: 22px; border-radius: 20px; }
+      .big-number { min-width: 0; font-size: 44px; }
+      .timeline::before { display: none; }
+      .step { padding-top: 42px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html, body { scroll-behavior: auto; }
+      .panel, .donut-card { animation: none !important; transition: none !important; opacity: 1; transform: none; }
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0.4in 0.45in;
+        background: #ffffff !important;
+        color: #213343 !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .shell, .hero, .story { max-width: 100% !important; width: 100% !important; }
+
+      .hero, .panel, .donut-card, .mini-box, .opportunity-card, .pillar {
+        box-shadow: none !important;
+        border: 1px solid rgba(0,0,0,0.10) !important;
+        break-inside: avoid;
+      }
+
+      section, article { break-inside: avoid; }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">Revenue Hub launch survey · market reality infographic</div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Revenue is more than a moment.</h1>
+          <p><strong>The old way treated revenue like a string of disconnected handoffs.</strong> People carried context across siloed tools and hoped the numbers stayed intact. What this survey shows is clear: the revenue process needs one durable system with the visibility and accuracy to reduce leakage, protect renewals, and unlock growth.</p>
+        </div>
+        <div class="donut-row">
+          <div class="donut-card">
+            <svg class="donut-svg" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="track" cx="60" cy="60" r="44"></circle>
+              <circle class="progress" cx="60" cy="60" r="44" pathLength="100" stroke-dasharray="88 100"></circle>
+              <text x="60" y="68" text-anchor="middle" class="donut-label">88%</text>
+            </svg>
+            <div class="donut-note">want one integrated platform for revenue workflows</div>
+          </div>
+          <div class="donut-card">
+            <svg class="donut-svg" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="track" cx="60" cy="60" r="44"></circle>
+              <circle class="progress" cx="60" cy="60" r="44" pathLength="100" stroke-dasharray="80 100"></circle>
+              <text x="60" y="68" text-anchor="middle" class="donut-label">80%</text>
+            </svg>
+            <div class="donut-note">plan to evaluate a new integrated solution within 12 months</div>
+          </div>
+          <div class="donut-card">
+            <svg class="donut-svg" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="track" cx="60" cy="60" r="44"></circle>
+              <circle class="progress" cx="60" cy="60" r="44" pathLength="100" stroke-dasharray="92 100"></circle>
+              <text x="60" y="68" text-anchor="middle" class="donut-label">92%</text>
+            </svg>
+            <div class="donut-note">expect RevOps technology budgets to grow next fiscal year</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story">
+      <article class="panel fade-1" data-tone="warm">
+        <p class="kicker">1 · The stack is broken</p>
+        <div class="stat">
+          <div class="big-number">2–3</div>
+          <div class="stat-caption">Most teams manage the end-to-end revenue process across separate tools.</div>
+        </div>
+        <h2>The process is fragmented before the work even starts.</h2>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-dot"></span><span><span class="callout">46%</span> rely on spreadsheets for 25–50% of revenue workflows.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span>Reporting is the top spreadsheet use case — even basic visibility still requires manual exports.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span>Teams bolt on a half-dozen or more tools beyond CRM and CPQ just to fill the gaps.</span></div>
+        </div>
+      </article>
+
+      <article class="panel fade-2" data-tone="blue">
+        <p class="kicker">2 · The market has named the problem</p>
+        <div class="stat">
+          <div class="big-number">78%</div>
+          <div class="stat-caption">say siloed systems are actively limiting decision-making.</div>
+        </div>
+        <h2>Leaders do not need education on the pain.</h2>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-dot"></span><span>The issue is not awareness — it is architecture.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span>Disconnected tools delay action across sales, finance, and customer teams.</span></div>
+        </div>
+      </article>
+
+      <article class="panel fade-3" data-tone="warm">
+        <p class="kicker">3 · Quote-to-close friction</p>
+        <div class="stat">
+          <div class="big-number">76%</div>
+          <div class="stat-caption">say deals stall or go cold because quoting or contract delays get in the way.</div>
+        </div>
+        <h2>Quoting is not admin work. It is a revenue bottleneck.</h2>
+        <div class="split">
+          <div class="mini-box">
+            <div class="mini-label">After verbal agreement</div>
+            <div class="mini-value">1 day</div>
+            <div class="mini-copy">One in three teams needs a full business day to send a finalized quote.</div>
+          </div>
+          <div class="mini-box">
+            <div class="mini-label">After the quote is sent</div>
+            <div class="mini-value">+2 days</div>
+            <div class="mini-copy">It can take up to two more days to get the signed agreement back.</div>
+          </div>
+        </div>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-dot"></span><span><span class="callout">50%+</span> send 25–50% of quotes as static PDFs, Word docs, or email attachments.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span><span class="callout">32%</span> still build quotes manually in Word, Excel, or Google Docs.</span></div>
+        </div>
+      </article>
+
+      <article class="panel fade-4" data-tone="blue">
+        <p class="kicker">4 · Velocity dies in the gap</p>
+        <div class="stat">
+          <div class="big-number">7 in 10</div>
+          <div class="stat-caption">leaders say quoting friction is actively slowing deal velocity.</div>
+        </div>
+        <h2>Every delay opens a wider window for a deal to cool off.</h2>
+        <div class="timeline">
+          <div class="step"><strong>Agreement</strong><span>The buyer says yes.</span></div>
+          <div class="step"><strong>Quote build</strong><span>The team loses a day creating a finalized quote.</span></div>
+          <div class="step"><strong>Signature wait</strong><span>Up to two more days pass before the agreement comes back signed.</span></div>
+          <div class="step"><strong>Momentum risk</strong><span>Manual handoffs turn the most fragile stage into the slowest stage.</span></div>
+        </div>
+      </article>
+
+      <article class="panel fade-5" data-tone="green">
+        <p class="kicker">5 · Renewals are flying blind</p>
+        <div class="stat">
+          <div class="big-number">76%</div>
+          <div class="stat-caption">miss renewals or expansion opportunities because the data lives in another system.</div>
+        </div>
+        <h2>Existing revenue is too valuable to manage with partial visibility.</h2>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-dot"></span><span>For most respondents, existing customers drive <span class="callout">25–50%</span> of revenue growth.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span>Only <span class="callout">45%</span> of reps can see renewal dates or customer health signals without leaving the CRM.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span>Nearly <span class="callout">1 in 3</span> cannot identify churn risk until the last 30 days before renewal.</span></div>
+        </div>
+      </article>
+
+      <article class="panel fade-6" data-tone="blue">
+        <p class="kicker">6 · Reconciliation is a monthly tax</p>
+        <div class="stat">
+          <div class="big-number">43%</div>
+          <div class="stat-caption">spend 6–10 hours every month stitching revenue numbers together.</div>
+        </div>
+        <h2>Manual reconciliation steals time from execution and trust from the numbers.</h2>
+        <div class="split">
+          <div class="mini-box">
+            <div class="mini-label">Heavy manual effort</div>
+            <div class="mini-value">22%</div>
+            <div class="mini-copy">spend 11–20 hours per month on reconciliation.</div>
+          </div>
+          <div class="mini-box">
+            <div class="mini-label">Shared truth is rare</div>
+            <div class="mini-value">32%</div>
+            <div class="mini-copy">say finance and sales consistently close from the same revenue figures.</div>
+          </div>
+        </div>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-dot"></span><span><span class="callout">37%</span> describe month-end close as high or very high effort.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span><span class="callout">78%</span> still reconcile revenue data manually every month.</span></div>
+        </div>
+      </article>
+
+      <article class="panel fade-7" data-tone="green">
+        <p class="kicker">7 · AI deployment is ahead of data readiness</p>
+        <div class="stat">
+          <div class="big-number">44%</div>
+          <div class="stat-caption">already run autonomous AI workflows across the revenue process.</div>
+        </div>
+        <h2>AI is live. The context layer is not.</h2>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-dot"></span><span><span class="callout">72%</span> say AI tools do not have complete, accurate revenue data.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span>The blocker is not adoption — it is disconnected context.</span></div>
+        </div>
+      </article>
+
+      <article class="panel fade-7" data-tone="warm">
+        <p class="kicker">8 · The buying window is open now</p>
+        <div class="stat">
+          <div class="big-number">80%</div>
+          <div class="stat-caption">are very or extremely likely to evaluate a new integrated revenue solution in the next 12 months.</div>
+        </div>
+        <h2>The market has moved from problem recognition to active evaluation.</h2>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-dot"></span><span><span class="callout">92%</span> expect RevOps technology budgets to increase next fiscal year.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span><span class="callout">74%</span> are outperforming company goals this year — growth is creating urgency, not caution.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span>CPQ and AI-powered revenue automation top the planned investment list.</span></div>
+        </div>
+      </article>
+
+      <article class="panel fade-7" data-tone="blue">
+        <p class="kicker">9 · Revenue Hub opportunity</p>
+        <h2>Revenue is more than a moment. It requires a durable, unified system.</h2>
+        <div class="bullets">
+          <div class="bullet"><span class="bullet-dot"></span><span>The old way held revenue together through people, handoffs, and disconnected tools.</span></div>
+          <div class="bullet"><span class="bullet-dot"></span><span>The market is now signaling demand, timing, and budget for a more durable system of record.</span></div>
+        </div>
+        <div class="opportunity-grid">
+          <div class="opportunity-card">
+            <div class="mini-label">Need for integration</div>
+            <div class="mini-value">88%</div>
+            <div class="mini-copy">Revenue leaders agree their revenue process would benefit from a single integrated platform.</div>
+          </div>
+          <div class="opportunity-card">
+            <div class="mini-label">Active evaluation</div>
+            <div class="mini-value">80%</div>
+            <div class="mini-copy">Revenue leaders are very or extremely likely to evaluate a new integrated solution in the next 12 months.</div>
+          </div>
+          <div class="opportunity-card">
+            <div class="mini-label">Budget momentum</div>
+            <div class="mini-value">92%</div>
+            <div class="mini-copy">Revenue leaders expect their RevOps technology budget to increase in the next fiscal year.</div>
+          </div>
+        </div>
+        <div class="pillars">
+          <div class="pillar">
+            <strong>Quote faster</strong>
+            <span>Compress the slowest stage in the deal cycle and remove the delay between verbal yes and final signature.</span>
+          </div>
+          <div class="pillar">
+            <strong>Renew smarter</strong>
+            <span>Bring renewal, expansion, and customer health signals into the same system where teams already work.</span>
+          </div>
+          <div class="pillar">
+            <strong>Close the data gap</strong>
+            <span>Give operators, finance teams, and AI agents one connected revenue context instead of stitched-together records.</span>
+          </div>
+        </div>
+        <div class="cta-band">
+          <div class="cta-chip">From disconnected moments to a durable revenue system</div>
+          <div class="cta-chip">From manual trust to reliable revenue visibility</div>
+          <div class="cta-chip">From missed payments and renewals to proactive growth</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    window.GleanBridge.postMessage({
+      actionId: 'export-pdf',
+      type: 'glean-add-menu',
+      metadata: { label: 'Export as PDF', icon: 'export' }
+    });
+    window.GleanBridge.onMessage('action', function(data) {
+      if (data.actionId === 'export-pdf') window.print();
+    });
+
+    function prepareChartsForPrint() {
+      document.querySelectorAll('[_echarts_instance_]').forEach(function(el) {
+        var chart = echarts.getInstanceByDom(el);
+        if (!chart) return;
+        var img = new Image();
+        img.src = chart.getDataURL({ type: 'png', pixelRatio: 2 });
+        img.className = 'print-chart-img';
+        img.style.cssText = 'width:100%;height:100%;object-fit:contain;position:absolute;top:0;left:0;z-index:10;';
+        el.dataset.prevPosition = el.style.position;
+        el.style.position = 'relative';
+        el.appendChild(img);
+      });
+    }
+
+    function cleanUpAfterPrint() {
+      document.querySelectorAll('[_echarts_instance_]').forEach(function(el) {
+        var img = el.querySelector('.print-chart-img');
+        if (!img) return;
+        img.remove();
+        el.style.position = el.dataset.prevPosition || '';
+        delete el.dataset.prevPosition;
+      });
+    }
+
+    window.addEventListener('beforeprint', prepareChartsForPrint);
+    window.addEventListener('afterprint', cleanUpAfterPrint);
+  </script>
+</body>
+</html>
