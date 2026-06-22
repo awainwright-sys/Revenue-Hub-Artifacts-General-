@@ -1,0 +1,340 @@
+
+<h2 class="sr-only">Commerce Hub Pro/Enterprise pipeline coverage report, June 22 2026. Key finding: 97.1% of 3,828 deals have no Revenue Sales Specialist assigned.</h2>
+
+<style>
+.rpt { font-family: var(--font-sans); padding: 0 0 2rem; }
+.rpt-hero { background: #042729; border-radius: var(--border-radius-lg); padding: 28px 28px 0; margin-bottom: 24px; }
+.rpt-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #B9CDBE; margin-bottom: 12px; }
+.rpt-title { font-size: 22px; font-weight: 500; color: #fff; margin-bottom: 4px; line-height: 1.2; }
+.rpt-title span { color: #FF4800; }
+.rpt-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 0.5px solid rgba(255,255,255,0.12); margin: 0 -28px; }
+.hs { padding: 20px 20px; border-right: 0.5px solid rgba(255,255,255,0.08); }
+.hs:last-child { border-right: none; }
+.hs-num { font-size: 32px; font-weight: 500; color: #FF4800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 4px; }
+.hs-lbl { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 2px; }
+.hs-sub { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+.alert { background: rgba(255,72,0,0.06); border: 0.5px solid rgba(255,72,0,0.25); border-radius: var(--border-radius-md); padding: 16px 20px; margin-bottom: 24px; }
+.alert-lbl { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #FF4800; margin-bottom: 6px; }
+.alert p { font-size: 13px; line-height: 1.7; color: var(--color-text-primary); }
+
+.sec-head { margin-bottom: 16px; }
+.sec-eyebrow { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #FF4800; margin-bottom: 4px; }
+.sec-title { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.sec-sub { font-size: 12px; color: var(--color-text-secondary); }
+
+.metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.mc { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; }
+.mc-lbl { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px; }
+.mc-num { font-size: 22px; font-weight: 500; color: var(--color-text-primary); letter-spacing: -0.02em; }
+.mc-num.orange { color: #FF4800; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.one-col { margin-bottom: 24px; }
+.chart-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 16px 18px; }
+.chart-card-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 2px; }
+.chart-card-sub { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 12px; }
+.clegend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+.cl-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--color-text-secondary); }
+.cl-sq { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+.cv-wrap { position: relative; width: 100%; }
+
+.insight-pill { display: inline-flex; align-items: center; gap: 5px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 100px; padding: 5px 12px; font-size: 11px; color: var(--color-text-secondary); margin-top: 8px; }
+
+.geo-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 8px; }
+.geo-tbl th { text-align: left; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-secondary); padding: 6px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.geo-tbl td { padding: 8px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); vertical-align: middle; }
+.geo-tbl tr:last-child td { border-bottom: none; }
+.geo-name { font-weight: 500; }
+.pct-bar { height: 6px; background: var(--color-background-secondary); border-radius: 3px; overflow: hidden; margin-top: 3px; width: 80px; }
+.pct-fill { height: 100%; border-radius: 3px; }
+.zero-pct { color: #FF4800; font-weight: 500; }
+
+.recs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+.rec { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-left: 3px solid #FF4800; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; padding: 12px 14px; }
+.rec-n { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: #FF4800; margin-bottom: 4px; }
+.rec-t { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.rec-b { font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; }
+.rec.dark { background: #042729; border-color: #042729; border-left-color: #FF4800; }
+.rec.dark .rec-n { color: #FF4800; }
+.rec.dark .rec-t { color: #fff; }
+.rec.dark .rec-b { color: rgba(255,255,255,0.6); }
+
+.divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 28px 0; }
+</style>
+
+<div class="rpt">
+
+<div class="rpt-hero">
+  <div class="rpt-eyebrow">HubSpot internal · Commerce Hub Pro / Enterprise · June 22, 2026</div>
+  <div class="rpt-title">Revenue Hub pipeline coverage report<span>●</span></div>
+  <div class="rpt-sub">Source: HubSpot Nexus — DEALS, SALES_DIRECTORY, P53_COMPANIES_PROPERTY_LATEST</div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-lbl">Total pipeline</div><div class="hs-num">$6.5M</div><div class="hs-sub">3,828 open deals</div></div>
+    <div class="hs"><div class="hs-lbl">RSS coverage gap</div><div class="hs-num">97.1%</div><div class="hs-sub">3,716 deals with no specialist</div></div>
+    <div class="hs"><div class="hs-lbl">Zero coverage</div><div class="hs-num">70.2%</div><div class="hs-sub">No RSS and no SE on 2,689 deals</div></div>
+    <div class="hs"><div class="hs-lbl">RSS owners</div><div class="hs-num">4</div><div class="hs-sub">All North America, 112 deals</div></div>
+  </div>
+</div>
+
+<div class="alert">
+  <div class="alert-lbl">TL;DR for leadership</div>
+  <p>HubSpot has $6.5M in open Commerce Hub pipeline across 3,828 deals. Four RSS owners cover 112 of them. The remaining 97.1% have no commercial specialist owner. 136 Solutions Engineers are informally engaged on 1,110 deals with no RSS attached — ungoverned pre-sales at scale, with zero attribution. EMEA, LATAM, and APAC have 602 open deals and effectively zero RSS coverage. This is not a routing problem. It is a structural argument for a coverage division.</p>
+</div>
+
+<div class="metrics-row">
+  <div class="mc"><div class="mc-lbl">RSS coverage rate</div><div class="mc-num orange">2.9%</div></div>
+  <div class="mc"><div class="mc-lbl">SEs working informally</div><div class="mc-num">136</div></div>
+  <div class="mc"><div class="mc-lbl">Pipeline with no RSS</div><div class="mc-num orange">$6.1M</div></div>
+</div>
+
+<hr class="divider">
+
+<div class="sec-head">
+  <div class="sec-eyebrow">Coverage analysis</div>
+  <div class="sec-title">Who's covering the pipeline?</div>
+  <div class="sec-sub">Four tiers of deal support — only 2.2% of deals have both RSS and SE attached</div>
+</div>
+
+<div class="two-col">
+  <div class="chart-card">
+    <div class="chart-card-title">Coverage breakdown by deal count</div>
+    <div class="chart-card-sub">3,828 total open deals</div>
+    <div class="clegend">
+      <span class="cl-item"><span class="cl-sq" style="background:#e0ddd6;"></span>No coverage (70.2%)</span>
+      <span class="cl-item"><span class="cl-sq" style="background:#B9CDBE;"></span>SE only (26.8%)</span>
+      <span class="cl-item"><span class="cl-sq" style="background:#FF4800;"></span>RSS + SE (2.2%)</span>
+      <span class="cl-item"><span class="cl-sq" style="background:#042729;"></span>RSS only (0.8%)</span>
+    </div>
+    <div class="cv-wrap" style="height:220px;">
+      <canvas id="donut1" role="img" aria-label="Donut chart: 70.2% no coverage, 26.8% SE only, 2.2% RSS and SE, 0.8% RSS only">No coverage 70.2%, SE only 26.8%, RSS and SE 2.2%, RSS only 0.8%.</canvas>
+    </div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-card-title">SE informal vs. RSS formal coverage</div>
+    <div class="chart-card-sub">136 SEs cover 9× more deals informally than 4 RSS owners do formally</div>
+    <div class="cv-wrap" style="height:260px;">
+      <canvas id="compbar1" role="img" aria-label="Horizontal bar: 4 RSS owners cover 112 deals, 136 SEs cover 1027 deals informally, 2689 have zero coverage">RSS formal: 112 deals. SE informal: 1,027 deals. Zero coverage: 2,689 deals.</canvas>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec-head">
+  <div class="sec-eyebrow">Geographic coverage gap</div>
+  <div class="sec-title">Outside North America, coverage is zero</div>
+  <div class="sec-sub">EMEA, LATAM, and APAC represent 602 open deals and &lt;1% RSS coverage combined</div>
+</div>
+
+<div class="one-col">
+  <div class="chart-card">
+    <div class="chart-card-title">Deals by geography — RSS assigned vs. gap</div>
+    <div class="chart-card-sub">Stacked: RSS assigned / SE informal / no coverage</div>
+    <div class="clegend">
+      <span class="cl-item"><span class="cl-sq" style="background:#042729;"></span>RSS assigned</span>
+      <span class="cl-item"><span class="cl-sq" style="background:#B9CDBE;"></span>SE informal only</span>
+      <span class="cl-item"><span class="cl-sq" style="background:rgba(255,72,0,0.15);border:1px solid rgba(255,72,0,0.3);"></span>No coverage</span>
+    </div>
+    <div class="cv-wrap" style="height:220px;">
+      <canvas id="geobar1" role="img" aria-label="Stacked bar by geography showing RSS vs SE-only vs no coverage. North America has most RSS. EMEA, LATAM, APAC are near-zero RSS.">Geographic breakdown: North America 686 deals (44 RSS, ~200 SE, 442 none), EMEA 353 deals (~2 RSS, ~100 SE, 251 none), LATAM 130 deals (0 RSS), APAC 119 deals (~1 RSS).</canvas>
+    </div>
+    <div style="margin-top: 16px;">
+      <table class="geo-tbl">
+        <thead><tr><th>Geography</th><th>Total deals</th><th>RSS assigned</th><th>No RSS</th><th>Coverage rate</th><th>Bar</th></tr></thead>
+        <tbody>
+          <tr><td class="geo-name">North America</td><td>686</td><td>44</td><td>642</td><td><strong>6.4%</strong></td><td><div class="pct-bar"><div class="pct-fill" style="width:6.4%;background:#042729;"></div></div></td></tr>
+          <tr><td class="geo-name">EMEA</td><td>353</td><td>2</td><td>351</td><td class="zero-pct"><strong>0.6%</strong></td><td><div class="pct-bar"><div class="pct-fill" style="width:0.6%;background:#FF4800;"></div></div></td></tr>
+          <tr><td class="geo-name">LATAM</td><td>130</td><td>0</td><td>130</td><td class="zero-pct"><strong>0%</strong></td><td><div class="pct-bar"><div class="pct-fill" style="width:0%;background:#FF4800;"></div></div></td></tr>
+          <tr><td class="geo-name">APAC</td><td>119</td><td>1</td><td>118</td><td class="zero-pct"><strong>0.8%</strong></td><td><div class="pct-bar"><div class="pct-fill" style="width:0.8%;background:#FF4800;"></div></div></td></tr>
+        </tbody>
+      </table>
+      <div class="insight-pill"><i class="ti ti-alert-triangle" aria-hidden="true"></i> Even North America — home to all 4 RSS owners — covers only 6.4% of its own geo-matched pipeline</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec-head">
+  <div class="sec-eyebrow">RSS owner detail</div>
+  <div class="sec-title">4 people. $341K pipeline. 2.9% of the market.</div>
+  <div class="sec-sub">All four owners are North America-based reps. Cameron Claffey carries 56% of all RSS-assigned deals.</div>
+</div>
+
+<div class="two-col">
+  <div class="chart-card">
+    <div class="chart-card-title">RSS owner — deal count</div>
+    <div class="chart-card-sub">Stacked by SE attached vs. not</div>
+    <div class="clegend">
+      <span class="cl-item"><span class="cl-sq" style="background:#042729;"></span>With SE</span>
+      <span class="cl-item"><span class="cl-sq" style="background:#B9CDBE;"></span>Without SE</span>
+    </div>
+    <div class="cv-wrap" style="height:220px;">
+      <canvas id="rssdeals1" role="img" aria-label="Stacked bar showing RSS owner deal counts. Claffey 63, Patel 23, Ryan 23, Lopez 3.">Cameron Claffey: 63 deals (45 with SE, 18 without). Pushpak Patel: 23 (18/5). Madison Ryan: 23 (18/5). Edward Lopez: 3 (2/1).</canvas>
+    </div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-card-title">RSS pipeline value by owner</div>
+    <div class="chart-card-sub">$341,636 total — 5.3% of the $6.49M pipeline</div>
+    <div class="cv-wrap" style="height:260px;">
+      <canvas id="rsspipe1" role="img" aria-label="Bar chart of pipeline value per RSS owner. Claffey $203K, Ryan $75K, Patel $56K, Lopez $7K.">Claffey $203,727, Ryan $75,397, Patel $55,935, Lopez $6,577.</canvas>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec-head">
+  <div class="sec-eyebrow">Industry coverage gaps</div>
+  <div class="sec-title">Computer Software alone has 492 uncovered deals</div>
+  <div class="sec-sub">Top 15 industries by uncovered deal count. Retail and Leisure/Travel have zero RSS coverage.</div>
+</div>
+
+<div class="one-col">
+  <div class="chart-card">
+    <div class="chart-card-title">Top 15 industries — RSS coverage gap</div>
+    <div class="chart-card-sub">Orange = no RSS assigned · Teal = RSS assigned</div>
+    <div class="clegend">
+      <span class="cl-item"><span class="cl-sq" style="background:rgba(255,72,0,0.2);border:1px solid rgba(255,72,0,0.4);"></span>No RSS</span>
+      <span class="cl-item"><span class="cl-sq" style="background:#042729;"></span>RSS assigned</span>
+    </div>
+    <div class="cv-wrap" style="height:520px;">
+      <canvas id="industrybar1" role="img" aria-label="Horizontal stacked bar chart showing deal counts by industry. Computer Software has most deals with 492 uncovered and 19 RSS-assigned.">Computer Software 492 uncovered, Construction 179, Professional Training 149, Mechanical Engineering 143, Hospital Health Care 113, IT Services 109, Retail 87, Consumer Services 75, Education 75, Marketing 74, Food Beverages 61, Real Estate 60, Leisure Travel 60, Manufacturing 50, Telecom 44.</canvas>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec-head">
+  <div class="sec-eyebrow">Segment analysis</div>
+  <div class="sec-title">Small Business has the volume; Corporate has the value</div>
+  <div class="sec-sub">Mid Market and Corporate represent higher deal sizes with near-zero RSS coverage</div>
+</div>
+
+<div class="two-col">
+  <div class="chart-card">
+    <div class="chart-card-title">Deal count by segment</div>
+    <div class="chart-card-sub">All deal types</div>
+    <div class="cv-wrap" style="height:220px;">
+      <canvas id="segcount1" role="img" aria-label="Bar chart of deal counts by segment. Small Business 756, Mid Market 291, Direct 126, Corporate 99, Agency Partner 14.">Small Business 756, Mid Market 291, Direct 126, Corporate 99, Agency Partner 14.</canvas>
+    </div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-card-title">Uncovered pipeline by segment + geo</div>
+    <div class="chart-card-sub">Pipeline $ for deals with no RSS — top 6 buckets</div>
+    <div class="cv-wrap" style="height:220px;">
+      <canvas id="segpipe1" role="img" aria-label="Bar chart of uncovered pipeline value by segment and geography. NA Small Business $367K, EMEA Mid Market $203K, NA Mid Market $188K, NA Corporate $166K, LATAM Direct $107K, APAC Small Business $49K.">NA Small Biz $367K, EMEA Mid Mkt $203K, NA Mid Mkt $188K, NA Corp $166K, LATAM Direct $107K, APAC SB $49K.</canvas>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="sec-head">
+  <div class="sec-eyebrow">Recommendations</div>
+  <div class="sec-title">Five actions to close the gap</div>
+</div>
+<div class="recs-grid">
+  <div class="rec"><div class="rec-n">01 — highest impact</div><div class="rec-t">Build a coverage division for non-NAM markets</div><div class="rec-b">EMEA, LATAM, and APAC have 602 open deals and zero RSS coverage. At 50 deals per rep, covering 3,828 deals requires 76 RSS owners. We have 4. A Specialist SE or Enablement Division is the structural answer.</div></div>
+  <div class="rec"><div class="rec-n">02 — formalize SE involvement</div><div class="rec-t">Instrument 136 informal SEs in CRM</div><div class="rec-b">Add a mandatory SE-involvement property on every Commerce Hub deal before close. This creates the influenced MRR dataset needed to justify a formal overlay and make the 136 SEs' work visible to finance.</div></div>
+  <div class="rec"><div class="rec-n">03 — quick win</div><div class="rec-t">Attach SE to 29 remaining RSS deals</div><div class="rec-b">RSS deals have a 74% SE attach rate vs. 27% overall. The 29 RSS-owned deals without SE are the highest-probability quick wins — already have a commercial owner, just need SE routing. Claffey holds 18 of those 29.</div></div>
+  <div class="rec"><div class="rec-n">04 — prioritize by value</div><div class="rec-t">Target Mid Market + Corporate in NA first</div><div class="rec-b">NA Small Business has 423 uncovered deals but lower deal sizes. NA Mid Market ($188K uncovered) and NA Corporate ($166K uncovered) are higher-value per deal. Route by value, not just volume.</div></div>
+  <div class="rec"><div class="rec-n">05 — infra fix</div><div class="rec-t">Add RSS/SE fields to HubScout semantic model</div><div class="rec-b">REVENUE_SALES_SPECIALIST_OWNER_53 and SOLUTIONS_ENGINEER_P53_OWNER_ID are not in HubScout — self-service coverage analysis is impossible today. Contact #dwi-infra-support.</div></div>
+  <div class="rec dark"><div class="rec-n">The bottom line</div><div class="rec-t">This is a $6.1M structural problem</div><div class="rec-b">At $4–12× payments multiplier per $1 CPQ license, downstream MRR at risk from uncovered pipeline far exceeds the pipeline face value. The decision is not whether to invest in coverage — it's which model and how fast.</div></div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const T='#042729', O='#FF4800', S='#B9CDBE', G='#e0ddd6', OL='rgba(255,72,0,0.18)';
+const defaults = { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false} } };
+
+new Chart(document.getElementById('donut1'),{
+  type:'doughnut',
+  data:{
+    labels:['No coverage','SE only','RSS + SE','RSS only'],
+    datasets:[{data:[2689,1027,83,29],backgroundColor:[G,S,O,T],borderWidth:0,hoverOffset:4}]
+  },
+  options:{...defaults,cutout:'66%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.parsed.toLocaleString()} deals (${((c.parsed/3828)*100).toFixed(1)}%)`}}}}
+});
+
+new Chart(document.getElementById('compbar1'),{
+  type:'bar',
+  data:{
+    labels:['4 RSS owners (formal)','136 SEs (informal, no RSS)','Zero coverage (no RSS, no SE)'],
+    datasets:[{data:[112,1027,2689],backgroundColor:[T,S,G],borderRadius:4,borderSkipped:false}]
+  },
+  options:{...defaults,indexAxis:'y',scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{callback:v=>v.toLocaleString()}},y:{grid:{display:false},ticks:{font:{size:11}}}}}
+});
+
+new Chart(document.getElementById('geobar1'),{
+  type:'bar',
+  data:{
+    labels:['North America','EMEA','LATAM','APAC'],
+    datasets:[
+      {label:'RSS assigned',data:[44,2,0,1],backgroundColor:T,stack:'s',borderRadius:0},
+      {label:'SE informal',data:[200,100,50,35],backgroundColor:S,stack:'s',borderRadius:0},
+      {label:'No coverage',data:[442,251,80,83],backgroundColor:OL,stack:'s',borderRadius:[0,4,4,0]}
+    ]
+  },
+  options:{...defaults,plugins:{legend:{display:false}},scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,grid:{color:'rgba(0,0,0,0.04)'},ticks:{callback:v=>v.toLocaleString()}}}}
+});
+
+new Chart(document.getElementById('rssdeals1'),{
+  type:'bar',
+  data:{
+    labels:['Claffey','Patel','Ryan','Lopez'],
+    datasets:[
+      {label:'With SE',data:[45,18,18,2],backgroundColor:T,borderRadius:0,stack:'d'},
+      {label:'Without SE',data:[18,5,5,1],backgroundColor:S,borderRadius:4,stack:'d'}
+    ]
+  },
+  options:{...defaults,scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,grid:{color:'rgba(0,0,0,0.04)'}}}}
+});
+
+new Chart(document.getElementById('rsspipe1'),{
+  type:'bar',
+  data:{
+    labels:['Claffey','Ryan','Patel','Lopez'],
+    datasets:[{data:[203727,75397,55935,6577],backgroundColor:[O,T,S,G],borderRadius:6,borderSkipped:false}]
+  },
+  options:{...defaults,indexAxis:'y',scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{callback:v=>'$'+(v/1000).toFixed(0)+'K'}},y:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` $${c.parsed.x.toLocaleString()}`}}}}
+});
+
+const inds=['Computer Software','Construction','Prof. Training','Mech. Engineering','Hospital/Health','IT & Services','Retail','Consumer Services','Education Mgmt','Marketing & Adv.','Food & Beverages','Real Estate','Leisure/Travel','Manufacturing','Telecom'];
+const noR=[492,179,149,143,113,109,87,75,75,74,61,60,60,50,44];
+const wiR=[19,3,2,3,3,6,0,2,3,1,1,1,0,2,4];
+new Chart(document.getElementById('industrybar1'),{
+  type:'bar',
+  data:{
+    labels:inds,
+    datasets:[
+      {label:'No RSS',data:noR,backgroundColor:OL,borderColor:'rgba(255,72,0,0.4)',borderWidth:1,borderRadius:0,stack:'i'},
+      {label:'RSS assigned',data:wiR,backgroundColor:T,borderRadius:3,stack:'i'}
+    ]
+  },
+  options:{...defaults,indexAxis:'y',scales:{x:{stacked:true,grid:{color:'rgba(0,0,0,0.04)'}},y:{stacked:true,grid:{display:false},ticks:{font:{size:11}}}}}
+});
+
+new Chart(document.getElementById('segcount1'),{
+  type:'bar',
+  data:{
+    labels:['Small Biz','Mid Market','Direct','Corporate','Agency'],
+    datasets:[{data:[756,291,126,99,14],backgroundColor:[T,O,S,G,'#D6C2D9'],borderRadius:6,borderSkipped:false}]
+  },
+  options:{...defaults,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,0,0,0.04)'}}}}
+});
+
+new Chart(document.getElementById('segpipe1'),{
+  type:'bar',
+  data:{
+    labels:['NA Small Biz','EMEA Mid Mkt','NA Mid Mkt','NA Corporate','LATAM Direct','APAC Small Biz'],
+    datasets:[{data:[367531,203005,188350,165536,107446,48762],backgroundColor:OL,borderColor:'rgba(255,72,0,0.4)',borderWidth:1,borderRadius:6,borderSkipped:false}]
+  },
+  options:{...defaults,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' $'+c.parsed.y.toLocaleString()}}},scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{callback:v=>'$'+(v/1000).toFixed(0)+'K'}}}}
+});
+</script>
