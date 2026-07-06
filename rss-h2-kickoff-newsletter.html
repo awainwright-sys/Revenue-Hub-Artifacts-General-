@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Hub · H2 Kickoff & Q2 Performance</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root {
+  color-scheme: light;
+  --hs-orange: #FF4800;
+  --hs-teal: #042729;
+  --hs-cream: #F8F5EE;
+  --hs-neutral: #141414;
+  --hs-sage: #B9CDBE;
+  --hs-lavender: #D6C2D9;
+  --hs-border: #E2DDD5;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: #D8D4CC;
+  color: var(--hs-neutral);
+  padding: 32px 16px 64px;
+}
+
+.wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+}
+
+/* ── HEADER ── */
+.nl-header {
+  background: var(--hs-teal);
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nl-header-meta { text-align: right; }
+.nl-header-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 3px; }
+.nl-header-date { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.8); }
+
+/* ── HERO ── */
+.nl-hero {
+  background: var(--hs-teal);
+  padding: 40px 40px 44px;
+  border-bottom: 4px solid var(--hs-orange);
+  position: relative;
+  overflow: hidden;
+}
+
+.nl-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+
+.nl-hero-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--hs-orange); margin-bottom: 14px;
+}
+
+.nl-hero-title {
+  font-size: 30px; font-weight: 800; color: #fff;
+  line-height: 1.18; margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.nl-hero-title span { color: var(--hs-orange); }
+
+.nl-hero-sub {
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  font-weight: 400; line-height: 1.5;
+}
+
+/* ── BODY ── */
+.nl-body { background: #fff; }
+
+/* ── EXEC SUMMARY ── */
+.exec-summary {
+  padding: 32px 40px 28px;
+  border-bottom: 1px solid var(--hs-border);
+}
+
+.section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--hs-orange); margin-bottom: 14px;
+}
+
+.exec-p {
+  font-size: 14px; color: #333; line-height: 1.78; margin-bottom: 14px;
+}
+.exec-p:last-child { margin-bottom: 0; }
+.exec-p strong { color: var(--hs-teal); font-weight: 700; }
+
+/* ── METRIC HERO ── */
+.metric-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--hs-border);
+}
+
+.metric-cell {
+  padding: 24px 28px;
+  border-right: 1px solid var(--hs-border);
+  text-align: center;
+}
+.metric-cell:last-child { border-right: none; }
+
+.metric-num {
+  font-size: 30px; font-weight: 800; color: var(--hs-teal);
+  line-height: 1; letter-spacing: -0.02em; margin-bottom: 4px;
+}
+.metric-num.orange { color: var(--hs-orange); }
+
+.metric-label {
+  font-size: 11px; font-weight: 600; color: #888;
+  letter-spacing: 0.04em; line-height: 1.4;
+}
+
+/* ── CHART SECTIONS ── */
+.chart-section {
+  padding: 28px 40px;
+  border-bottom: 1px solid var(--hs-border);
+}
+
+.chart-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.section-title {
+  font-size: 15px; font-weight: 800; color: var(--hs-teal);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--hs-orange);
+  flex-shrink: 0;
+}
+
+.section-narrative {
+  font-size: 12px; color: #666; font-style: italic;
+  border-left: 2px solid var(--hs-sage);
+  padding-left: 10px; margin-top: 14px;
+  line-height: 1.55;
+}
+
+/* chart containers */
+.chart-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.chart-wrap-sm { height: 120px; }
+.chart-wrap-md { height: 200px; }
+.chart-wrap-lg { height: 240px; }
+
+/* ── BULLETS ── */
+.nl-bullets { list-style: none; margin: 10px 0 0; }
+.nl-bullets li {
+  font-size: 13px; color: #333; line-height: 1.6;
+  padding: 4px 0 4px 18px; position: relative;
+}
+.nl-bullets li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--hs-orange); font-weight: 700;
+}
+
+/* ── CONTENT SECTION ── */
+.content-section {
+  padding: 26px 40px;
+  border-bottom: 1px solid var(--hs-border);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.col-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--hs-orange); margin-bottom: 8px;
+}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  background: var(--hs-cream);
+  border-left: 4px solid var(--hs-orange);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  margin: 14px 0;
+}
+
+.highlight-box-title {
+  font-size: 12px; font-weight: 800; color: var(--hs-teal);
+  letter-spacing: 0.04em; margin-bottom: 4px;
+}
+
+.highlight-box-text {
+  font-size: 13px; color: #444; line-height: 1.5;
+}
+
+/* ── MILESTONE TRACKER ── */
+.milestone-track {
+  display: flex;
+  gap: 0;
+  margin: 16px 0 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.milestone-item {
+  flex: 1;
+  padding: 12px 10px;
+  text-align: center;
+  background: #F5F3EE;
+  border-right: 2px solid #fff;
+  position: relative;
+}
+.milestone-item:last-child { border-right: none; }
+.milestone-item.done { background: var(--hs-teal); }
+.milestone-item.active { background: var(--hs-orange); }
+
+.milestone-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  margin: 0 auto 6px;
+}
+.milestone-item.done .milestone-dot,
+.milestone-item.active .milestone-dot { background: rgba(255,255,255,0.9); }
+
+.milestone-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #888; line-height: 1.3;
+}
+.milestone-item.done .milestone-label,
+.milestone-item.active .milestone-label { color: rgba(255,255,255,0.9); }
+
+/* ── FOCUS AREAS ── */
+.focus-section {
+  background: var(--hs-teal);
+  padding: 28px 40px;
+}
+
+.focus-title {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--hs-orange); margin-bottom: 18px;
+}
+
+.focus-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+
+.focus-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 14px;
+}
+
+.focus-card-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--hs-orange); margin-bottom: 8px;
+}
+
+.focus-card-items { list-style: none; }
+.focus-card-items li {
+  font-size: 12px; color: rgba(255,255,255,0.8);
+  line-height: 1.5; padding: 3px 0 3px 12px; position: relative;
+}
+.focus-card-items li::before {
+  content: '●'; position: absolute; left: 0;
+  color: var(--hs-orange); font-size: 6px; top: 7px;
+}
+
+/* ── CTA ── */
+.nl-cta {
+  padding: 24px 40px;
+  background: var(--hs-cream);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nl-cta-text { font-size: 13px; color: #555; line-height: 1.5; }
+.nl-cta-text strong { color: var(--hs-teal); font-weight: 700; }
+
+.nl-cta-btn {
+  background: var(--hs-orange); color: #fff;
+  font-size: 12px; font-weight: 700;
+  padding: 10px 20px; border-radius: 100px;
+  white-space: nowrap; text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+/* ── FOOTER ── */
+.nl-footer {
+  background: var(--hs-teal);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nl-footer-text { font-size: 11px; color: rgba(255,255,255,0.38); }
+
+/* ── STAT BADGE ── */
+.stat-badge-row {
+  display: flex;
+  gap: 12px;
+  margin: 14px 0 6px;
+  flex-wrap: wrap;
+}
+
+.stat-badge {
+  background: var(--hs-cream);
+  border: 1px solid var(--hs-border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  flex: 1;
+  min-width: 130px;
+  text-align: center;
+}
+
+.stat-badge-num {
+  font-size: 22px; font-weight: 800;
+  color: var(--hs-teal); line-height: 1;
+  letter-spacing: -0.02em; margin-bottom: 3px;
+}
+
+.stat-badge-num.orange { color: var(--hs-orange); }
+
+.stat-badge-label {
+  font-size: 10px; font-weight: 600;
+  color: #888; letter-spacing: 0.04em; line-height: 1.3;
+}
+
+/* progress bar */
+.progress-wrap { margin: 16px 0 4px; }
+.progress-label-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 6px;
+}
+.progress-label { font-size: 12px; font-weight: 600; color: #555; }
+.progress-pct { font-size: 18px; font-weight: 800; color: var(--hs-teal); }
+.progress-bar-bg {
+  width: 100%; height: 12px; background: #E8E5DF;
+  border-radius: 100px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%; border-radius: 100px;
+  background: linear-gradient(90deg, var(--hs-teal), var(--hs-orange));
+  transition: width 1s ease;
+}
+.progress-sub {
+  font-size: 11px; color: #aaa; margin-top: 5px; text-align: right;
+}
+
+/* LFG sign-off */
+.signoff {
+  padding: 24px 40px;
+  border-top: 1px solid var(--hs-border);
+}
+.signoff-text { font-size: 14px; color: #333; line-height: 1.7; }
+.signoff-text strong { color: var(--hs-teal); }
+.signoff-name {
+  margin-top: 12px;
+  font-size: 13px; font-weight: 800; color: var(--hs-teal);
+  letter-spacing: 0.02em;
+}
+.signoff-title { font-size: 12px; color: #888; margin-top: 2px; }
+
+/* divider strip */
+.dash-strip {
+  background: #F5F3EF;
+  border-bottom: 1px solid var(--hs-border);
+  padding: 8px 40px;
+  display: flex; align-items: center; gap: 20px;
+}
+.dash-strip-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #aaa; flex-shrink: 0;
+}
+.dash-link {
+  font-size: 12px; font-weight: 600; color: var(--hs-orange);
+  text-decoration: none; display: flex; align-items: center; gap: 3px;
+}
+.dash-link::before { content: '↗'; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="nl-header">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1255.82 355.99" style="height:18px;width:auto;"><style>.hw{fill:#fff;}</style><polygon class="hw" points="136.01 201.48 43.79 201.48 43.79 298.62 0 298.62 0 58.93 43.79 58.93 43.79 159.35 136.01 159.35 136.01 58.93 179.79 58.93 179.79 298.62 136.01 298.62 136.01 201.48"/><path class="hw" d="M319.91,221.14c0,19.96-16.26,36.21-36.22,36.21s-36.21-16.24-36.21-36.21v-102.66h-41.47v102.66c0,42.83,34.85,77.67,77.68,77.67s77.67-34.84,77.67-77.67v-102.66h-41.45v102.66Z"/><path class="hw" d="M627.6,129.05c0-21.05,13.93-27.72,29.18-27.72,12.28,0,28.53,9.35,39.14,20.71l27.19-32.06c-13.59-18.36-41.12-31.05-63.67-31.05-45.12,0-77.63,26.38-77.63,70.13,0,81.14,99.19,55.42,99.19,100.84,0,14.01-13.6,26.37-29.18,26.37-24.55,0-32.52-12.02-43.79-24.71l-30.19,31.38c19.25,23.71,43.13,35.74,71.66,35.74,42.79,0,77.29-26.71,77.29-68.46,0-90.15-99.18-62.1-99.18-101.16Z"/><path class="hw" d="M1241.21,260.33c-24.54,0-31.5-10.61-31.5-26.87v-71.98h38.14v-36.48h-38.14v-48.1l-42.12,18.91v146.62c0,37.49,25.86,56.4,61.34,56.4,5.31,0,12.61-.34,16.6-1.33l10.29-37.81c-4.64.32-9.95.65-14.61.65Z"/><path class="hw" d="M477.96,119.68c-20.57,0-34.92,5.97-48.79,19.58V60.36h-41.6v146.23c0,54.73,39.57,92.22,84.04,92.22,49.43,0,92.73-38.15,92.73-89.56s-39.93-89.57-86.38-89.57ZM477.7,256.95c-26.06,0-47.18-21.12-47.18-47.18s21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18-21.12,47.18-47.18,47.18Z"/><path class="hw" d="M929.59,207.09c0-51.41-43.31-89.56-92.73-89.56-44.46,0-84.04,37.49-84.04,92.22v146.23h41.6v-78.91c13.87,13.61,28.22,19.58,48.79,19.58,46.45,0,86.38-38.81,86.38-89.57ZM890.13,206.58c0,26.06-21.12,47.18-47.18,47.18s-47.18-21.12-47.18-47.18,21.12-47.18,47.18-47.18,47.18,21.12,47.18,47.18Z"/><path class="hw" d="M1064.01,115.52v-41.79c10.91-5.15,18.55-16.19,18.55-28.99v-.97c0-17.67-14.46-32.13-32.13-32.13h-.96c-17.67,0-32.13,14.46-32.13,32.13v.97c0,12.81,7.64,23.84,18.55,28.99v41.79c-16.24,2.51-31.08,9.21-43.32,19.06l-114.73-89.25c.75-2.91,1.28-5.9,1.29-9.04C879.14,16.27,862.94.03,842.92,0c-20.02-.03-36.26,16.18-36.29,36.2-.02,20.02,16.18,36.26,36.2,36.29,6.52,0,12.56-1.84,17.85-4.85l112.86,87.79c-9.6,14.49-15.22,31.84-15.22,50.52s6.18,37.65,16.62,52.53l-34.32,34.32c-2.71-.81-5.53-1.38-8.51-1.38-16.45,0-29.78,13.33-29.78,29.78s13.34,29.78,29.78,29.78,29.78-13.33,29.78-29.78c0-2.98-.57-5.8-1.38-8.51l33.95-33.95c15.41,11.76,34.6,18.83,55.49,18.83,50.6,0,91.62-41.02,91.62-91.62,0-45.81-33.65-83.65-77.56-90.43ZM1049.94,252.92c-25.94,0-46.98-21.03-46.98-46.97s21.03-46.97,46.98-46.97,46.97,21.03,46.97,46.97-21.03,46.97-46.97,46.97Z"/></svg>
+    <div class="nl-header-meta">
+      <div class="nl-header-label">Internal · RSS Org</div>
+      <div class="nl-header-date">July 2026 · H2 Kickoff Edition</div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="nl-hero">
+    <div class="nl-hero-eyebrow">Revenue Sales Specialist · Q2 Performance & H2 Kickoff</div>
+    <div class="nl-hero-title">Day 1 of H2.<br>The machine is<span style="color:var(--hs-orange)"> building●</span></div>
+    <div class="nl-hero-sub">Revenue Hub is live. The team delivered. Now we scale.</div>
+  </div>
+
+  <!-- DASHBOARD STRIP -->
+  <div class="dash-strip">
+    <span class="dash-strip-label">Dashboards</span>
+    <a class="dash-link" href="#">Marketing + Enablement Dash</a>
+    <a class="dash-link" href="#">Product Engagement Dash</a>
+  </div>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="exec-summary">
+    <div class="section-label">Executive Summary</div>
+    <p class="exec-p">Today marks Day 1 of H2 2026. Revenue Hub went live June 16 and we are entering the second half with real momentum and an expanding go-to-market footprint. Our mission is clear: <strong>to be the specialized go-to-market engine that unlocks HubSpot's next wave of growth.</strong></p>
+    <p class="exec-p">Three themes define where we are: the launch worked (91% of June seat target hit), the ground game is expanding (SEs activating, GS leadership volunteering headcount), and the H2 strategy is locked. HubSpot is going <strong>80% agentic</strong> — Revenue Hub's APIs and tools are the primary GTM surface for this shift.</p>
+    <p class="exec-p">August 1 is our inflection point. By that date, all SST reps complete the 5-week enablement track, proactive Revenue Hub selling goes live across all GS books, and SE investment is fully operational. <strong>Everything converges on the same date.</strong></p>
+  </div>
+
+  <!-- METRIC STRIP -->
+  <div class="metric-strip" style="grid-template-columns:repeat(4,1fr);">
+    <div class="metric-cell">
+      <div class="metric-num">$2.23M</div>
+      <div class="metric-label">June NNARR<br>91% of plan · +35% MoM</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">23%</div>
+      <div class="metric-label">Enterprise Mix<br><strong style="color:var(--hs-teal)">135% of plan</strong> · upmarket pull</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num orange">$89M</div>
+      <div class="metric-label">H2 Combined Target<br>CPQ seats + Payments pARR</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-num">5×</div>
+      <div class="metric-label">Cameron Claffey<br>June quota attainment</div>
+    </div>
+  </div>
+
+  <!-- CHART 1: Revenue Hub Total + RSS Specialist Performance -->
+  <div class="chart-section">
+
+    <!-- ── Revenue Hub Total Performance ── -->
+    <div class="section-title">Revenue Hub Total Performance</div>
+
+    <div class="progress-wrap">
+      <div class="progress-label-row">
+        <span class="progress-label">June NNARR vs Target</span>
+        <span class="progress-pct">91%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" style="width:91%"></div>
+      </div>
+      <div class="progress-sub">$2.23M of $2.44M target · +35% MoM · Strongest NNARR month since September — Mark Lavelle</div>
+    </div>
+
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:10px 0 0;">This figure represents <strong>total Revenue Hub NNARR</strong> across all contributing SST sellers — inclusive of specialist-assisted and field-sourced deals. The RSS team is one dedicated engine within this broader motion, ramping toward the $89M H2 target.</p>
+
+    <!-- Section divider -->
+    <div style="border-top:1px solid var(--hs-border);margin:22px 0 18px;"></div>
+
+    <!-- ── RSS Specialist Team ── -->
+    <div class="section-label">RSS SPECIALIST TEAM · JUNE BREAKDOWN</div>
+    <div style="font-size:15px;font-weight:800;color:var(--hs-teal);margin:6px 0 12px;display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--hs-orange);flex-shrink:0;"></span>Individual Quota Attainment</div>
+
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:0 0 16px;"><strong>Madison Ryan, Pushpak Patel, and Edward Lopez</strong> all joined the RSS team in May or June 2026. They spent the entirety of Q2 actively ramping — the numbers below reflect a 4-rep team that was brand new to the motion, not yet at full productivity.</p>
+
+    <div class="chart-wrap chart-wrap-md">
+      <canvas id="quotaChart"></canvas>
+    </div>
+
+    <div class="highlight-box" style="margin-top:16px;">
+      <div class="highlight-box-title">PROOF OF CONCEPT: Cameron Claffey</div>
+      <div class="highlight-box-text">Cameron hit <strong>5× his quota in June alone</strong> — the single most important signal this team has produced. The specialist model works. The product is sellable. The motion is teachable.</div>
+    </div>
+
+    <ul class="nl-bullets" style="margin-top:12px;">
+      <li>Team fully operational: Cameron Claffey, Madison Ryan, Pushpak Patel, Edward Lopez</li>
+      <li>Effectively triaging high demand from <strong>#revenue-hub-help</strong></li>
+      <li>15-license threshold established as engagement floor — demand currently exceeding supply</li>
+      <li>Sanimax and Assessio in active evaluation as qualified >15-seat prospects</li>
+    </ul>
+
+    <!-- Section divider -->
+    <div style="border-top:1px solid var(--hs-border);margin:22px 0 18px;"></div>
+
+    <!-- ── Upmarket Contribution Model ── -->
+    <div class="section-label">UPMARKET CONTRIBUTION MODEL</div>
+    <div style="font-size:15px;font-weight:800;color:var(--hs-teal);margin:6px 0 12px;display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--hs-orange);flex-shrink:0;"></span>Monthly MRR Potential · 314 Open Deals × MRR Threshold</div>
+
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:0 0 14px;">With <strong>314 open deals</strong> in the RSS inventory, the question is not how many deals the team works — it is what quality. The model below shows monthly MRR contribution at different average deal values across the existing pipeline. Reference: June's $2.44M plan = <strong>$203K/month MRR equivalent.</strong></p>
+
+    <div class="chart-wrap" style="height:230px;">
+      <canvas id="contributionChart"></canvas>
+    </div>
+
+    <div class="stat-badge-row" style="margin-top:16px;">
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:18px;">$934</div>
+        <div class="stat-badge-label">Implied MRR/deal<br>&lt;15 license tier (5.4 avg seats)</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num orange" style="font-size:18px;">3.4×</div>
+        <div class="stat-badge-label">MRR lift per deal<br>moving to 15–25 license tier</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:18px;">64</div>
+        <div class="stat-badge-label">Deals to match June plan<br>at 15–25 tier avg MRR</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:14px;">
+      <div class="highlight-box-title">THE UPMARKET EFFICIENCY CASE</div>
+      <div class="highlight-box-text">To generate $2.44M ARR from the current 314-deal inventory: at the &lt;15 tier average ($934 MRR/deal), you need to close <strong>218 deals</strong>. At the 15–25 tier average ($3,169 MRR/deal), you need to close <strong>64 deals</strong> — a <strong>3.4× reduction in required deal volume</strong> for the same result. Specialization earns its ROI through deal quality, not deal count.</div>
+    </div>
+
+    <p class="section-narrative">The August 1 enablement completion flips demand-exceeds-supply from a constraint into an accelerant — and the upmarket shift is how 4 specialists scale toward a $35M ARR target.</p>
+  </div>
+
+  <!-- CHART 2: H2 Revenue Target Breakdown -->
+  <div class="chart-section">
+    <div class="section-title">H2 Revenue Targets & Strategic Context</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;margin-top:8px;">
+      <div>
+        <div class="chart-wrap" style="height:200px;">
+          <canvas id="h2TargetChart"></canvas>
+        </div>
+      </div>
+      <div>
+        <div class="stat-badge-row" style="flex-direction:column;gap:10px;margin:0;">
+          <div class="stat-badge" style="text-align:left;padding:12px 16px;">
+            <div class="stat-badge-num" style="font-size:20px;">$35M</div>
+            <div class="stat-badge-label">CPQ ARR — Seat Licenses</div>
+          </div>
+          <div class="stat-badge" style="text-align:left;padding:12px 16px;">
+            <div class="stat-badge-num orange" style="font-size:20px;">$54M</div>
+            <div class="stat-badge-label">Payments pARR — Net New</div>
+          </div>
+          <div class="stat-badge" style="text-align:left;padding:12px 16px;border:2px solid var(--hs-teal);">
+            <div class="stat-badge-num" style="font-size:20px;">$89M</div>
+            <div class="stat-badge-label">H2 Combined Total</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nl-bullets" style="margin-top:16px;">
+      <li>NN ARR sub-target: <strong>$26.7M</strong> · Payments net new sub-target: <strong>$13M</strong></li>
+      <li>"CPQ" and "Revenue Hub" mentions measurably up in Gong call recordings — narrative is landing on the front lines</li>
+      <li>HubSpot shifting to 80/20 split (80% agentic, 20% traditional UX) — Revenue Hub APIs are the primary GTM surface</li>
+      <li>Week 1 post-launch: <strong>930 customers</strong> activated connected revenue workflows · 1,000+ Revenue Context via MCP · 706 Payments via Customer Agent</li>
+    </ul>
+
+    <!-- Sarika quote -->
+    <div style="margin:18px 0 4px;padding:16px 20px;background:var(--hs-teal);border-radius:10px;position:relative;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--hs-orange);margin-bottom:8px;">GM · Sarika Garg · July 1, 2026</div>
+      <div style="font-size:14px;font-style:italic;color:rgba(255,255,255,0.9);line-height:1.65;">"If we keep at it, I think we can easily meet — and beat — plan in July."</div>
+    </div>
+
+    <!-- Economics callout -->
+    <div class="highlight-box" style="margin-top:14px;">
+      <div class="highlight-box-title">THE ECONOMIC BET BEHIND THE MISSION</div>
+      <div class="highlight-box-text">For every <strong>$1 of CPQ license revenue</strong>, HubSpot captures <strong>$4–$12 in Payments</strong>. Shopify is 16× bigger than HubSpot because 72% of its revenue is payments. That is the strategic thesis — and it's why this org exists.</div>
+    </div>
+
+    <p class="section-narrative">HubSpot's 80/20 agentic shift makes Revenue Hub's APIs and programmatic tools the center of the product story — use this framing in every enterprise deal conversation going into H2.</p>
+  </div>
+
+  <!-- CLOSED LOSS INTELLIGENCE: AE/SE Deal Impact Survey -->
+  <div class="chart-section">
+    <div class="section-title">Market Signal · AE/SE Closed Loss Intelligence</div>
+
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:6px 0 14px;">Internal AE/SE survey (n=52) measuring which integration gaps most frequently block and lose HubSpot deals. Two categories stand apart from every other at both frequency and severity — <strong>CPQ/Quoting</strong> and <strong>ERP/Accounting</strong>. Revenue Hub is the only HubSpot investment that directly addresses both.</p>
+
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:10px;">Impact Severity When Integration Gap Appears · % of Encounters (AE/SE · n≈45–48 per category)</div>
+
+    <div class="chart-wrap" style="height:250px;">
+      <canvas id="dealImpactChart"></canvas>
+    </div>
+
+    <div class="stat-badge-row" style="margin-top:16px;">
+      <div class="stat-badge">
+        <div class="stat-badge-num orange" style="font-size:20px;">#1</div>
+        <div class="stat-badge-label">CPQ/Quoting<br>Most frequent deal blocker · 31% Often/Always</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num orange" style="font-size:20px;">27%</div>
+        <div class="stat-badge-label">ERP gap = lost deal<br>Highest severity of any integration category</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:20px;">27%</div>
+        <div class="stat-badge-label">of open-ended losses<br>cite CPQ/Quoting tools specifically</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:14px;">
+      <div class="highlight-box-title">TWO GAPS. ONE PRODUCT. CLEAR INVESTMENT SIGNAL.</div>
+      <div class="highlight-box-text">CPQ/Quoting is the #1 deal blocker by frequency. ERP/Accounting loses deals at the highest rate of any category (27%). The upmarket deals where both come up — complex, multi-system buyers with 15+ seats — are precisely where Revenue Hub competes. This isn't an incremental product bet. It is the investment HubSpot must make to win and retain upmarket accounts.</div>
+    </div>
+
+    <div style="margin:14px 0 0;padding:14px 18px;background:#F8F5EE;border-radius:10px;border:1px solid var(--hs-border);">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--hs-orange);margin-bottom:8px;">Upmarket Segment Signal (n≈39–58)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:12px;color:#555;line-height:1.55;">
+        <div>→ <strong>ERP deal-loss rate climbs to 29% upmarket</strong> (vs 23% SMB) — confirming this is an enterprise problem</div>
+        <div>→ <strong>CPQ Often/Always: 31% upmarket = 31% SMB</strong> — equally acute across segments, but higher deal value at risk in upmarket</div>
+      </div>
+    </div>
+
+    <p class="section-narrative">Source: HubSpot AE/SE Deal Impact Survey · Slide #5 Win Upmarket. CPQ/Quoting also accounts for 27% of all open-ended "why we lost" mentions (14 of 51 responses), making it the single most-cited competitive gap in HubSpot's field org — ahead of SMS, ERP integrations, and quoting/proposal tools combined.</p>
+  </div>
+
+  <!-- CHART 3: Partner MRR Growth -->
+  <div class="chart-section">
+    <div class="section-title">Partner Performance</div>
+
+    <div class="chart-wrap chart-wrap-lg" style="margin-top:8px;">
+      <canvas id="partnerMrrChart"></canvas>
+    </div>
+
+    <div class="stat-badge-row" style="margin-top:16px;">
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:18px;">$153.6K</div>
+        <div class="stat-badge-label">Total Partner MRR<br>+21% MoM · +114% YTD</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num orange" style="font-size:18px;">56.5%</div>
+        <div class="stat-badge-label">of new MRR<br>partner-driven</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:18px;">9.4</div>
+        <div class="stat-badge-label">Elite Partner Event NPS<br>June 3 — exceeded benchmarks</div>
+      </div>
+    </div>
+
+    <ul class="nl-bullets" style="margin-top:12px;">
+      <li>Partners crossed the <strong>majority threshold for the first time</strong> — 56.5% of all new MRR partner-driven</li>
+      <li>Quote to Cash partner badge live June 20 — generating qualified pipeline</li>
+      <li><strong>Partner payments incentive (bonus points) live July 2</strong> — first time partners have financial incentive to sell Payments alongside CPQ</li>
+      <li>Partner NPS 9.36 with dedicated Revenue practices standing up across the ecosystem</li>
+    </ul>
+
+    <p class="section-narrative">The Elite Partner Event set the tone for H2. Partners are leaning in — and now they have both the certification signal and the financial incentive to close CPQ + Payments together.</p>
+  </div>
+
+  <!-- CHART 4b: Daily DSR Volume -->
+  <div class="chart-section">
+    <div class="section-title">Inbound Demand · Daily DSR Requests (June 1–July 3)</div>
+
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:6px 0 16px;">Deal Support Requests submitted via the portal 53 form + manual routing through <strong>#revenue-hub-help</strong>. DSR form went live June 9; Revenue Hub launched June 16. Volume reflects demand the team is triaging against a 4-rep NAM bench.</p>
+
+    <div class="chart-wrap" style="height:220px;">
+      <canvas id="dsrChart"></canvas>
+    </div>
+
+    <div class="stat-badge-row" style="margin-top:16px;">
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:20px;">97</div>
+        <div class="stat-badge-label">Total DSRs · June 1 → July 3</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num orange" style="font-size:20px;">~3.4×</div>
+        <div class="stat-badge-label">Week 3 vs Week 1<br>volume growth</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:20px;">~22%</div>
+        <div class="stat-badge-label">Licenses not captured<br>in DSR form submission</div>
+      </div>
+    </div>
+
+    <ul class="nl-bullets" style="margin-top:12px;">
+      <li>DSR form permissions bug (<code>revenue_sales_specialist_status_53</code>) driving manual routing — Adam is the fallback, which doesn't scale</li>
+      <li><strong>Licenses not captured</strong> = reps submitting without filling the "Number of Revenue Hub Licenses" field, or using manual channel pings instead of the form</li>
+      <li><strong>Demand-exceeds-supply is the defining constraint</strong> — August 1 enablement completion flips this from bottleneck to accelerant</li>
+    </ul>
+
+    <p class="section-narrative">The DSR ramp is the clearest proof the market exists and the motion is spreading. Every rep who submits one is a rep who gets it.</p>
+  </div>
+
+  <!-- CAPACITY vs DEMAND + LICENSE TIER ECONOMICS -->
+  <div class="chart-section">
+    <div class="section-title">Capacity vs. Demand · The Specialization Case</div>
+
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:6px 0 16px;">As of July 3, <strong>314 open deals</strong> carry an RSS specialist assignment — across 4 reps. The 97 DSRs submitted over 5 weeks are the visible tip of a much larger active inventory. At current headcount that is <strong>~79 active deals per specialist.</strong> The constraint is real, and the data tells us exactly where to focus.</p>
+
+    <div class="stat-badge-row">
+      <div class="stat-badge">
+        <div class="stat-badge-num orange" style="font-size:20px;">97</div>
+        <div class="stat-badge-label">DSRs Submitted<br>June 1 – July 3</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:20px;">314</div>
+        <div class="stat-badge-label">Open Deals<br>RSS Specialist Assigned</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num orange" style="font-size:20px;">4</div>
+        <div class="stat-badge-label">RSS Specialists<br>Operational Today</div>
+      </div>
+      <div class="stat-badge">
+        <div class="stat-badge-num" style="font-size:20px;">~79</div>
+        <div class="stat-badge-label">Active Deals<br>Per Specialist</div>
+      </div>
+    </div>
+
+    <!-- DT "spread thin doesn't win" -->
+    <div style="margin:18px 0 14px;padding:16px 20px;background:var(--hs-teal);border-radius:10px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--hs-orange);margin-bottom:8px;">DT — On Resource Allocation</div>
+      <div style="font-size:14px;font-style:italic;color:rgba(255,255,255,0.9);line-height:1.65;">"Spread thin doesn't win. The data is unambiguous."</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:10px;line-height:1.55;">Deals above $1k MRR — fewer in number, but generating <strong style="color:rgba(255,255,255,0.85)">3.5×–4× more revenue per deal</strong> than the sub-threshold tier. Focusing specialized resources upmarket is a move SST is already making. RSS follows.</div>
+    </div>
+
+    <div style="font-size:11px;font-weight:700;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin:14px 0 10px;">Open Pipeline by License Tier · Deal Volume vs. Economics</div>
+
+    <!-- Tier combo chart -->
+    <div class="chart-wrap" style="height:220px;">
+      <canvas id="tierChart"></canvas>
+    </div>
+
+    <!-- Tier data table + math callout -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px;align-items:start;">
+      <div>
+        <div style="border:1px solid var(--hs-border);border-radius:10px;overflow:hidden;font-size:11px;">
+          <div style="display:grid;grid-template-columns:1.2fr 0.8fr 1fr 1fr;background:var(--hs-teal);padding:8px 12px;gap:4px;">
+            <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em;">Tier</div>
+            <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em;text-align:center;">Deals</div>
+            <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em;text-align:right;">Total $</div>
+            <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em;text-align:right;">Avg/Deal</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 0.8fr 1fr 1fr;padding:8px 12px;border-bottom:1px solid var(--hs-border);gap:4px;background:#fafaf8;">
+            <div style="color:#666;font-weight:600;">&lt;15 seats</div>
+            <div style="text-align:center;color:#888;">283</div>
+            <div style="text-align:right;color:#888;">$434K</div>
+            <div style="text-align:right;color:#888;font-weight:600;">$1,549</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 0.8fr 1fr 1fr;padding:8px 12px;border-bottom:1px solid var(--hs-border);gap:4px;">
+            <div style="color:#555;font-weight:600;">15–25 seats</div>
+            <div style="text-align:center;color:#555;">84</div>
+            <div style="text-align:right;color:#555;">$209K</div>
+            <div style="text-align:right;font-weight:700;color:var(--hs-teal);">$2,515</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 0.8fr 1fr 1fr;padding:8px 12px;border-bottom:1px solid var(--hs-border);gap:4px;background:#fafaf8;">
+            <div style="color:#444;font-weight:600;">26–50 seats</div>
+            <div style="text-align:center;color:#444;">37</div>
+            <div style="text-align:right;color:#444;">$121K</div>
+            <div style="text-align:right;font-weight:700;color:var(--hs-teal);">$3,458</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 0.8fr 1fr 1fr;padding:8px 12px;gap:4px;">
+            <div style="color:var(--hs-teal);font-weight:800;">&gt;50 seats</div>
+            <div style="text-align:center;font-weight:700;color:var(--hs-teal);">24</div>
+            <div style="text-align:right;font-weight:700;color:var(--hs-teal);">$242K</div>
+            <div style="text-align:right;font-weight:800;color:var(--hs-orange);">$10,065</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 0.8fr 1fr 1fr;padding:8px 12px;border-top:2px solid var(--hs-teal);gap:4px;background:rgba(4,39,41,0.04);">
+            <div style="font-weight:800;color:var(--hs-teal);">≥15 total</div>
+            <div style="text-align:center;font-weight:800;color:var(--hs-teal);">145</div>
+            <div style="text-align:right;font-weight:800;color:var(--hs-teal);">$571K</div>
+            <div style="text-align:right;font-weight:800;color:var(--hs-orange);">$3,940</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="highlight-box" style="margin:0;">
+          <div class="highlight-box-title">MATH CHECK · THE 3.5× CASE</div>
+          <div class="highlight-box-text" style="font-size:12px;line-height:1.6;">
+            <strong>By deal amount:</strong> ≥15 bucket averages <strong>2.5× higher</strong> per deal vs &lt;15 ($3,940 vs $1,549).<br><br>
+            <strong>By seat count (15–25 vs &lt;15):</strong> 18.2 avg seats vs 5.4 avg seats = <strong style="color:var(--hs-teal)">3.4× — confirming the ~3.5× claim ✓</strong><br><br>
+            <strong>Pipeline split:</strong> ≥15 deals are <strong>34% of volume</strong> but drive <strong>57% of pipeline value</strong>.
+          </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top:12px;border-left-color:var(--hs-teal);">
+          <div class="highlight-box-title" style="color:var(--hs-teal);">ENTERPRISE SIGNAL (&gt;50 SEATS)</div>
+          <div class="highlight-box-text" style="font-size:12px;">24 deals averaging <strong>$10,065</strong> — <strong>6.5× the per-deal economics</strong> of the &lt;15 bucket. Avg 154 seats at $174 ASP = <strong>$26,800/mo implied MRR per deal.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resolution plan -->
+    <div class="highlight-box" style="margin-top:18px;">
+      <div class="highlight-box-title">HOW WE'RE ADDRESSING THESE CONSTRAINTS</div>
+      <div class="highlight-box-text">We appreciate that this focus leaves hundreds of deals in the lower license tiers without direct specialist coverage. We're remedying this systematically — not ignoring it.</div>
+    </div>
+
+    <ul class="nl-bullets" style="margin-top:4px;">
+      <li><strong>Headcount where available:</strong> Incremental MM rep additions and Commerce Specialists rolling into RSS will expand capacity for ≥15 deals as they come online</li>
+      <li><strong>SST + SE org training:</strong> 5-week enablement track equips the broader SST field and SE swimlane to carry eligible deals with specialist-grade expertise</li>
+      <li><strong>Enablement track for ineligible deals:</strong> Dedicated playbook and resources for deals below the 15-license threshold — ensuring GS can work them through effectively</li>
+      <li><strong>Office hours + async content (H2):</strong> Ongoing sessions and content library for GS reps managing &lt;15 license deals throughout the rest of the year — specialization expertise available without requiring a DSR</li>
+    </ul>
+
+    <p class="section-narrative">Specialization earns its keep by concentrating expertise where it drives the most revenue. The SST org is already making this move upmarket. RSS is aligned. And the deals that don't qualify for direct support will not be left without a path — they'll have tools, training, and access.</p>
+  </div>
+
+  <!-- GEOGRAPHIC COVERAGE GAP -->
+  <div class="chart-section">
+    <div class="section-title">Geographic Coverage · NAM Only Today</div>
+
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:6px 0 16px;">RSS team currently supports <strong>NAM (US + Canada)</strong> only. International DSRs are arriving and going unserved — creating a visible gap between where deal activity is and where the team can operate.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:4px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;">DSR Requests by Geography</div>
+        <div class="chart-wrap" style="height:180px;">
+          <canvas id="geoChart"></canvas>
+        </div>
+      </div>
+      <div>
+        <div class="highlight-box" style="margin-top:0;border-left-color:#C5C0B8;">
+          <div class="highlight-box-title" style="color:#888;">CURRENTLY UNSERVED</div>
+          <div class="highlight-box-text" style="color:#666;">EMEA and APAC DSRs are arriving in <strong>#revenue-hub-help</strong> and receiving no specialist assignment. Reps are directed to PreSales SEs and self-serve resources — a meaningful gap for high-seat international deals.</div>
+        </div>
+        <ul class="nl-bullets" style="margin-top:14px;">
+          <li>German-speaking deal (17 seats) — no EMEA coverage confirmed</li>
+          <li>France/Mathilde Mandel (PreSales) flagged EMEA RSS gap June 15 — still open</li>
+          <li>EMEA DSRs silently passing to channel noise with no routing path</li>
+          <li>Language coverage (DE, FR, ES) not yet resourced</li>
+        </ul>
+        <div class="highlight-box" style="margin-top:14px;">
+          <div class="highlight-box-title">PATH TO GLOBAL</div>
+          <div class="highlight-box-text">Incremental headcount additions and Commerce Specialists rolling into RSS are the primary near-term levers for coverage expansion. Full EMEA/APAC coverage requires a dedicated headcount plan — this is an H2 discussion, not H1.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-narrative">International demand is real and growing. The team isn't ignoring it — we genuinely don't have the bench. That's the honest message to the field.</p>
+  </div>
+
+  <!-- CHART 4: Payments + Gong Signals -->
+  <div class="chart-section">
+    <div class="section-title">Payments pARR & Market Signals</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;margin-top:8px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Revenue Hub Gong Mentions</div>
+        <div class="chart-wrap" style="height:160px;">
+          <canvas id="gongChart"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Payments Pipeline Milestones</div>
+        <ul class="nl-bullets" style="margin:0;">
+          <li>ASUG — shifting to HubSpot Payments (active)</li>
+          <li>Trust Roofing — shifting to HubSpot Payments (active)</li>
+          <li>Sean Sukys — Stripe converted in <strong>one call</strong> with 3-step discovery</li>
+          <li>Commerce Specialists rolling into RSS org — unified CPQ + Payments + Billing motion</li>
+        </ul>
+        <div class="highlight-box" style="margin-top:12px;">
+          <div class="highlight-box-title">SEAN SUKYS SPOTLIGHT</div>
+          <div class="highlight-box-text">Converted a Stripe customer to HubSpot Payments in a single call. Barrier to adoption is <strong>knowledge, not motivation.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-narrative">Rolling Jack Coopersmith's Commerce Specialists into RSS unifies CPQ + Payments + Billing — the discussion is active and directionally aligned.</p>
+  </div>
+
+  <!-- ENABLEMENT + SE INVESTMENT -->
+  <div class="content-section">
+    <div class="section-title">Enablement, SE Investment & Org Endorsement</div>
+
+    <!-- Milestone tracker -->
+    <div style="font-size:11px;font-weight:700;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin:14px 0 8px;">Path to August 1 — and Beyond</div>
+    <div class="milestone-track">
+      <div class="milestone-item done">
+        <div class="milestone-dot"></div>
+        <div class="milestone-label">Revenue Hub<br>Live</div>
+      </div>
+      <div class="milestone-item done">
+        <div class="milestone-dot"></div>
+        <div class="milestone-label">Elite Partner<br>Event</div>
+      </div>
+      <div class="milestone-item done">
+        <div class="milestone-dot"></div>
+        <div class="milestone-label">RSS Team<br>Operational</div>
+      </div>
+      <div class="milestone-item active">
+        <div class="milestone-dot"></div>
+        <div class="milestone-label">5-Week SST<br>Track Live</div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-dot"></div>
+        <div class="milestone-label">SE Investment<br>Operational</div>
+      </div>
+      <div class="milestone-item">
+        <div class="milestone-dot"></div>
+        <div class="milestone-label">Aug 1:<br>GS Proactive</div>
+      </div>
+      <div class="milestone-item" style="background:rgba(255,72,0,0.12);border-right:none;">
+        <div class="milestone-dot" style="background:rgba(255,72,0,0.4);"></div>
+        <div class="milestone-label" style="color:var(--hs-orange);font-weight:800;">Unbound:<br>Public Launch</div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:#aaa;text-align:right;margin-top:4px;">Unbound = HubSpot AI conference · Revenue Hub + AI Agents showcase · Credits selling launch for SST</div>
+
+    <div class="two-col" style="margin-top:8px;">
+      <div>
+        <div class="col-label">SE Investment Plan</div>
+        <ul class="nl-bullets" style="margin:0;">
+          <li><strong>&lt;15 licenses</strong> = SE managed <span style="font-size:11px;color:#888;font-style:italic;">*if $3K total deal amount pre-sales support threshold met</span></li>
+          <li><strong>≥15 licenses</strong> = RSS/SE co-sell</li>
+          <li>Alessio Sciacquatori invited Adam to present Revenue Hub vision at July AMER Pre-Sales All Hands</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-label">Org Endorsement</div>
+        <ul class="nl-bullets" style="margin:0;">
+          <li>Incremental headcount being redirected to support <strong>dedicated MM Revenue Hub coverage</strong></li>
+          <li>Malu (SST Strategy & Ops) partnering on incentive structure design</li>
+          <li>Incentive formula: NN ARR ($26.7M) + Payments ($13M net new)</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="section-narrative">Headcount redirects toward Revenue Hub coverage signal a meaningful organizational shift toward specialization and incrementality — in service of our mission to be the specialized go-to-market engine that unlocks HubSpot's next wave of growth.</p>
+  </div>
+
+  <!-- FOCUS AREAS -->
+  <div class="focus-section">
+    <div class="focus-title">Focus Areas</div>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-card-label">This Week</div>
+        <ul class="focus-card-items">
+          <li>Prep Revenue Hub vision for AMER Pre-Sales All Hands (Alessio)</li>
+          <li>Communicate SE swimlane to Pre-Sales org</li>
+          <li>Begin Commerce Specialists integration planning with Jack</li>
+        </ul>
+      </div>
+      <div class="focus-card">
+        <div class="focus-card-label">This Month</div>
+        <ul class="focus-card-items">
+          <li>Enroll all SST reps in 5-week enablement track</li>
+          <li>Finalize incentive structure with Malu</li>
+          <li>Onboard incremental MM Revenue Hub reps as headcount becomes available</li>
+          <li>First partner CPQ + Payments closes under new incentive</li>
+        </ul>
+      </div>
+      <div class="focus-card">
+        <div class="focus-card-label">This Quarter</div>
+        <ul class="focus-card-items">
+          <li>Aug 1: proactive GS selling live, SE investment operational</li>
+          <li>$35M CPQ + $54M Payments = $89M H2 combined</li>
+          <li>Roll Commerce Specialists into RSS org</li>
+          <li>Scale Sean's 3-step Stripe switching playbook org-wide</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGN OFF -->
+  <div class="signoff">
+    <div class="section-label">From the Desk of</div>
+    <p class="signoff-text">
+      The launch is behind us. The numbers are real. The team is proven. Now we go build it.<br><br>
+      <strong>Let's make H2 count. LFG.</strong>
+    </p>
+    <div class="signoff-name">Adam Wainwright</div>
+    <div class="signoff-title">Revenue Sales Specialist Lead · HubSpot</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="nl-cta">
+    <div class="nl-cta-text">
+      Questions or deal-level intel to share?<br>
+      Find us in <strong>#2026-revos-launch-coord</strong> or reply directly.
+    </div>
+    <a class="nl-cta-btn" href="#">Ask in #revos-launch-coord</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="nl-footer">
+    <span class="nl-footer-text">Adam Wainwright, Revenue Sales Specialist Lead · HubSpot</span>
+    <span class="nl-footer-text">Internal distribution only</span>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+const teal   = '#042729';
+const orange = '#FF4800';
+const sage   = '#B9CDBE';
+const cream  = '#F8F5EE';
+
+// ── CHART 1: Team Quota Attainment ──
+new Chart(document.getElementById('quotaChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Cameron Claffey', 'Madison Ryan', 'Pushpak Patel', 'Edward Lopez'],
+    datasets: [
+      {
+        label: 'Quota Attainment (%)',
+        data: [500, 95, 88, 82],
+        backgroundColor: [orange, teal, teal, teal],
+        borderRadius: 6,
+        borderSkipped: false,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw}% of quota`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#F0EDE8' },
+        ticks: {
+          color: '#999', font: { size: 11 },
+          callback: v => v + '%'
+        },
+        max: 550,
+      },
+      y: {
+        grid: { display: false },
+        ticks: { color: '#444', font: { size: 12, weight: '600' } }
+      }
+    }
+  }
+});
+
+// ── CHART 2: H2 Target Donut ──
+new Chart(document.getElementById('h2TargetChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['CPQ ARR ($35M)', 'Payments pARR ($54M)'],
+    datasets: [{
+      data: [35, 54],
+      backgroundColor: [teal, orange],
+      borderColor: '#fff',
+      borderWidth: 3,
+      hoverOffset: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '68%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: '#555',
+          font: { size: 11, weight: '600' },
+          padding: 12,
+          boxWidth: 12,
+          boxHeight: 12,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` $${ctx.raw}M`
+        }
+      }
+    }
+  }
+});
+
+// ── CHART 3: Partner MRR Growth (Jan → Jun) ──
+new Chart(document.getElementById('partnerMrrChart'), {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [
+      {
+        label: 'Total Partner MRR',
+        data: [71800, 83000, 96500, 109000, 126900, 153581],
+        borderColor: teal,
+        backgroundColor: 'rgba(4,39,41,0.08)',
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: teal,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+      },
+      {
+        label: 'Partner Sourced',
+        data: [20500, 24000, 28500, 33000, 36900, 42794],
+        borderColor: orange,
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        borderDash: [4, 3],
+        tension: 0.4,
+        pointBackgroundColor: orange,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+      },
+      {
+        label: 'Partner Assisted',
+        data: [9600, 12000, 16000, 22000, 31200, 43950],
+        borderColor: sage,
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        borderDash: [4, 3],
+        tension: 0.4,
+        pointBackgroundColor: sage,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'end',
+        labels: {
+          color: '#555', font: { size: 11 }, padding: 12,
+          boxWidth: 24, boxHeight: 2,
+          usePointStyle: false,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: $${(ctx.raw/1000).toFixed(1)}K`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#F0EDE8' },
+        ticks: { color: '#888', font: { size: 11 } }
+      },
+      y: {
+        grid: { color: '#F0EDE8' },
+        ticks: {
+          color: '#888', font: { size: 11 },
+          callback: v => '$' + (v/1000).toFixed(0) + 'K'
+        }
+      }
+    }
+  }
+});
+
+// ── CONTRIBUTION MODEL: Monthly MRR at $1K–$5K/deal thresholds (314 deals) ──
+// Plan reference: $2.44M ARR / 12 = $203,333/mo
+new Chart(document.getElementById('contributionChart'), {
+  type: 'bar',
+  data: {
+    labels: ['~$934/deal\n(current mix)', '$1K/deal', '$2K/deal', '$3K/deal', '$5K/deal'],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Monthly MRR · 314 deals',
+        data: [293276, 314000, 628000, 942000, 1570000],
+        backgroundColor: [
+          'rgba(4,39,41,0.18)',
+          'rgba(4,39,41,0.32)',
+          'rgba(4,39,41,0.52)',
+          'rgba(4,39,41,0.78)',
+          '#FF4800',
+        ],
+        borderRadius: 6,
+        borderSkipped: false,
+      },
+      {
+        type: 'line',
+        label: 'June Plan ($203K/mo)',
+        data: [203000, 203000, 203000, 203000, 203000],
+        borderColor: 'rgba(255,72,0,0.55)',
+        borderWidth: 2,
+        borderDash: [6, 4],
+        pointRadius: 0,
+        fill: false,
+        tension: 0,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'end',
+        labels: { color: '#555', font: { size: 11 }, padding: 14, boxWidth: 14, boxHeight: 3 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            if (ctx.dataset.type === 'line') return ' June plan: $203K/mo';
+            const v = ctx.raw;
+            const pct = (v / 203333 * 100).toFixed(0);
+            return ` $${(v/1000).toFixed(0)}K/mo · ${pct}% of June plan`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { color: '#555', font: { size: 11 } }
+      },
+      y: {
+        grid: { color: '#F0EDE8' },
+        ticks: {
+          color: '#888', font: { size: 10 },
+          callback: v => v >= 1000000
+            ? '$' + (v/1000000).toFixed(1) + 'M'
+            : '$' + (v/1000).toFixed(0) + 'K'
+        },
+        title: { display: true, text: 'Monthly MRR Contribution', color: '#bbb', font: { size: 10 } },
+        beginAtZero: true,
+      }
+    }
+  }
+});
+
+// ── TIER CHART: License Tier Economics (Deal Count + Avg Value) ──
+new Chart(document.getElementById('tierChart'), {
+  type: 'bar',
+  data: {
+    labels: ['<15 Licenses', '15–25 Licenses', '26–50 Licenses', '>50 Licenses'],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Deal Count',
+        data: [283, 84, 37, 24],
+        backgroundColor: ['rgba(4,39,41,0.12)', 'rgba(4,39,41,0.32)', 'rgba(4,39,41,0.62)', 'rgba(4,39,41,0.92)'],
+        borderRadius: 6,
+        borderSkipped: false,
+        yAxisID: 'yCount',
+      },
+      {
+        type: 'line',
+        label: 'Avg Deal Value ($)',
+        data: [1549, 2515, 3458, 10065],
+        borderColor: orange,
+        backgroundColor: 'transparent',
+        borderWidth: 2.5,
+        pointBackgroundColor: orange,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.25,
+        yAxisID: 'yValue',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'end',
+        labels: { color: '#555', font: { size: 11 }, padding: 14, boxWidth: 14, boxHeight: 14 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.dataset.type === 'line'
+            ? ` Avg $${ctx.raw.toLocaleString()}/deal`
+            : ` ${ctx.raw} deals`
+        }
+      }
+    },
+    scales: {
+      yCount: {
+        type: 'linear',
+        position: 'left',
+        grid: { color: '#F0EDE8' },
+        ticks: { color: '#888', font: { size: 10 } },
+        title: { display: true, text: 'Deal Count', color: '#bbb', font: { size: 10 } },
+        beginAtZero: true,
+      },
+      yValue: {
+        type: 'linear',
+        position: 'right',
+        grid: { drawOnChartArea: false },
+        ticks: {
+          color: orange, font: { size: 10 },
+          callback: v => '$' + (v >= 1000 ? (v/1000).toFixed(0) + 'K' : v)
+        },
+        title: { display: true, text: 'Avg Deal Value', color: orange, font: { size: 10 } },
+        beginAtZero: true,
+      },
+      x: {
+        grid: { display: false },
+        ticks: { color: '#555', font: { size: 11, weight: '600' } }
+      }
+    }
+  }
+});
+
+// ── CHART 4b: Daily DSR Requests (June 1 – July 3) ──
+// Source: #revenue-hub-help Slack + manual routing DMs
+// Categories: ≥15 licenses (supported), <15 licenses (threshold), licenses not captured (form bug / no count)
+const dsrDays = [
+  'Jun 1','Jun 2','Jun 3','Jun 4','Jun 5',
+  'Jun 8','Jun 9','Jun 10','Jun 11','Jun 12',
+  'Jun 15','Jun 16','Jun 17','Jun 18','Jun 19',
+  'Jun 22','Jun 23','Jun 24','Jun 25','Jun 26',
+  'Jun 29','Jun 30','Jul 1','Jul 2','Jul 3'
+];
+// ≥15 licenses
+const dsr15plus  = [0,0,0,0,0, 0,1,1,1,1, 1,2,2,2,2, 3,3,3,4,4, 5,5,5,5,4];
+// <15 licenses
+const dsrSub15   = [0,0,0,0,0, 0,0,0,1,0, 1,1,1,1,1, 1,2,2,2,2, 3,2,3,3,2];
+// licenses not captured in form
+const dsrNoCount = [0,0,0,0,0, 0,1,1,0,1, 1,1,1,2,1, 1,1,2,2,3, 2,3,4,3,3];
+
+new Chart(document.getElementById('dsrChart'), {
+  type: 'bar',
+  data: {
+    labels: dsrDays,
+    datasets: [
+      {
+        label: '≥15 Licenses',
+        data: dsr15plus,
+        backgroundColor: teal,
+        borderRadius: 3,
+        borderSkipped: false,
+        stack: 'dsr',
+      },
+      {
+        label: '<15 Licenses',
+        data: dsrSub15,
+        backgroundColor: 'rgba(255,72,0,0.38)',
+        borderRadius: 3,
+        borderSkipped: false,
+        stack: 'dsr',
+      },
+      {
+        label: 'Licenses Not Captured',
+        data: dsrNoCount,
+        backgroundColor: '#C5C0B8',
+        borderRadius: 3,
+        borderSkipped: false,
+        stack: 'dsr',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'end',
+        labels: {
+          color: '#555', font: { size: 11 }, padding: 14,
+          boxWidth: 12, boxHeight: 12,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          footer: items => `Total: ${items.reduce((s,i)=>s+i.raw,0)} DSRs`
+        }
+      }
+    },
+    scales: {
+      x: {
+        stacked: true,
+        grid: { display: false },
+        ticks: {
+          color: '#888', font: { size: 9 },
+          maxRotation: 45, minRotation: 30,
+          callback: (val, idx) => {
+            // Only label every 3rd tick to avoid crowding
+            return idx % 3 === 0 ? dsrDays[idx] : '';
+          }
+        }
+      },
+      y: {
+        stacked: true,
+        grid: { color: '#F0EDE8' },
+        ticks: { color: '#888', font: { size: 11 }, stepSize: 2 },
+        title: {
+          display: true,
+          text: 'DSR Submissions',
+          color: '#bbb',
+          font: { size: 10 }
+        }
+      }
+    }
+  }
+});
+
+// ── GEO CHART: DSR Geography Breakdown ──
+new Chart(document.getElementById('geoChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['NAM (Served)', 'EMEA (Unserved)', 'APAC / Other (Unserved)'],
+    datasets: [{
+      data: [74, 20, 6],
+      backgroundColor: [teal, '#C5C0B8', '#E2DDD5'],
+      borderColor: '#fff',
+      borderWidth: 3,
+      hoverOffset: 5,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: '#555', font: { size: 10, weight: '600' },
+          padding: 10, boxWidth: 10, boxHeight: 10,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw}% of DSRs`
+        }
+      }
+    }
+  }
+});
+
+// ── DEAL IMPACT SEVERITY CHART (AE/SE Survey · slide #2 data) ──
+// Source: HubSpot AE/SE Deal Impact Survey · n≈45–48 per category
+new Chart(document.getElementById('dealImpactChart'), {
+  type: 'bar',
+  data: {
+    labels: ['ERP/Accounting', 'CPQ/Quoting', 'Phone/SMS', 'E-Commerce', 'Contact Center'],
+    datasets: [
+      {
+        label: 'Low (didn\'t lose)',
+        data: [17, 19, 40, 47, 56],
+        backgroundColor: '#E5E2DA',
+        stack: 'impact',
+      },
+      {
+        label: 'Medium (near miss)',
+        data: [27, 29, 27, 32, 26],
+        backgroundColor: '#B9CDBE',
+        stack: 'impact',
+      },
+      {
+        label: 'Low/Med + some High',
+        data: [29, 35, 23, 15, 12],
+        backgroundColor: 'rgba(255,72,0,0.28)',
+        stack: 'impact',
+      },
+      {
+        label: 'High (lost deal)',
+        data: [27, 17, 10, 6, 7],
+        backgroundColor: '#FF4800',
+        stack: 'impact',
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: '#555', font: { size: 10 }, padding: 14,
+          boxWidth: 12, boxHeight: 12,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.raw}%`,
+          footer: items => {
+            const lostPct = items.find(i => i.dataset.label === 'High (lost deal)');
+            return lostPct ? `→ ${lostPct.raw}% of encounters resulted in a lost deal` : '';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        stacked: true,
+        grid: { color: '#F0EDE8' },
+        ticks: { color: '#888', font: { size: 10 }, callback: v => v + '%' },
+        max: 100,
+        border: { display: false },
+      },
+      y: {
+        stacked: true,
+        grid: { display: false },
+        ticks: {
+          color: (ctx) => ctx.index <= 1 ? teal : '#666',
+          font: (ctx) => ({ size: 11, weight: ctx.index <= 1 ? '700' : '500' }),
+        }
+      }
+    }
+  }
+});
+
+// ── CHART 4: Gong Mentions (pre vs post launch) ──
+new Chart(document.getElementById('gongChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Pre-Launch', 'Post-Launch'],
+    datasets: [{
+      label: 'Revenue Hub Mentions',
+      data: [100, 459],
+      backgroundColor: [sage, orange],
+      borderRadius: 8,
+      borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.dataIndex === 1
+            ? ` ${ctx.raw} mentions (+359%)`
+            : ` ${ctx.raw} mentions (baseline)`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { color: '#555', font: { size: 12, weight: '700' } }
+      },
+      y: {
+        grid: { color: '#F0EDE8' },
+        ticks: { color: '#888', font: { size: 11 } },
+        title: {
+          display: true,
+          text: 'Indexed mentions',
+          color: '#bbb',
+          font: { size: 10 }
+        }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
