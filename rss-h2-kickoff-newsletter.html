@@ -28,7 +28,7 @@ body {
 }
 
 .wrap {
-  max-width: 700px;
+  max-width: 960px;
   margin: 0 auto;
   background: #fff;
   border-radius: 16px;
@@ -316,6 +316,14 @@ body {
   letter-spacing: 0.04em;
 }
 
+/* ── WIDE LAYOUT: scale horizontal padding for 960px container ── */
+.nl-header, .nl-hero, .exec-summary, .chart-section,
+.content-section, .focus-section, .nl-cta, .nl-footer,
+.signoff, .dash-strip {
+  padding-left: 56px;
+  padding-right: 56px;
+}
+
 /* ── FOOTER ── */
 .nl-footer {
   background: var(--hs-teal);
@@ -504,45 +512,58 @@ body {
 
     <ul class="nl-bullets" style="margin-top:12px;">
       <li>Team fully operational: Cameron Claffey, Madison Ryan, Pushpak Patel, Edward Lopez</li>
-      <li>Effectively triaging high demand from <strong>#revenue-hub-help</strong></li>
+      <li>Triaging high demand from <strong>#revenue-hub-help</strong> along with help from the product org — <span style="color:#cc8800;font-weight:700;">⚠️ yellow risk:</span> demand has far exceeded capacity to support</li>
       <li>15-license threshold established as engagement floor — demand currently exceeding supply</li>
-      <li>Sanimax and Assessio in active evaluation as qualified >15-seat prospects</li>
+      <li>Sanimax and Assessio in active evaluation as qualified prospects with more than 50 seats</li>
     </ul>
 
     <!-- Section divider -->
     <div style="border-top:1px solid var(--hs-border);margin:22px 0 18px;"></div>
 
-    <!-- ── Upmarket Contribution Model ── -->
-    <div class="section-label">UPMARKET CONTRIBUTION MODEL</div>
-    <div style="font-size:15px;font-weight:800;color:var(--hs-teal);margin:6px 0 12px;display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--hs-orange);flex-shrink:0;"></span>Monthly MRR Potential · 314 Open Deals × MRR Threshold</div>
+    <!-- ── Deal Volume by Specialist ── -->
+    <div class="section-label">DEAL VOLUME BY SPECIALIST</div>
+    <div style="font-size:15px;font-weight:800;color:var(--hs-teal);margin:6px 0 12px;display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--hs-orange);flex-shrink:0;"></span>Monthly Deals Owned · May–July 2026 · Per Rep</div>
 
-    <p style="font-size:12px;color:#666;line-height:1.55;margin:0 0 14px;">With <strong>314 open deals</strong> in the RSS inventory, the question is not how many deals the team works — it is what quality. The model below shows monthly MRR contribution at different average deal values across the existing pipeline. Reference: June's $2.44M plan = <strong>$203K/month MRR equivalent.</strong></p>
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:0 0 14px;">With <strong>317 open deals</strong> across the RSS inventory, the question is how many deals can the team work and deliver quality results? We're reworking our thresholds to increase focus on the deals that deliver the highest return on MRR. 318 total deals have been created requesting RSS specialist support since January 2026.</p>
 
-    <div class="chart-wrap" style="height:230px;">
-      <canvas id="contributionChart"></canvas>
+    <div class="chart-wrap" style="height:220px;">
+      <canvas id="dealVolumeChart"></canvas>
     </div>
 
-    <div class="stat-badge-row" style="margin-top:16px;">
+    <!-- Threshold stat -->
+    <div style="margin:14px 0 10px;padding:12px 16px;background:#F8F5EE;border-radius:10px;border:1px solid var(--hs-border);display:flex;align-items:center;gap:20px;">
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-size:28px;font-weight:800;color:var(--hs-orange);line-height:1;">~66%</div>
+        <div style="font-size:10px;font-weight:600;color:#888;letter-spacing:0.04em;">of deals are &lt;15 licenses</div>
+      </div>
+      <div style="font-size:12px;color:#555;line-height:1.6;border-left:2px solid var(--hs-border);padding-left:16px;">Historically <strong>~66% of RSS-assigned deals fall below the 15-license threshold</strong> — too small for a team of 4 specialists to absorb without crowding out higher-value opportunities. Only <strong>~34% of the pipeline</strong> meets the upmarket criteria where RSS drives the most impact.</div>
+    </div>
+
+    <div class="stat-badge-row" style="margin-top:4px;">
       <div class="stat-badge">
-        <div class="stat-badge-num" style="font-size:18px;">$934</div>
-        <div class="stat-badge-label">Implied MRR/deal<br>&lt;15 license tier (5.4 avg seats)</div>
+        <div class="stat-badge-num orange" style="font-size:20px;">66%</div>
+        <div class="stat-badge-label">of deals &lt;15 licenses<br>below RSS threshold</div>
       </div>
       <div class="stat-badge">
-        <div class="stat-badge-num orange" style="font-size:18px;">3.4×</div>
-        <div class="stat-badge-label">MRR lift per deal<br>moving to 15–25 license tier</div>
+        <div class="stat-badge-num" style="font-size:20px;">3.4×</div>
+        <div class="stat-badge-label">MRR lift per deal<br>at ≥15 license tier</div>
       </div>
       <div class="stat-badge">
-        <div class="stat-badge-num" style="font-size:18px;">64</div>
-        <div class="stat-badge-label">Deals to match June plan<br>at 15–25 tier avg MRR</div>
+        <div class="stat-badge-num orange" style="font-size:20px;">~$1K</div>
+        <div class="stat-badge-label">Attributed Revenue Hub<br>MRR at ≥15 license ASP</div>
       </div>
     </div>
 
     <div class="highlight-box" style="margin-top:14px;">
       <div class="highlight-box-title">THE UPMARKET EFFICIENCY CASE</div>
-      <div class="highlight-box-text">To generate $2.44M ARR from the current 314-deal inventory: at the &lt;15 tier average ($934 MRR/deal), you need to close <strong>218 deals</strong>. At the 15–25 tier average ($3,169 MRR/deal), you need to close <strong>64 deals</strong> — a <strong>3.4× reduction in required deal volume</strong> for the same result. Specialization earns its ROI through deal quality, not deal count.</div>
+      <div class="highlight-box-text">
+        To reach our July target of <strong>$2.02M</strong>, the team needs to focus on deals with <strong>≥15 Revenue Hub licenses</strong> — where the ASP delivers ~$1K of attributed Revenue Hub MRR per deal. At this threshold, the deal capacity constraint is no longer prohibitive, and the team gets a <strong>3.4× lift per deal</strong> enabling far higher revenue impact.<br><br>
+        Case in point: if every RSS specialist influences <strong>$10K MRR per deal</strong> rather than $3K, the team generates <strong>$40K MRR</strong> vs the initial $12K MRR baseline — a 3.3× improvement in total revenue contribution from the same headcount.<br><br>
+        We are building a <strong>team incentive model</strong> to keep our focus on the larger prize — working the right deals so we are never spread thin, and can win.
+      </div>
     </div>
 
-    <p class="section-narrative">The August 1 enablement completion flips demand-exceeds-supply from a constraint into an accelerant — and the upmarket shift is how 4 specialists scale toward a $35M ARR target.</p>
+    <p class="section-narrative">Spread thin doesn't win. The data is unambiguous. Concentrating 4 specialists on the 34% of deals that meet the ≥15 license threshold is how this team scales toward a $35M ARR target.</p>
   </div>
 
   <!-- CHART 2: H2 Revenue Target Breakdown -->
@@ -574,6 +595,7 @@ body {
     </div>
 
     <ul class="nl-bullets" style="margin-top:16px;">
+      <li>July CPQ license target: <strong>$2.02M</strong></li>
       <li>NN ARR sub-target: <strong>$26.7M</strong> · Payments net new sub-target: <strong>$13M</strong></li>
       <li>"CPQ" and "Revenue Hub" mentions measurably up in Gong call recordings — narrative is landing on the front lines</li>
       <li>HubSpot shifting to 80/20 split (80% agentic, 20% traditional UX) — Revenue Hub APIs are the primary GTM surface</li>
@@ -717,7 +739,7 @@ body {
         <div class="stat-badge-label">DSRs Submitted<br>June 1 – July 3</div>
       </div>
       <div class="stat-badge">
-        <div class="stat-badge-num" style="font-size:20px;">314</div>
+        <div class="stat-badge-num" style="font-size:20px;">317</div>
         <div class="stat-badge-label">Open Deals<br>RSS Specialist Assigned</div>
       </div>
       <div class="stat-badge">
@@ -866,14 +888,33 @@ body {
         </div>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:700;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Payments Pipeline Milestones</div>
+        <div style="font-size:11px;font-weight:700;color:#999;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Payments pARR — Where We Stand</div>
+
+        <!-- Payments gap progress bar -->
+        <div style="margin-bottom:14px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;">
+            <span style="font-size:12px;font-weight:600;color:#555;">Running pARR vs On-Track Pace</span>
+            <span style="font-size:15px;font-weight:800;color:var(--hs-orange);">$21.5M / $28.3M</span>
+          </div>
+          <div style="width:100%;height:10px;background:#E8E5DF;border-radius:100px;overflow:hidden;">
+            <div style="width:76%;height:100%;border-radius:100px;background:linear-gradient(90deg,var(--hs-teal),var(--hs-orange));"></div>
+          </div>
+          <div style="font-size:11px;color:#aaa;margin-top:4px;text-align:right;">$6.8M gap to on-track pace · $54M full year target</div>
+        </div>
+
         <ul class="nl-bullets" style="margin:0;">
+          <li>Running payments pARR: <strong>$21.5M</strong> — need <strong>$28.3M</strong> to stay on pace for $54M · gap of <strong>$6.8M</strong></li>
+          <li><strong>SST kickers or quota retirement incentives</strong> are the planned mechanism to drive incremental Payments volume through the broader field</li>
           <li>ASUG — shifting to HubSpot Payments (active)</li>
           <li>Trust Roofing — shifting to HubSpot Payments (active)</li>
           <li>Sean Sukys — Stripe converted in <strong>one call</strong> with 3-step discovery</li>
           <li>Commerce Specialists rolling into RSS org — unified CPQ + Payments + Billing motion</li>
         </ul>
-        <div class="highlight-box" style="margin-top:12px;">
+        <div class="highlight-box" style="margin-top:12px;border-left-color:var(--hs-orange);">
+          <div class="highlight-box-title">CLOSING THE PAYMENTS GAP</div>
+          <div class="highlight-box-text">At $21.5M running vs a $28.3M on-track pace, we have <strong>$6.8M of ground to recover</strong>. The path is SST enablement at scale — kickers or quota retirement incentives that make every SST rep a Payments seller, not just a CPQ seller. This is a lot of work. It is also the right work.</div>
+        </div>
+        <div class="highlight-box" style="margin-top:10px;">
           <div class="highlight-box-title">SEAN SUKYS SPOTLIGHT</div>
           <div class="highlight-box-text">Converted a Stripe customer to HubSpot Payments in a single call. Barrier to adoption is <strong>knowledge, not motivation.</strong></div>
         </div>
@@ -1014,12 +1055,12 @@ const cream  = '#F8F5EE';
 new Chart(document.getElementById('quotaChart'), {
   type: 'bar',
   data: {
-    labels: ['Cameron Claffey', 'Madison Ryan', 'Pushpak Patel', 'Edward Lopez'],
+    labels: ['Cameron Claffey', 'Madison Ryan'],
     datasets: [
       {
         label: 'Quota Attainment (%)',
-        data: [500, 95, 88, 82],
-        backgroundColor: [orange, teal, teal, teal],
+        data: [500, 95],
+        backgroundColor: [orange, teal],
         borderRadius: 6,
         borderSkipped: false,
       }
@@ -1170,37 +1211,37 @@ new Chart(document.getElementById('partnerMrrChart'), {
   }
 });
 
-// ── CONTRIBUTION MODEL: Monthly MRR at $1K–$5K/deal thresholds (314 deals) ──
-// Plan reference: $2.44M ARR / 12 = $203,333/mo
-new Chart(document.getElementById('contributionChart'), {
+// ── DEAL VOLUME BY SPECIALIST: Monthly stacked bar (May–Jul 2026) ──
+// Source: CRM query — deals WHERE revenue_sales_specialist_owner_53 IS NOT NULL grouped by owner + month
+// Rep ID mapping (by May volume order): 22696865=Cameron, 43062636=Madison, 91790361=Pushpak, 64258346=Edward
+new Chart(document.getElementById('dealVolumeChart'), {
   type: 'bar',
   data: {
-    labels: ['~$934/deal\n(current mix)', '$1K/deal', '$2K/deal', '$3K/deal', '$5K/deal'],
+    labels: ['May 2026', 'Jun 2026', 'Jul 2026 (MTD)'],
     datasets: [
       {
-        type: 'bar',
-        label: 'Monthly MRR · 314 deals',
-        data: [293276, 314000, 628000, 942000, 1570000],
-        backgroundColor: [
-          'rgba(4,39,41,0.18)',
-          'rgba(4,39,41,0.32)',
-          'rgba(4,39,41,0.52)',
-          'rgba(4,39,41,0.78)',
-          '#FF4800',
-        ],
-        borderRadius: 6,
-        borderSkipped: false,
+        label: 'Cameron C.',
+        data: [28, 34, 1],
+        backgroundColor: teal,
+        borderRadius: 4, borderSkipped: false, stack: 'vol',
       },
       {
-        type: 'line',
-        label: 'June Plan ($203K/mo)',
-        data: [203000, 203000, 203000, 203000, 203000],
-        borderColor: 'rgba(255,72,0,0.55)',
-        borderWidth: 2,
-        borderDash: [6, 4],
-        pointRadius: 0,
-        fill: false,
-        tension: 0,
+        label: 'Madison R.',
+        data: [12, 59, 2],
+        backgroundColor: orange,
+        borderRadius: 4, borderSkipped: false, stack: 'vol',
+      },
+      {
+        label: 'Pushpak P.',
+        data: [8, 32, 0],
+        backgroundColor: sage,
+        borderRadius: 4, borderSkipped: false, stack: 'vol',
+      },
+      {
+        label: 'Edward L.',
+        data: [3, 26, 2],
+        backgroundColor: '#D6C2D9',
+        borderRadius: 4, borderSkipped: false, stack: 'vol',
       }
     ]
   },
@@ -1209,35 +1250,27 @@ new Chart(document.getElementById('contributionChart'), {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'top',
-        align: 'end',
-        labels: { color: '#555', font: { size: 11 }, padding: 14, boxWidth: 14, boxHeight: 3 }
+        position: 'top', align: 'end',
+        labels: { color: '#555', font: { size: 11 }, padding: 12, boxWidth: 12, boxHeight: 12 }
       },
       tooltip: {
         callbacks: {
-          label: ctx => {
-            if (ctx.dataset.type === 'line') return ' June plan: $203K/mo';
-            const v = ctx.raw;
-            const pct = (v / 203333 * 100).toFixed(0);
-            return ` $${(v/1000).toFixed(0)}K/mo · ${pct}% of June plan`;
-          }
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.raw} deals`,
+          footer: items => `Total: ${items.reduce((s, i) => s + i.raw, 0)} deals`
         }
       }
     },
     scales: {
       x: {
+        stacked: true,
         grid: { display: false },
-        ticks: { color: '#555', font: { size: 11 } }
+        ticks: { color: '#555', font: { size: 12, weight: '600' } }
       },
       y: {
+        stacked: true,
         grid: { color: '#F0EDE8' },
-        ticks: {
-          color: '#888', font: { size: 10 },
-          callback: v => v >= 1000000
-            ? '$' + (v/1000000).toFixed(1) + 'M'
-            : '$' + (v/1000).toFixed(0) + 'K'
-        },
-        title: { display: true, text: 'Monthly MRR Contribution', color: '#bbb', font: { size: 10 } },
+        ticks: { color: '#888', font: { size: 11 } },
+        title: { display: true, text: 'Deals Assigned', color: '#bbb', font: { size: 10 } },
         beginAtZero: true,
       }
     }
