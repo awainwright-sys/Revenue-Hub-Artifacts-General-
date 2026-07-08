@@ -4,7 +4,82 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Revenue Hub · H2 Kickoff & Q2 Performance</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous">
+// ── CPQ Milestone Chart ──
+new Chart(document.getElementById('cpqMilestoneChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    datasets: [
+      {
+        label: 'Monthly Add Required ($M)',
+        type: 'bar',
+        data: [2.02, 2.35, 2.41, 2.32, 2.23, 3.04],
+        backgroundColor: [orange, teal, teal, teal, teal, teal],
+        borderRadius: 5,
+        borderSkipped: false,
+        order: 2,
+        yAxisID: 'yBar',
+      },
+      {
+        label: 'Cumulative CPQ Target ($M)',
+        type: 'line',
+        data: [23.76, 26.11, 28.52, 30.84, 33.07, 36.11],
+        borderColor: '#6B7280',
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        borderDash: [5, 3],
+        pointBackgroundColor: '#6B7280',
+        pointRadius: 4,
+        order: 1,
+        yAxisID: 'yLine',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { color: '#555', font: { size: 11 }, padding: 12, boxWidth: 12, boxHeight: 12 }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.dataset.label.includes('Cumulative')
+            ? ` Cumulative target: $${ctx.raw}M`
+            : ` Monthly add: $${ctx.raw}M`
+        }
+      },
+      datalabels: { display: false }
+    },
+    scales: {
+      yBar: {
+        type: 'linear',
+        position: 'left',
+        title: { display: true, text: 'Monthly add ($M)', color: '#999', font: { size: 10 } },
+        grid: { color: '#F0EDE8' },
+        ticks: { color: '#999', font: { size: 11 }, callback: v => '$' + v + 'M' },
+        min: 0, max: 6,
+      },
+      yLine: {
+        type: 'linear',
+        position: 'right',
+        title: { display: true, text: 'Cumulative ARR ($M)', color: '#999', font: { size: 10 } },
+        grid: { display: false },
+        ticks: { color: '#aaa', font: { size: 11 }, callback: v => '$' + v + 'M' },
+        min: 18, max: 38,
+      },
+      x: {
+        grid: { display: false },
+        ticks: { color: '#444', font: { size: 12, weight: '600' } }
+      }
+    }
+  }
+});
+
+</script>
 <style>
 :root {
   color-scheme: light;
@@ -465,7 +540,7 @@ body {
     </div>
     <div class="metric-cell">
       <div class="metric-num orange">$89M</div>
-      <div class="metric-label">H2 Combined Target<br>CPQ seats + Payments pARR</div>
+      <div class="metric-label">CY26 Combined Target<br>CPQ seats + Payments pARR</div>
     </div>
     <div class="metric-cell">
       <div class="metric-num">5×</div>
@@ -490,7 +565,7 @@ body {
       <div class="progress-sub">$2.23M of $2.44M target · +35% MoM · Strongest NNARR month since September — Mark Lavelle</div>
     </div>
 
-    <p style="font-size:12px;color:#666;line-height:1.55;margin:10px 0 0;">This figure represents <strong>total Revenue Hub NNARR</strong> across all contributing SST sellers — inclusive of specialist-assisted and field-sourced deals. The RSS team is one dedicated engine within this broader motion, ramping toward the $89M H2 target.</p>
+    <p style="font-size:12px;color:#666;line-height:1.55;margin:10px 0 0;">This figure represents <strong>total Revenue Hub NNARR</strong> across all contributing SST sellers — inclusive of specialist-assisted and field-sourced deals. The RSS team is one dedicated engine within this broader motion, ramping toward the $89M CY26 target ($49.6M remaining in H2).</p>
 
     <!-- Section divider -->
     <div style="border-top:1px solid var(--hs-border);margin:22px 0 18px;"></div>
@@ -516,6 +591,74 @@ body {
       <li>15-license threshold established as engagement floor — demand currently exceeding supply</li>
       <li>Sanimax and Assessio in active evaluation as qualified prospects with more than 50 seats</li>
     </ul>
+
+    <!-- Section divider -->
+    <div style="border-top:1px solid var(--hs-border);margin:22px 0 18px;"></div>
+
+    <!-- ── THE 91% SIGNAL ── -->
+    <div class="section-label">THE 91% SIGNAL</div>
+    <div style="font-size:15px;font-weight:800;color:var(--hs-teal);margin:6px 0 12px;display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--hs-orange);flex-shrink:0;"></span>What 91% Attainment Actually Means — With Only 8% Dedicated Coverage</div>
+
+    <p style="font-size:12px;color:#666;line-height:1.65;margin:0 0 14px;">Revenue Hub hit 91% of its June NNARR target with only <strong>4 dedicated RSS specialists — roughly 8% of the coverage</strong> a fully-staffed co-sell motion would deploy. That 91% didn't come from a well-resourced push. It came from <strong>customers asking for the product and partners stepping in to close</strong>. Partners have stepped up meaningfully — hitting 56.5% of new MRR — but are not yet fully incentivized (partner Payments bonus only went live July 2) and still represent a fraction of HubSpot's total partner ecosystem. That is a different kind of 91% than you get with full investment. It is the signal of a product the market wants before the machine is fully built.</p>
+
+    <!-- Three insight cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 18px;">
+      <div style="background:#F8F5EE;border-radius:10px;border:1px solid var(--hs-border);padding:14px 16px;">
+        <div style="font-size:28px;font-weight:900;color:var(--hs-teal);line-height:1;margin-bottom:6px;">8%</div>
+        <div style="font-size:10.5px;font-weight:700;color:var(--hs-teal);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Dedicated Co-Sell Coverage</div>
+        <div style="font-size:11px;color:#666;line-height:1.55;">4 RSS specialists covering all of NAM. The other 92% of Revenue Hub revenue is self-serve, partner-driven, or field-originated without a dedicated specialist in the room.</div>
+      </div>
+      <div style="background:var(--hs-teal);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:28px;font-weight:900;color:var(--hs-orange);line-height:1;margin-bottom:6px;">56.5%</div>
+        <div style="font-size:10.5px;font-weight:700;color:#fff;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Partner-Driven New MRR</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.72);line-height:1.55;">Partners crossed the majority threshold in June for the first time — with no Payments financial incentive until July 2 and only a small fraction of HubSpot's full partner ecosystem actively selling Revenue Hub.</div>
+      </div>
+      <div style="background:var(--hs-orange);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:28px;font-weight:900;color:#fff;line-height:1;margin-bottom:6px;">+$1.34M</div>
+        <div style="font-size:10.5px;font-weight:700;color:#fff;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Annualized ARR Upside</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.85);line-height:1.55;">From as little as a 5% increase in partner activation and a 5% increase in field reps attaching Revenue Hub to their deals — calculated off the June run rate. That is the floor, not the ceiling.</div>
+      </div>
+    </div>
+
+    <!-- Calculation table -->
+    <div style="background:#F8F5EE;border-radius:12px;border:1px solid var(--hs-border);padding:18px 20px;margin:0 0 8px;">
+      <div style="font-size:10px;font-weight:700;color:#999;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">The 5% + 5% Activation Math · Based on $2.23M/month June Run Rate</div>
+      <table style="width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;font-size:11.5px;">
+        <thead>
+          <tr style="background:var(--hs-teal);">
+            <th style="padding:9px 12px;text-align:left;color:rgba(255,255,255,0.65);font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;">Lever</th>
+            <th style="padding:9px 12px;text-align:center;color:rgba(255,255,255,0.65);font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;">Base / Month</th>
+            <th style="padding:9px 12px;text-align:center;color:rgba(255,255,255,0.65);font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;">+5% Monthly</th>
+            <th style="padding:9px 12px;text-align:center;color:rgba(255,255,255,0.65);font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;">H2 Addition</th>
+            <th style="padding:9px 12px;text-align:center;color:rgba(255,255,255,0.65);font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;">Annualized ARR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fff;border-top:1px solid var(--hs-border);">
+            <td style="padding:9px 12px;color:#333;line-height:1.4;"><strong>+5% Partner Activation</strong><br><span style="font-size:10px;color:#999;">56.5% of $2.23M = $1.26M/mo base</span></td>
+            <td style="padding:9px 12px;text-align:center;color:#555;">$1.26M</td>
+            <td style="padding:9px 12px;text-align:center;font-weight:700;color:var(--hs-teal);">+$63K</td>
+            <td style="padding:9px 12px;text-align:center;font-weight:700;color:var(--hs-teal);">+$378K</td>
+            <td style="padding:9px 12px;text-align:center;font-weight:700;color:var(--hs-teal);">+$756K</td>
+          </tr>
+          <tr style="background:#F8F5EE;border-top:1px solid var(--hs-border);">
+            <td style="padding:9px 12px;color:#333;line-height:1.4;"><strong>+5% Field Activation</strong><br><span style="font-size:10px;color:#999;">43.5% of $2.23M = $0.97M/mo base</span></td>
+            <td style="padding:9px 12px;text-align:center;color:#555;">$0.97M</td>
+            <td style="padding:9px 12px;text-align:center;font-weight:700;color:var(--hs-teal);">+$49K</td>
+            <td style="padding:9px 12px;text-align:center;font-weight:700;color:var(--hs-teal);">+$291K</td>
+            <td style="padding:9px 12px;text-align:center;font-weight:700;color:var(--hs-teal);">+$582K</td>
+          </tr>
+          <tr style="background:var(--hs-teal);border-top:2px solid rgba(255,255,255,0.15);">
+            <td style="padding:10px 12px;color:#fff;font-weight:700;">Combined +5% on Both Levers</td>
+            <td style="padding:10px 12px;text-align:center;color:rgba(255,255,255,0.65);">$2.23M</td>
+            <td style="padding:10px 12px;text-align:center;font-size:13px;font-weight:900;color:var(--hs-orange);">+$112K</td>
+            <td style="padding:10px 12px;text-align:center;font-size:13px;font-weight:900;color:var(--hs-orange);">+$669K</td>
+            <td style="padding:10px 12px;text-align:center;font-size:13px;font-weight:900;color:var(--hs-orange);">+$1.34M</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:10.5px;color:#999;line-height:1.55;margin:10px 0 0;font-style:italic;">This is the minimum upside from a modest 5% incremental activation on each lever at the June run rate. August 1 enablement completion and the partner Payments incentive represent a far larger activation event — both levers move simultaneously, and the compounding effect scales quickly.</p>
+    </div>
 
     <!-- Section divider -->
     <div style="border-top:1px solid var(--hs-border);margin:22px 0 18px;"></div>
@@ -558,7 +701,7 @@ body {
       <div class="highlight-box-title">THE UPMARKET EFFICIENCY CASE</div>
       <div class="highlight-box-text">
         To reach our July target of <strong>$2.02M</strong>, the team needs to focus on deals with <strong>≥15 Revenue Hub licenses</strong> — where the ASP delivers ~$1K of attributed Revenue Hub MRR per deal. At this threshold, the deal capacity constraint is no longer prohibitive, and the team gets a <strong>3.4× lift per deal</strong> enabling far higher revenue impact.<br><br>
-        Case in point: if every RSS specialist influences <strong>$10K MRR (influenced by co-sell) per month</strong> rather than $3K, the team generates <strong>$40K MRR</strong> vs the initial $12K MRR baseline — a 3.3× improvement in total revenue contribution from the same headcount.<br><br>
+        Case in point: if every RSS specialist influences <strong>$10K MRR per deal</strong> rather than $3K, the team generates <strong>$40K MRR</strong> vs the initial $12K MRR baseline — a 3.3× improvement in total revenue contribution from the same headcount.<br><br>
         We are building a <strong>team incentive model</strong> to keep our focus on the larger prize — working the right deals so we are never spread thin, and can win.
       </div>
     </div>
@@ -566,40 +709,124 @@ body {
     <p class="section-narrative">Spread thin doesn't win. The data is unambiguous. Concentrating 4 specialists on the 34% of deals that meet the ≥15 license threshold is how this team scales toward a $35M ARR target.</p>
   </div>
 
-  <!-- CHART 2: H2 Revenue Target Breakdown -->
+  <!-- CHART 2: CY26 Target & H2 Progress Tracker -->
   <div class="chart-section">
-    <div class="section-title">H2 Revenue Targets & Strategic Context</div>
+    <div class="section-title">CY26 Revenue Targets &amp; H2 Progress Tracker</div>
 
+    <!-- Top row: donut + badges -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;margin-top:8px;">
       <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#999;margin-bottom:6px;">H2 REMAINING SPLIT</div>
         <div class="chart-wrap" style="height:200px;">
           <canvas id="h2TargetChart"></canvas>
         </div>
       </div>
       <div>
-        <div class="stat-badge-row" style="flex-direction:column;gap:10px;margin:0;">
-          <div class="stat-badge" style="text-align:left;padding:12px 16px;">
-            <div class="stat-badge-num" style="font-size:20px;">$35M</div>
-            <div class="stat-badge-label">CPQ ARR — Seat Licenses</div>
+        <div class="stat-badge-row" style="flex-direction:column;gap:8px;margin:0;">
+          <div class="stat-badge" style="text-align:left;padding:10px 14px;">
+            <div style="display:flex;align-items:baseline;gap:8px;">
+              <div class="stat-badge-num" style="font-size:20px;">$16.4M</div>
+              <div style="font-size:10px;color:#999;">of $36.1M CY26</div>
+            </div>
+            <div class="stat-badge-label">CPQ Licenses — H2 Remaining</div>
           </div>
-          <div class="stat-badge" style="text-align:left;padding:12px 16px;">
-            <div class="stat-badge-num orange" style="font-size:20px;">$54M</div>
-            <div class="stat-badge-label">Payments pARR — Net New</div>
+          <div class="stat-badge" style="text-align:left;padding:10px 14px;">
+            <div style="display:flex;align-items:baseline;gap:8px;">
+              <div class="stat-badge-num orange" style="font-size:20px;">$33.2M</div>
+              <div style="font-size:10px;color:#999;">of $55.0M CY26</div>
+            </div>
+            <div class="stat-badge-label">Billing &amp; Payments — H2 Remaining</div>
           </div>
-          <div class="stat-badge" style="text-align:left;padding:12px 16px;border:2px solid var(--hs-teal);">
-            <div class="stat-badge-num" style="font-size:20px;">$89M</div>
-            <div class="stat-badge-label">H2 Combined Total</div>
+          <div class="stat-badge" style="text-align:left;padding:10px 14px;border:2px solid var(--hs-teal);">
+            <div style="display:flex;align-items:baseline;gap:8px;">
+              <div class="stat-badge-num" style="font-size:20px;">$49.6M</div>
+              <div style="font-size:10px;color:var(--hs-orange);font-weight:700;">H2 target</div>
+            </div>
+            <div class="stat-badge-label">Combined H2 &mdash; $89M CY26 plan &mdash; $41.5M done</div>
           </div>
         </div>
       </div>
     </div>
 
-    <ul class="nl-bullets" style="margin-top:16px;">
-      <li>July CPQ license target: <strong>$2.02M</strong></li>
-      <li>NN ARR sub-target: <strong>$26.7M</strong> · Payments net new sub-target: <strong>$13M</strong></li>
-      <li>"CPQ" and "Revenue Hub" mentions measurably up in Gong call recordings — narrative is landing on the front lines</li>
-      <li>HubSpot shifting to 80/20 split (80% agentic, 20% traditional UX) — Revenue Hub APIs are the primary GTM surface</li>
-      <li>Week 1 post-launch: <strong>930 customers</strong> activated connected revenue workflows · 1,000+ Revenue Context via MCP · 706 Payments via Customer Agent</li>
+    <!-- CY26 Progress Bars -->
+    <div style="margin:20px 0 16px;padding:18px 20px;background:#F8F5EE;border-radius:12px;border:1px solid var(--hs-border);">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--hs-teal);margin-bottom:14px;">CY26 PLAN PROGRESS &mdash; AS OF H1 CLOSE</div>
+
+      <!-- CPQ Progress -->
+      <div style="margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;">
+          <span style="font-size:12px;font-weight:700;color:#333;">CPQ Licenses</span>
+          <span style="font-size:11px;color:#888;">$19.7M done &middot; <strong style="color:var(--hs-teal);">$16.4M H2 target</strong> &middot; $36.1M annual</span>
+        </div>
+        <div style="height:14px;background:#E2DDD5;border-radius:7px;overflow:hidden;">
+          <div style="width:54.6%;height:100%;background:var(--hs-teal);border-radius:7px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;">
+            <span style="font-size:9px;font-weight:800;color:white;letter-spacing:0.02em;">54.6%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Billing & Payments Progress -->
+      <div style="margin-bottom:6px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;">
+          <span style="font-size:12px;font-weight:700;color:#333;">Billing &amp; Payments</span>
+          <span style="font-size:11px;color:#888;">$21.76M done &middot; <strong style="color:var(--hs-orange);">$33.2M H2 target</strong> &middot; $55.0M annual</span>
+        </div>
+        <div style="height:14px;background:#E2DDD5;border-radius:7px;overflow:hidden;">
+          <div style="width:39.6%;height:100%;background:var(--hs-orange);border-radius:7px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;">
+            <span style="font-size:9px;font-weight:800;color:white;letter-spacing:0.02em;">39.6%</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--hs-border);display:flex;gap:24px;flex-wrap:wrap;">
+        <div style="font-size:11px;color:#666;">Combined YTD: <strong style="color:#333;">$41.5M</strong></div>
+        <div style="font-size:11px;color:#666;">vs $89M CY26: <strong style="color:#333;">46.6% done</strong></div>
+        <div style="font-size:11px;color:#666;">H2 gap to close: <strong style="color:var(--hs-orange);">$49.6M</strong></div>
+      </div>
+    </div>
+
+    <!-- CPQ Monthly Milestone Chart -->
+    <div style="margin-top:18px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#999;margin-bottom:8px;">CPQ LICENSE H2 MONTHLY MILESTONES &mdash; REQUIRED ADDS TO HIT PLAN</div>
+      <div class="chart-wrap" style="height:230px;">
+        <canvas id="cpqMilestoneChart"></canvas>
+      </div>
+      <!-- Per-month required add mini-cards -->
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:10px;">
+        <div style="background:#FFF0EA;border-radius:8px;border:1px solid #FFC4A8;padding:8px 6px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:var(--hs-orange);">$2.02M</div>
+          <div style="font-size:9px;color:#888;margin-top:2px;font-weight:600;">JUL &middot; $23.76M</div>
+        </div>
+        <div style="background:#F8F5EE;border-radius:8px;border:1px solid var(--hs-border);padding:8px 6px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:var(--hs-teal);">$2.35M</div>
+          <div style="font-size:9px;color:#888;margin-top:2px;font-weight:600;">AUG &middot; $26.11M</div>
+        </div>
+        <div style="background:#F8F5EE;border-radius:8px;border:1px solid var(--hs-border);padding:8px 6px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:var(--hs-teal);">$2.41M</div>
+          <div style="font-size:9px;color:#888;margin-top:2px;font-weight:600;">SEP &middot; $28.52M</div>
+        </div>
+        <div style="background:#F8F5EE;border-radius:8px;border:1px solid var(--hs-border);padding:8px 6px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:var(--hs-teal);">$2.32M</div>
+          <div style="font-size:9px;color:#888;margin-top:2px;font-weight:600;">OCT &middot; $30.84M</div>
+        </div>
+        <div style="background:#F8F5EE;border-radius:8px;border:1px solid var(--hs-border);padding:8px 6px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:var(--hs-teal);">$2.23M</div>
+          <div style="font-size:9px;color:#888;margin-top:2px;font-weight:600;">NOV &middot; $33.07M</div>
+        </div>
+        <div style="background:#F8F5EE;border-radius:8px;border:1px solid var(--hs-border);padding:8px 6px;text-align:center;">
+          <div style="font-size:13px;font-weight:800;color:var(--hs-teal);">$3.04M</div>
+          <div style="font-size:9px;color:#888;margin-top:2px;font-weight:600;">DEC &middot; $36.11M</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:#aaa;margin-top:8px;font-style:italic;">Orange = current month (Jul). Line = cumulative milestone target. Numbers = monthly add required to stay on plan.</div>
+    </div>
+
+    <ul class="nl-bullets" style="margin-top:20px;">
+      <li>CPQ H2 target: <strong>$16.4M</strong> (from $19.7M YTD &rarr; $36.1M annual). July milestone: <strong>$23.76M cumulative</strong> &mdash; requires <strong>$2.02M new CPQ ARR this month</strong></li>
+      <li>Billing &amp; Payments H2 target: <strong>$33.2M</strong> (from $21.76M YTD &rarr; $55.0M annual &middot; 39.6% through plan at H1 close)</li>
+      <li>"CPQ" and "Revenue Hub" mentions measurably up in Gong call recordings &mdash; narrative is landing on the front lines</li>
+      <li>HubSpot shifting to 80/20 split (80% agentic, 20% traditional UX) &mdash; Revenue Hub APIs are the primary GTM surface</li>
+      <li>Week 1 post-launch: <strong>930 customers</strong> activated connected revenue workflows &middot; 1,000+ Revenue Context via MCP &middot; 706 Payments via Customer Agent</li>
     </ul>
 
     <!-- Sarika quote -->
@@ -1009,7 +1236,7 @@ body {
         <div class="focus-card-label">This Quarter</div>
         <ul class="focus-card-items">
           <li>Aug 1: proactive GS selling live, SE investment operational</li>
-          <li>$35M CPQ + $54M Payments = $89M H2 combined</li>
+          <li>$16.4M CPQ + $33.2M Payments = $49.6M H2 combined (vs $89M CY26 plan)</li>
           <li>Roll Commerce Specialists into RSS org</li>
           <li>Scale Sean's 3-step Stripe switching playbook org-wide</li>
         </ul>
@@ -1099,9 +1326,9 @@ new Chart(document.getElementById('quotaChart'), {
 new Chart(document.getElementById('h2TargetChart'), {
   type: 'doughnut',
   data: {
-    labels: ['CPQ ARR ($35M)', 'Payments pARR ($54M)'],
+    labels: ['CPQ H2 Remaining ($16.4M)', 'B&P H2 Remaining ($33.2M)'],
     datasets: [{
-      data: [35, 54],
+      data: [16.4, 33.2],
       backgroundColor: [teal, orange],
       borderColor: '#fff',
       borderWidth: 3,
@@ -1125,7 +1352,7 @@ new Chart(document.getElementById('h2TargetChart'), {
       },
       tooltip: {
         callbacks: {
-          label: ctx => ` $${ctx.raw}M`
+          label: ctx => ` $${ctx.raw}M H2 remaining`
         }
       }
     }
