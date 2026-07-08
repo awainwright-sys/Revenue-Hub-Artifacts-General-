@@ -417,6 +417,78 @@ body {
   text-decoration: none; display: flex; align-items: center; gap: 3px;
 }
 .dash-link::before { content: '↗'; }
+
+/* ── SECTION CARD HOVER ── */
+.nl-hero,
+.exec-summary,
+.metric-strip,
+.chart-section,
+.signoff {
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 0.24s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.24s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.nl-hero:hover,
+.exec-summary:hover,
+.metric-strip:hover,
+.chart-section:hover,
+.signoff:hover {
+  transform: scale(1.014);
+  box-shadow:
+    0 2px 4px rgba(4,39,41,0.04),
+    0 8px 24px rgba(4,39,41,0.09),
+    0 20px 48px rgba(4,39,41,0.05);
+  z-index: 20;
+}
+
+/* Tighten border-bottom on hover so it doesn't look detached */
+.chart-section:hover {
+  border-bottom-color: transparent;
+}
+
+/* Subtle left accent line appears on hover */
+.chart-section::before,
+.exec-summary::before,
+.signoff::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 3px;
+  background: var(--hs-orange);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity 0.24s ease;
+}
+
+.chart-section:hover::before,
+.exec-summary:hover::before,
+.signoff:hover::before {
+  opacity: 1;
+}
+
+/* Metric strip: per-cell hover instead of the whole strip */
+.metric-strip:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.metric-cell {
+  transition:
+    transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1),
+    background 0.22s ease;
+}
+
+.metric-cell:hover {
+  transform: scaleY(1.06);
+  background: rgba(255,255,255,0.06);
+  z-index: 5;
+}
+
 </style>
 </head>
 <body>
