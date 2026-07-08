@@ -497,27 +497,43 @@ body {
 
 .section-tldr {
   position: absolute;
-  top: 100%;
-  left: 0; right: 0;
-  transform: translateY(-10px);
+  top: 50%;
+  left: 100%;
+  width: 220px;
+  transform: translateY(-50%) translateX(14px);
   opacity: 0;
   pointer-events: none;
   transition:
     transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
-    opacity 0.2s ease;
+    opacity 0.22s ease;
   z-index: 30;
   background: var(--hs-teal);
-  border-top: 2px solid var(--hs-orange);
-  border-radius: 0 0 10px 10px;
-  padding: 13px 40px 16px;
-  box-shadow: 0 12px 32px rgba(4,39,41,0.18);
+  border-left: 3px solid var(--hs-orange);
+  border-radius: 10px;
+  padding: 14px 16px 16px;
+  box-shadow: 0 8px 28px rgba(4,39,41,0.22);
+  margin-left: 16px;
+}
+
+/* Left-pointing arrow connecting card to section */
+.section-tldr::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0; height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 8px solid var(--hs-teal);
+  margin-right: -3px;
 }
 
 .nl-hero:hover .section-tldr,
 .exec-summary:hover .section-tldr,
 .chart-section:hover .section-tldr,
 .signoff:hover .section-tldr {
-  transform: translateY(0);
+  transform: translateY(-50%) translateX(0);
   opacity: 1;
   pointer-events: auto;
 }
@@ -528,16 +544,37 @@ body {
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--hs-orange);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   font-family: inherit;
 }
 
 .section-tldr-text {
-  font-size: 12.5px;
+  font-size: 12px;
   color: rgba(255,255,255,0.88);
   line-height: 1.65;
   font-style: italic;
   font-family: inherit;
+}
+
+/* Fall back to bottom on narrow viewports where gutter disappears */
+@media (max-width: 1100px) {
+  .section-tldr {
+    left: 0; right: 0;
+    top: 100%;
+    width: auto;
+    margin-left: 0;
+    transform: translateY(-8px);
+    border-left: none;
+    border-top: 3px solid var(--hs-orange);
+    border-radius: 0 0 10px 10px;
+  }
+  .section-tldr::after { display: none; }
+  .nl-hero:hover .section-tldr,
+  .exec-summary:hover .section-tldr,
+  .chart-section:hover .section-tldr,
+  .signoff:hover .section-tldr {
+    transform: translateY(0);
+  }
 }
 
 </style>
