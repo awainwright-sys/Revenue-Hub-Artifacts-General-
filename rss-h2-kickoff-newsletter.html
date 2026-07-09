@@ -2284,7 +2284,7 @@ new Chart(document.getElementById('cpqMilestoneChart'), {
       var sR = section.getBoundingClientRect();
 
       var maxH = window.innerHeight - 32;
-      var minH = 240; // enough for Learning + Leverage copy even on short sections
+      var minH = 300; // enough for Learning + Leverage copy even on short sections
       var h    = Math.min(Math.max(sR.height, minH), maxH);
       var top  = Math.max(16, sR.top + (sR.height - h) / 2);
 
@@ -2316,7 +2316,7 @@ new Chart(document.getElementById('cpqMilestoneChart'), {
       var wR = wrap.getBoundingClientRect();
       var sR = current.getBoundingClientRect();
       var maxH = window.innerHeight - 32;
-      var minH = 240;
+      var minH = 300;
       var h    = Math.min(Math.max(sR.height, minH), maxH);
       var top  = Math.max(16, sR.top + (sR.height - h) / 2);
       drawer.style.transition = 'none';
