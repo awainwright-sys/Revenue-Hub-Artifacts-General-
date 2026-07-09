@@ -513,13 +513,14 @@ body {
   box-shadow: 0 12px 32px rgba(4,39,41,0.18);
 }
 
+/* bottom-slide disabled — drawer handled by JS fixed overlay */
 .nl-hero:hover .section-tldr,
 .exec-summary:hover .section-tldr,
 .chart-section:hover .section-tldr,
 .signoff:hover .section-tldr {
   transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .section-tldr-label {
@@ -2237,5 +2238,92 @@ new Chart(document.getElementById('cpqMilestoneChart'), {
   });
 })();
 </script>
+
+  <!-- ═══ TL;DR FIXED GUTTER DRAWER ═══ -->
+  <div id="tldr-drawer" aria-hidden="true" style="
+    position: fixed;
+    top: 0; left: -9999px;
+    width: 272px;
+    background: #0D3535;
+    border-left: 3px solid #FF4800;
+    border-radius: 0 14px 14px 0;
+    box-shadow: 10px 4px 32px rgba(4,39,41,0.24);
+    padding: 24px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-14px);
+    transition:
+      opacity 0.22s ease,
+      transform 0.30s cubic-bezier(0.22,0.61,0.36,1);
+  "></div>
+
+  <script>
+  (function () {
+    var drawer = document.getElementById('tldr-drawer');
+    var wrap   = document.querySelector('.wrap');
+    var hideTimer;
+
+    function show(section) {
+      var tldr = section.querySelector('.section-tldr');
+      if (!tldr) return;
+
+      var wR = wrap.getBoundingClientRect();
+      var sR = section.getBoundingClientRect();
+
+      // Height: match section but clamp to viewport
+      var maxH  = window.innerHeight - 32;
+      var h     = Math.min(sR.height, maxH);
+      var top   = Math.max(16, sR.top + (sR.height - h) / 2);
+
+      // Copy section's TL;DR content into the drawer
+      drawer.innerHTML = tldr.innerHTML;
+
+      // Position flush with right edge of the white newsletter + small gap
+      drawer.style.left      = (wR.right + 8) + 'px';
+      drawer.style.top       = top + 'px';
+      drawer.style.height    = h + 'px';
+
+      // Snap to start, then animate in
+      drawer.style.transition = 'none';
+      drawer.style.opacity    = '0';
+      drawer.style.transform  = 'translateX(-14px)';
+      drawer.getBoundingClientRect(); // force reflow
+      drawer.style.transition = 'opacity 0.22s ease, transform 0.30s cubic-bezier(0.22,0.61,0.36,1)';
+      drawer.style.opacity    = '1';
+      drawer.style.transform  = 'translateX(0)';
+    }
+
+    function hide() {
+      drawer.style.opacity   = '0';
+      drawer.style.transform = 'translateX(-14px)';
+    }
+
+    var sections = document.querySelectorAll(
+      '.nl-hero, .exec-summary, .metric-strip, .chart-section, .signoff'
+    );
+
+    sections.forEach(function (sec) {
+      sec.addEventListener('mouseenter', function () {
+        clearTimeout(hideTimer);
+        show(sec);
+      });
+      sec.addEventListener('mouseleave', function (e) {
+        // Small delay so moving cursor to drawer doesn't flicker
+        hideTimer = setTimeout(hide, 100);
+      });
+    });
+
+    // Reposition on scroll so the drawer tracks the section
+    window.addEventListener('scroll', function () {
+      hide();
+    }, { passive: true });
+  })();
+  </script>
+
 </body>
 </html>
