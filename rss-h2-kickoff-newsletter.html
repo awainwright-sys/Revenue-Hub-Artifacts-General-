@@ -32,8 +32,9 @@ body {
   margin: 0 auto;
   background: #fff;
   border-radius: 16px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  position: relative;
 }
 
 /* ── HEADER ── */
@@ -52,6 +53,7 @@ body {
 /* ── HERO ── */
 .nl-hero {
   background: var(--hs-teal);
+  border-radius: 16px 16px 0 0;
   padding: 40px 40px 44px;
   border-bottom: 4px solid var(--hs-orange);
   position: relative;
@@ -391,6 +393,7 @@ body {
 .signoff {
   padding: 24px 40px;
   border-top: 1px solid var(--hs-border);
+  border-radius: 0 0 16px 16px;
 }
 .signoff-text { font-size: 14px; color: #333; line-height: 1.7; }
 .signoff-text strong { color: var(--hs-teal); }
@@ -497,7 +500,7 @@ body {
 .section-tldr {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 100%;
   height: 100%;
   width: 260px;
   display: flex;
@@ -505,11 +508,13 @@ body {
   justify-content: center;
   padding: 24px 22px;
   background: #0D3535;
-  border-right: 3px solid var(--hs-orange);
+  border-left: 3px solid var(--hs-orange);
+  border-radius: 0 14px 14px 0;
   box-shadow: 8px 0 24px rgba(4,39,41,0.18);
-  transform: translateX(-100%);
+  transform: translateX(-16px);
+  opacity: 0;
   pointer-events: none;
-  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.22s ease;
   z-index: 30;
   box-sizing: border-box;
 }
@@ -519,6 +524,7 @@ body {
 .chart-section:hover .section-tldr,
 .signoff:hover .section-tldr {
   transform: translateX(0);
+  opacity: 1;
   pointer-events: auto;
 }
 
