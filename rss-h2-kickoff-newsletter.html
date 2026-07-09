@@ -2272,9 +2272,9 @@ new Chart(document.getElementById('cpqMilestoneChart'), {
 
   <script>
   (function () {
-    var drawer = document.getElementById('tldr-drawer');
-    var wrap   = document.querySelector('.wrap');
-    var hideTimer;
+    var drawer  = document.getElementById('tldr-drawer');
+    var wrap    = document.querySelector('.wrap');
+    var current = null; // currently shown section
 
     function show(section) {
       var tldr = section.querySelector('.section-tldr');
@@ -2283,32 +2283,44 @@ new Chart(document.getElementById('cpqMilestoneChart'), {
       var wR = wrap.getBoundingClientRect();
       var sR = section.getBoundingClientRect();
 
-      // Height: match section but clamp to viewport
-      var maxH  = window.innerHeight - 32;
-      var h     = Math.min(sR.height, maxH);
-      var top   = Math.max(16, sR.top + (sR.height - h) / 2);
+      var maxH = window.innerHeight - 32;
+      var h    = Math.min(sR.height, maxH);
+      var top  = Math.max(16, sR.top + (sR.height - h) / 2);
 
-      // Copy section's TL;DR content into the drawer
       drawer.innerHTML = tldr.innerHTML;
+      drawer.style.left   = (wR.right + 8) + 'px';
+      drawer.style.top    = top + 'px';
+      drawer.style.height = h + 'px';
 
-      // Position flush with right edge of the white newsletter + small gap
-      drawer.style.left      = (wR.right + 8) + 'px';
-      drawer.style.top       = top + 'px';
-      drawer.style.height    = h + 'px';
-
-      // Snap to start, then animate in
       drawer.style.transition = 'none';
       drawer.style.opacity    = '0';
       drawer.style.transform  = 'translateX(-14px)';
-      drawer.getBoundingClientRect(); // force reflow
+      drawer.getBoundingClientRect();
       drawer.style.transition = 'opacity 0.22s ease, transform 0.30s cubic-bezier(0.22,0.61,0.36,1)';
       drawer.style.opacity    = '1';
       drawer.style.transform  = 'translateX(0)';
+
+      current = section;
     }
 
     function hide() {
       drawer.style.opacity   = '0';
       drawer.style.transform = 'translateX(-14px)';
+      current = null;
+    }
+
+    // Reposition drawer when scrolling so it tracks its section
+    function reposition() {
+      if (!current) return;
+      var wR = wrap.getBoundingClientRect();
+      var sR = current.getBoundingClientRect();
+      var maxH = window.innerHeight - 32;
+      var h    = Math.min(sR.height, maxH);
+      var top  = Math.max(16, sR.top + (sR.height - h) / 2);
+      drawer.style.transition = 'none';
+      drawer.style.left   = (wR.right + 8) + 'px';
+      drawer.style.top    = top + 'px';
+      drawer.style.height = h + 'px';
     }
 
     var sections = document.querySelectorAll(
@@ -2316,20 +2328,19 @@ new Chart(document.getElementById('cpqMilestoneChart'), {
     );
 
     sections.forEach(function (sec) {
-      sec.addEventListener('mouseenter', function () {
-        clearTimeout(hideTimer);
-        show(sec);
-      });
-      sec.addEventListener('mouseleave', function (e) {
-        // Small delay so moving cursor to drawer doesn't flicker
-        hideTimer = setTimeout(hide, 100);
-      });
+      sec.addEventListener('mouseenter', function () { show(sec); });
     });
 
-    // Reposition on scroll so the drawer tracks the section
-    window.addEventListener('scroll', function () {
-      hide();
-    }, { passive: true });
+    // Scroll: keep drawer locked to its section
+    window.addEventListener('scroll', reposition, { passive: true });
+
+    // Click outside newsletter + drawer = dismiss
+    document.addEventListener('click', function (e) {
+      if (!current) return;
+      if (!wrap.contains(e.target) && e.target !== drawer && !drawer.contains(e.target)) {
+        hide();
+      }
+    });
   })();
   </script>
 
