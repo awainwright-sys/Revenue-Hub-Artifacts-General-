@@ -490,46 +490,74 @@ body {
 }
 
 
-/* ── TL;DR DRAWER ── */
-/* Drawer is a fixed overlay driven by JS — lives outside .wrap so overflow:hidden doesn't clip it */
-.section-tldr { display: none; } /* data store only — content copied by JS */
+/* ── TL;DR POP-OUT CARD ── */
+.nl-hero, .exec-summary, .chart-section, .signoff {
+  overflow: visible;
+}
+
+.section-tldr {
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.2s ease;
+  z-index: 30;
+  background: var(--hs-teal);
+  border-top: 2px solid var(--hs-orange);
+  border-radius: 0 0 10px 10px;
+  padding: 13px 40px 16px;
+  box-shadow: 0 12px 32px rgba(4,39,41,0.18);
+}
+
+.nl-hero:hover .section-tldr,
+.exec-summary:hover .section-tldr,
+.chart-section:hover .section-tldr,
+.signoff:hover .section-tldr {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
 
 .section-tldr-label {
   font-size: 9px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--hs-orange);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-family: inherit;
 }
 
-.tldr-block {
-  margin-bottom: 12px;
-}
+.tldr-block { margin-bottom: 10px; }
 .tldr-block:last-child { margin-bottom: 0; }
 
 .tldr-topic {
-  font-size: 8.5px;
+  font-size: 8px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--hs-orange);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   font-family: inherit;
 }
 
 .tldr-body {
-  font-size: 11px;
-  color: rgba(255,255,255,0.87);
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.88);
   line-height: 1.65;
+  font-style: italic;
   font-family: inherit;
 }
 
 .section-tldr-text {
-  font-size: 11px;
+  font-size: 12.5px;
   color: rgba(255,255,255,0.88);
   line-height: 1.65;
+  font-style: italic;
   font-family: inherit;
 }
 
@@ -564,7 +592,6 @@ body {
     </div>
   </div>
   </div>
-  </div>
 
   <!-- DASHBOARD STRIP -->
   <div class="dash-strip">
@@ -575,13 +602,12 @@ body {
     <div class="section-tldr-label">Learning &amp; Leverage</div>
     <div class="tldr-block">
       <div class="tldr-topic">Learning</div>
-      <div class="tldr-body">The executive data tells one story: product-market fit exists before the full GTM is online. Enterprise mix beat plan at 135%, partner momentum crossed 50% of new MRR for the first time, and the team built this with minimal infrastructure. H1 was proof of concept. H2 is proof of scale.</div>
+      <div class="tldr-body">The executive data tells one story: product-market fit exists before the full GTM is online. Enterprise mix beat plan at 135%, partner momentum crossed 50% of new MRR for the first time, and the team built this on a lean 4-specialist roster. H1 was proof of concept. H2 is proof of scale.</div>
     </div>
     <div class="tldr-block">
       <div class="tldr-topic">Leverage</div>
       <div class="tldr-body">The linked dashboards are our instruments — tracking DSR volume, partner certifications, SE activations, and NNARR in real time. Keeping the whole org calibrated to the same numbers is itself a leverage investment.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -601,7 +627,6 @@ body {
       <div class="tldr-topic">Leverage</div>
       <div class="tldr-body">August 1 is the leverage moment. SST enablement, proactive GS selling, and SE investment all activate on the same date. One calendar day converts a reactive specialist team into a force-multiplied org-wide motion.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -631,9 +656,8 @@ body {
     </div>
     <div class="tldr-block">
       <div class="tldr-topic">Leverage</div>
-      <div class="tldr-body">Cameron&#39;s 5× quota month is the most powerful enablement asset we have. We are scaling that result into a repeatable specialist playbook — the same deal approach, the same qualification standard, applied org-wide.</div>
+      <div class="tldr-body">Cameron's 5× quota month is the most powerful enablement asset we have. We are scaling that result into a repeatable specialist playbook — the same deal approach, the same qualification standard, applied org-wide.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -695,7 +719,6 @@ body {
       <div class="tldr-topic">Leverage</div>
       <div class="tldr-body">August 1 SST enablement completion turns every trained rep into a first-responder for Revenue Hub deals. The load that currently falls on 4 specialists gets distributed across the full org — force multiplication without adding headcount.</div>
     </div>
-  </div>
   </div>
     <div class="section-label">THE 91% SIGNAL</div>
     <div style="font-size:15px;font-weight:800;color:var(--hs-teal);margin:6px 0 12px;display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--hs-orange);flex-shrink:0;"></span>What 91% Attainment Actually Means — With Only 8% Dedicated Coverage</div>
@@ -812,13 +835,12 @@ body {
     <div class="section-tldr-label">Learning &amp; Leverage</div>
     <div class="tldr-block">
       <div class="tldr-topic">Learning</div>
-      <div class="tldr-body">Revenue impact per specialist is a function of deal concentration, not deal volume. A specialist influencing $10K MRR per deal vs $3K MRR delivers 3.3× the revenue contribution from the same headcount. Spread thin doesn&#39;t win — the data is unambiguous.</div>
+      <div class="tldr-body">Revenue impact per specialist is a function of deal concentration, not deal volume. A specialist influencing $10K MRR per deal vs $3K MRR delivers 3.3× the revenue contribution from the same headcount. Spread thin doesn't win — the data is unambiguous.</div>
     </div>
     <div class="tldr-block">
       <div class="tldr-topic">Leverage</div>
       <div class="tldr-body">We are building an incentive model to keep the team focused on the ≥15-license deals that move the number. Structuring comp and recognition around deal quality ensures the team self-selects toward the right opportunities rather than chasing volume.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -967,13 +989,12 @@ body {
     <div class="section-tldr-label">Learning &amp; Leverage</div>
     <div class="tldr-block">
       <div class="tldr-topic">Learning</div>
-      <div class="tldr-body">Every $1 of CPQ license revenue unlocks $4–$12 of Payments volume. Shopify is 16× bigger than HubSpot because 72% of its revenue is payments. Revenue Hub is HubSpot&#39;s version of that bet — and it&#39;s live in our pipeline today. HubSpot&#39;s 80% agentic shift puts Revenue Hub&#39;s APIs at the center of the product story.</div>
+      <div class="tldr-body">Every $1 of CPQ license revenue unlocks $4–$12 of Payments volume. Shopify is 16× bigger than HubSpot because 72% of its revenue is payments. Revenue Hub is HubSpot's version of that bet — and it's live in our pipeline today. HubSpot's 80% agentic shift puts Revenue Hub's APIs at the center of the product story.</div>
     </div>
     <div class="tldr-block">
       <div class="tldr-topic">Leverage</div>
-      <div class="tldr-body">We are building Level 2 and Level 3 enablement depth so SEs and SST reps can run a full end-to-end demo across CPQ → Billing → Payments → Reporting. Level 3 means building custom environments bespoke to the customer&#39;s business — that is the technical edge we are creating.</div>
+      <div class="tldr-body">We are building Level 2 and Level 3 enablement depth so SEs and SST reps can run a full end-to-end demo across CPQ → Billing → Payments → Reporting. Level 3 means building custom environments bespoke to the customer's business — that is the technical edge we are creating.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -1022,13 +1043,12 @@ body {
     <div class="section-tldr-label">Learning &amp; Leverage</div>
     <div class="tldr-block">
       <div class="tldr-topic">Learning</div>
-      <div class="tldr-body">CPQ/Quoting is the #1 deal blocker in HubSpot&#39;s field org — 31% of AEs encounter it often or always, and it accounts for 27% of all competitive loss mentions. ERP gaps close deals at the highest severity rate of any integration category. Revenue Hub is the only internal answer to the business&#39;s most acute revenue gap.</div>
+      <div class="tldr-body">CPQ/Quoting is the #1 deal blocker in HubSpot's field org — 31% of AEs encounter it often or always, and it accounts for 27% of all competitive loss mentions. ERP gaps close deals at the highest severity rate of any integration category. Revenue Hub is the only internal answer to the business's most acute revenue gap.</div>
     </div>
     <div class="tldr-block">
       <div class="tldr-topic">Leverage</div>
       <div class="tldr-body">The measure of effective leverage here is whether every SE and SST rep can demonstrate a full CPQ → Billing → Payments → Reporting flow. Basic harbor tour for all. Full end-to-end for SEs. Custom bespoke environments for Level 3 — that is where we win complex enterprise deals.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -1071,9 +1091,8 @@ body {
     </div>
     <div class="tldr-block">
       <div class="tldr-topic">Leverage</div>
-      <div class="tldr-body">The July 2 Payments incentive is the first time partners have a financial reason to close CPQ + Payments together. Our leverage play is certifying partners to deliver the basic harbor tour demo — every certified partner becomes an RSS extension in territories we can&#39;t cover directly.</div>
+      <div class="tldr-body">The July 2 Payments incentive is the first time partners have a financial reason to close CPQ + Payments together. Our leverage play is certifying partners to deliver the basic harbor tour demo — every certified partner becomes an RSS extension in territories we can't cover directly.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -1113,13 +1132,12 @@ body {
     <div class="section-tldr-label">Learning &amp; Leverage</div>
     <div class="tldr-block">
       <div class="tldr-topic">Learning</div>
-      <div class="tldr-body">DSR volume is consistently outpacing the team&#39;s capacity to respond — a structural demand problem, not a pipeline problem. Every rep who submits a DSR is a rep who understands the motion. The form permissions bug and missing license field data are fixable; the underlying demand signal is real and growing.</div>
+      <div class="tldr-body">DSR volume is consistently outpacing the team's capacity to respond — a structural demand problem, not a pipeline problem. Every rep who submits a DSR is a rep who understands the motion. The form permissions bug and missing license field data are fixable; the underlying demand signal is real and growing.</div>
     </div>
     <div class="tldr-block">
       <div class="tldr-topic">Leverage</div>
       <div class="tldr-body">August 1 enablement completion flips the DSR from a bottleneck into an accelerant. When every SST rep completes the 5-week track, demand that currently funnels to 4 specialists distributes across the full org — extending the motion to 100% of Revenue Hub opportunities.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -1248,7 +1266,6 @@ body {
     </div>
   </div>
   </div>
-  </div>
 
   <!-- GEOGRAPHIC COVERAGE GAP -->
   <div class="chart-section">
@@ -1290,9 +1307,8 @@ body {
     </div>
     <div class="tldr-block">
       <div class="tldr-topic">Leverage</div>
-      <div class="tldr-body">Commerce Specialists rolling into RSS and incremental headcount are the near-term coverage levers. The H2 goal is giving every EMEA and LATAM rep the basic pitch and harbor tour demo capability — so regional demand doesn&#39;t stall waiting for a North American specialist.</div>
+      <div class="tldr-body">Commerce Specialists rolling into RSS and incremental headcount are the near-term coverage levers. The H2 goal is giving every EMEA and LATAM rep the basic pitch and harbor tour demo capability — so regional demand doesn't stall waiting for a North American specialist.</div>
     </div>
-  </div>
   </div>
   </div>
 
@@ -1457,7 +1473,6 @@ body {
       <div class="tldr-topic">Leverage</div>
       <div class="tldr-body">H2 success is measured in two ways: attainment and org-wide capability. Basic pitch for everyone. Harbor tour for most. Full CPQ → Billing → Payments demo for SEs and SSTs. Custom bespoke environments at Level 3. That capability stack is the leverage we are building this half.</div>
     </div>
-  </div>
   </div>
 </div>
 
@@ -2222,92 +2237,5 @@ new Chart(document.getElementById('cpqMilestoneChart'), {
   });
 })();
 </script>
-
-  <!-- TL;DR Floating Drawer — fixed overlay, positioned outside .wrap -->
-  <div id="tldr-overlay" style="
-    position: fixed;
-    width: 268px;
-    background: #0D3535;
-    border-left: 3px solid #FF4800;
-    border-radius: 0 14px 14px 0;
-    box-shadow: 10px 0 32px rgba(4,39,41,0.22);
-    padding: 22px 20px;
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    transition: opacity 0.22s ease, transform 0.3s cubic-bezier(0.22,0.61,0.36,1);
-    transform: translateX(-12px);
-    top: 0; left: -999px;
-  "></div>
-
-  <script>
-  (function(){
-    var overlay = document.getElementById('tldr-overlay');
-    var activeSection = null;
-    var hideTimer = null;
-
-    function showDrawer(section) {
-      var tldrEl = section.querySelector('.section-tldr');
-      if (!tldrEl) return;
-
-      var wrapEl = document.querySelector('.wrap');
-      var wrapRect = wrapEl.getBoundingClientRect();
-      var secRect = section.getBoundingClientRect();
-
-      // Clamp height so it never overflows viewport
-      var maxH = window.innerHeight - 40;
-      var h = Math.min(secRect.height, maxH);
-      var top = Math.max(20, secRect.top + (secRect.height - h) / 2);
-
-      overlay.innerHTML = tldrEl.innerHTML;
-      overlay.style.height = h + 'px';
-      overlay.style.top = top + 'px';
-      overlay.style.left = (wrapRect.right + 10) + 'px';
-      overlay.style.transform = 'translateX(-12px)';
-      overlay.style.opacity = '0';
-
-      // Force reflow then animate in
-      overlay.getBoundingClientRect();
-      overlay.style.transform = 'translateX(0)';
-      overlay.style.opacity = '1';
-    }
-
-    function hideDrawer() {
-      overlay.style.opacity = '0';
-      overlay.style.transform = 'translateX(-12px)';
-    }
-
-    var sections = document.querySelectorAll('.nl-hero, .exec-summary, .metric-strip, .chart-section, .signoff');
-    sections.forEach(function(section){
-      section.addEventListener('mouseenter', function(){
-        clearTimeout(hideTimer);
-        activeSection = section;
-        showDrawer(section);
-      });
-      section.addEventListener('mouseleave', function(e){
-        // Small delay so moving into overlay doesn't flicker
-        hideTimer = setTimeout(function(){
-          hideDrawer();
-          activeSection = null;
-        }, 120);
-      });
-    });
-
-    // Keep overlay visible when mouse moves over it
-    overlay.addEventListener('mouseenter', function(){
-      clearTimeout(hideTimer);
-      overlay.style.pointerEvents = 'auto';
-    });
-    overlay.addEventListener('mouseleave', function(){
-      overlay.style.pointerEvents = 'none';
-      hideDrawer();
-    });
-  })();
-  </script>
-
 </body>
 </html>
